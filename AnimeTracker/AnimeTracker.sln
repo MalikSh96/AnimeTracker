@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1433
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeTracker", "AnimeTracker\AnimeTracker.csproj", "{002705F3-7B30-4369-BA9F-BE60C791465A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{002705F3-7B30-4369-BA9F-BE60C791465A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{002705F3-7B30-4369-BA9F-BE60C791465A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{002705F3-7B30-4369-BA9F-BE60C791465A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{002705F3-7B30-4369-BA9F-BE60C791465A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {11AD63E3-8AD5-4096-90F5-5452BB924649}
+	EndGlobalSection
+EndGlobal

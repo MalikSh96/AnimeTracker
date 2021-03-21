@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Anime</title>
+</head>
+<body>
+    <table border="1" cellpadding="2" cellspacing="2">
+        <tr>
+            <th>Anime name</th>
+            <th>Anime description</th>
+            <th>Anime release date</th>
+        </tr>
+        @foreach(var anime in ViewBag.Anime)
+        {
+            <tr>
+                <td>@anime.animename</td>
+                <td>@anime.description</td>
+                <td>@anime.release_date</td>
+                <td>Edit || Delete</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
