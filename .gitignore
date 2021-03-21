@@ -1,0 +1,6 @@
+# Database scripts
+TableScript.sql
+TableScript2.sql
+
+# Database connection related
+AnimeProject/AnimeTracker/AnimeTracker/appsettings.json
