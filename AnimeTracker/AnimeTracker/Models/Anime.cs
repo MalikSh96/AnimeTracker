@@ -16,6 +16,5 @@ namespace AnimeTracker.Models
         public string animename { get; set; }
         public string description { get; set; }
         public string release_date { get; set; }
-
     }
 }

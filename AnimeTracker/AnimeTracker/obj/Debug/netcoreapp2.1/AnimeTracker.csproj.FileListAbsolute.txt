@@ -22,6 +22,8 @@ C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracke
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\AnimeTracker.csproj.CopyComplete
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\bin\Debug\netcoreapp2.1\appsettings.Development.json
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\Anime\Add.cshtml.g.cs
+C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\Anime\Edit.cshtml.g.cs
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\Anime\Index.cshtml.g.cs
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.cshtml.g.cs
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.cshtml.g.cs
