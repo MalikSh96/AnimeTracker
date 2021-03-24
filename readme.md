@@ -36,5 +36,46 @@ Also gives you servers to run on.
 # Link used to help installing and using dotnet
 [LINK](https://www.youtube.com/watch?v=MBdyxWyKBKI)
 
+# What is Microsoft EntityFrameworkCore
+Use this [link](https://docs.microsoft.com/en-us/ef/core/).
+
+Entity Framework (EF) is an open source ORM framework for ADO.NET which is a part of .NET Framework.
+
+Entity Framework is an ORM and ORMs are aimed to increase the developer’s productivity by 
+reducing the redundant task of persisting the data used in the applications. [Read More](https://www.tutorialspoint.com/entity_framework/entity_framework_overview.htm)
+
+
+
 
 # AnimeTracker
+
+# Phase 1
+# Established connection to database
+Used `appsettings.json` to make a connection string as a default connection to my database.
+
+`server=YourServer;port=YourPort;database=YourDbName;uid=YourUser;password=YourPassword`
+
+# `DataContext.cs`
+This file contains the establishment of our connection to our database by making a reference to our `appsettings.json`.
+
+`OnConfiguring(DbContextOptionsBuilder optionsBuilder)`, this method to configure the database (and other options) to be 
+used for this context. This method is called for each instance of the context that is created. 
+
+[Link](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.onconfiguring?view=efcore-5.0)
+
+[About](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontextoptionsbuilder?view=efcore-5.0) 
+`DbContextOptionsBuiler`
+
+# `AnimeController.cs`
+Under `Controllers` folder.
+
+This file acts as our bridge between our frontend and backend, in this file we do our CRUD operations.
+
+# `Anime.cs`
+Under `Models` folder.
+
+This acts as our database entry setup for the particular table 
+
+# Views 
+Here we design our frontend view on our client.
+
