@@ -7,13 +7,13 @@ using AnimeTracker.Models;
 
 namespace AnimeTracker.Controllers
 {
-    [Route("anime")]
+    [Route("Anime")]
     public class AnimeController : Controller
     {
         private DataContext db = new DataContext();
 
         [Route("")]
-        [Route("anime")]
+        [Route("Anime")]
         [Route("~/")]
         public IActionResult Index()
         {
@@ -38,7 +38,7 @@ namespace AnimeTracker.Controllers
         }
 
         [HttpGet]
-        [Route("delete/{anime_id}")]
+        [Route("Delete/{anime_id}")]
         public IActionResult DeleteAnime(int anime_id)
         {
             db.Animes.Remove(db.Animes.Find(anime_id));
@@ -47,15 +47,15 @@ namespace AnimeTracker.Controllers
         }
 
         [HttpGet]
-        [Route("edit/{anime_id}")]
-        public IActionResult Edit(int anime_id)
+        [Route("Edit/{anime_id}")]
+        public IActionResult UpdateAnime(int anime_id)
         { 
-            return View("Edit", db.Animes.Find(anime_id));
+            return View("Edit/", db.Animes.Find(anime_id));
         }
 
         [HttpPost]
         [Route("edit/{anime_id}")]
-        public IActionResult Edit(int anime_id, Anime anime)
+        public IActionResult UpdateAnime(int anime_id, Anime anime)
         {
             db.Entry(anime).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             db.SaveChanges();
