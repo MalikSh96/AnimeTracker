@@ -101,3 +101,6 @@ This acts as our database entry setup for the particular table
 # Views 
 Here we design our frontend view on our client.
 
+# Phase 2
+Implemented CRUD methods and also j-query search function.
+
