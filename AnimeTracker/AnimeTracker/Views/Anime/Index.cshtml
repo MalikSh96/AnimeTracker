@@ -1,7 +1,7 @@
-﻿
-@{
-    Layout = null;
-}
+﻿@model AnimeTracker.Models.Anime
+
+<br />
+<br />
 
 <!DOCTYPE html>
 
@@ -11,38 +11,73 @@
     <title>Anime</title>
 </head>
 <body>
-    <h3>List of all Animes</h3>
-    <a asp-controller="anime" asp-action="add">Add new Anime entry</a>
-    <table border="1" cellpadding="2" cellspacing="2">
-        <tr>
-            <th>Anime ID</th>
-            <th>Anime name</th>
-            <th>Anime description</th>
-            <th>Anime release date</th>
-        </tr>
-        @foreach(var anime in ViewBag.Anime)
-        {
-            <tr>
-                <td>@anime.anime_id</td>
-                <td>@anime.animename</td>
-                <td>@anime.description</td>
-                <td>@anime.release_date</td>
-                <td>
-                    <a asp-controller="anime"
-                       asp-action="edit"
-                       asp-route-id="@anime.anime_id">
-                        Edit
-                    </a>
-                        ||
-                    <a asp-controller="anime"
-                       asp-action="delete"
-                       asp-route-id="@anime.anime_id"
-                       onclick="return confirm('Are you sure?')">
-                        Delete
-                    </a>
-                </td>
-            </tr>
-        }
-    </table>
+    <div class="container">
+        <h3>List of all Animes</h3>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            <input type="text" id="Search" placeholder="Search" class="form-control" />
+        </div>
+        <a asp-controller="anime" asp-action="add">Add new Anime entry</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Anime ID</th>
+                    <th>Anime name</th>
+                    <th>Anime description</th>
+                    <th>Anime release date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var anime in ViewBag.Anime)
+                {
+                    <tr class="Search">
+                        <td>@anime.anime_id</td>
+                        <td>@anime.animename</td>
+                        <td>@anime.description</td>
+                        <td>@anime.release_date</td>
+                        <td>
+                            <a asp-controller="anime"
+                               asp-action="edit"
+                               asp-route-id="@anime.anime_id">
+                                Edit
+                            </a>
+                            ||
+                            <a asp-controller="anime"
+                               asp-action="delete"
+                               asp-route-id="@anime.anime_id"
+                               onclick="return confirm('Are you sure?')">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script>
+            $(document).ready(function () {
+                function Contains(compare_one, compare_two) {
+                    if (compare_one.indexOf(compare_two) != -1)
+                        return true;
+                }
+                $("#Search").keyup(function () {
+                    var search_text = $("#Search").val().toLowerCase();
+                    $(".Search").each(function () {
+                        if (!Contains($(this).text().toLowerCase(), search_text)) {
+                            $(this).hide();
+                        }
+                        else {
+                            $(this).show();
+                        }
+                    });
+                });
+            });
+        </script>
+    </div>
 </body>
 </html>
