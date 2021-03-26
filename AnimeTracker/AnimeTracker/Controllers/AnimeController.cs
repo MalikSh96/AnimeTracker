@@ -7,7 +7,7 @@ using AnimeTracker.Models;
 
 namespace AnimeTracker.Controllers
 {
-    [Route("anime")]
+    [Route("Anime")]
     public class AnimeController : Controller
     {
         private DataContext db = new DataContext();

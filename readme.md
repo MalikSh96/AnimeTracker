@@ -44,8 +44,30 @@ Entity Framework (EF) is an open source ORM framework for ADO.NET which is a par
 Entity Framework is an ORM and ORMs are aimed to increase the developer’s productivity by 
 reducing the redundant task of persisting the data used in the applications. [Read More](https://www.tutorialspoint.com/entity_framework/entity_framework_overview.htm)
 
+# Using J-Query as search functionality
+Link to [script codesnippet](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/built-in/script-tag-helper?view=aspnetcore-5.0)
 
+J-Query is a lightweight JavaScript library. The purpose of j-query is to make it much easier to use JavaScript
+on our website. [Read More](https://www.w3schools.com/jquery/jquery_intro.asp)
 
+# `Dependencies` --> `NuGet`
+[Pomelo.EntityFrameworkCore.MySql](https://github.com/PomeloFoundation/Pomelo.EntityFrameworkCore.MySql)
+
+[MySql.Data](https://www.nuget.org/packages/MySql.Data/)
+
+[Microsoft.NETCore.App](https://www.nuget.org/packages/Microsoft.NETCore.App/) A set of .NET API's that are included in the 
+default .NET Core application model.
+
+[Microsoft.AspNetCore.App](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)
+
+[Microsoft.VisualStudio.Web.CodeGeneration.Design](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.CodeGeneration.Design/)
+Code Generation tool for ASP.NET Core. Contains the dotnet-aspnet-codegenerator command used 
+for generating controllers and views. I am using **version 2.1.9** to support my project, as if I use newer 
+versions, I won't be able to install packages since they are not compatible.'
+
+[Microsoft.AspNetCore.Razor.Design](https://www.nuget.org/packages/Microsoft.AspNetCore.Razor.Design/) 
+Razor is a markup syntax for adding server-side logic to web pages. Again I am using an older version to 
+support my project
 
 # AnimeTracker
 
