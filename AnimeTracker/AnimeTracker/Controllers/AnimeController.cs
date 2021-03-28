@@ -22,6 +22,14 @@ namespace AnimeTracker.Controllers
         }
 
         [HttpGet]
+        [Route("getall")]
+        public IActionResult AllAnime()
+        {
+            ViewBag.Anime = db.Animes.ToList();
+            return View();
+        }
+
+        [HttpGet]
         [Route("Add")]
         public IActionResult AddAnime()
         {
