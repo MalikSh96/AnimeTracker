@@ -69,5 +69,52 @@ namespace AnimeTracker.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        [Route("moreinfo/{id}")]
+        public IActionResult MoreInfo(int id)
+        {
+            if (id == 0)
+            {
+                return NotFound();
+            }
+            var anime = db.Animes.Find(id);
+            return View(anime);
+            //return View("MoreInfo");
+        }
+
+        /*[HttpGet]
+        [Route("moreinfo/{anime_id}")]
+        public IActionResult MoreInfo(int anime_id)
+        {
+            var data = ViewBag.Anime;
+            var name = "";
+            var description = "";
+            var episodes = 0;
+            var genre = "";
+            var studio = "";
+            var source_material = "";
+            var rating_pg = "";
+            var release = "";
+
+
+            foreach (var anime in data)
+            {
+                if (anime.anime_id == 1)
+                {
+                    name = anime.animename;
+                    description = anime.description;
+                    episodes = anime.episodes;
+                    genre = anime.genre;
+                    studio = anime.studio;
+                    source_material = anime.anime_source;
+                    rating_pg = anime.rating_pg;
+                    release = anime.release_date;
+
+                }
+                return anime;
+            }
+            return View("MoreInfo");
+        }*/
     }
 }

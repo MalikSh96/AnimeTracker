@@ -15,6 +15,11 @@ namespace AnimeTracker.Models
 
         public string animename { get; set; }
         public string description { get; set; }
+        public int episodes { get; set; }
+        public string genre { get; set; }
+        public string studio { get; set; }
+        public string anime_source { get; set; }
+        public string rating_pg { get; set; }
         public string release_date { get; set; }
     }
 }

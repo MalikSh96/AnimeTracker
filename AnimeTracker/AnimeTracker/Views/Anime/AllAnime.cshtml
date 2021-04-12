@@ -17,39 +17,35 @@
             <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
             <input type="text" id="Search" placeholder="Search" class="form-control" />
         </div>
-        <!--<a asp-controller="anime" asp-action="add">Add new Anime entry</a>-->
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Anime ID</th>
-                    <th>Anime name</th>
-                    <th>Anime description</th>
-                    <th>Anime release date</th>
+                    <th>Anime Name</th>
+                    <th>Total of Episodes</th>
+                    <th>Anime Release Date</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var anime in ViewBag.Anime)
                 {
-                    <tr class="Search">
-                        <td>@anime.anime_id</td>
-                        <td>@anime.animename</td>
-                        <td>@anime.description</td>
-                        <td>@anime.release_date</td>
-                        <!--<td>
-                            <a asp-controller="anime"
-                               asp-action="edit"
-                               asp-route-id="@anime.anime_id">
-                                Edit
-                            </a>
-                            ||
-                            <a asp-controller="anime"
-                               asp-action="delete"
-                               asp-route-id="@anime.anime_id"
-                               onclick="return confirm('Are you sure?')">
-                                Delete
-                            </a>
-                        </td>-->
-                    </tr>
+                <tr class="Search">
+                    <td>@anime.anime_id</td>
+                    <td>@anime.animename</td>
+                    <td>@anime.episodes</td>
+                    <td>@anime.release_date</td>
+                    <td></td>
+                    
+                    <td>
+                        <!--<a asp-controller="anime"
+                           asp-route-id="@anime.anime_id">
+                            See More Information
+                        </a>-->
+                        <a href="moreinfo/@anime.anime_id">See More Info</a>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>

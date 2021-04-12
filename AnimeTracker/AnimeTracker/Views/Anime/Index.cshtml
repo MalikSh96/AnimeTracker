@@ -22,9 +22,10 @@
             <thead>
                 <tr>
                     <th>Anime ID</th>
-                    <th>Anime name</th>
-                    <th>Anime description</th>
-                    <th>Anime release date</th>
+                    <th>Anime Name</th>
+                    <th>Total of Episodes</th>
+                    <!--<th>Anime description</th>-->
+                    <th>Anime Release Date</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,7 +34,8 @@
                     <tr class="Search">
                         <td>@anime.anime_id</td>
                         <td>@anime.animename</td>
-                        <td>@anime.description</td>
+                        <td>@anime.episodes</td>
+                        <!--<td>@anime.description</td>-->
                         <td>@anime.release_date</td>
                         <td>
                             <a asp-controller="anime"

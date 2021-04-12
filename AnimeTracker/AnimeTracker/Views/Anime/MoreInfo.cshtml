@@ -1,0 +1,45 @@
+﻿@model AnimeTracker.Models.Anime
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Anime</title>
+</head>
+<body>
+    <div class="container">
+        @{
+            var data = ViewData.Model;
+        }
+        <h2><b>More about the anime</b></h2>
+        <br />
+
+        <h3><b>Anime Name</b></h3>
+        <p>@data.animename</p>
+        <br />
+        <h3><b>Anime description</b></h3>
+        <p>@data.description</p>
+        <br />
+        <h3><b>Total of Episodes</b></h3>
+        <p>@data.episodes</p>
+        <br />
+        <h3><b>Genre</b></h3>
+        <p>@data.genre</p>
+        <br />
+        <h3><b>Studio</b></h3>
+        <p>@data.studio</p>
+        <br />
+        <h3><b>Source material</b></h3>
+        <p>@data.anime_source</p>
+        <br />
+        <h3><b>Rating PG</b></h3>
+        <p>@data.rating_pg</p>
+        <br />
+        <h3><b>Anime Release Date</b></h3>
+        <p>@data.release_date</p>
+    </div>
+</body>
+</html>
+
+
