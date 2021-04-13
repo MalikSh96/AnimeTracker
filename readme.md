@@ -69,6 +69,10 @@ versions, I won't be able to install packages since they are not compatible.'
 Razor is a markup syntax for adding server-side logic to web pages. Again I am using an older version to 
 support my project
 
+[PagedList.Core.Mvc](https://www.nuget.org/packages/PagedList.Core.Mvc/)
+A tag helper for generating pager control for use with PagedList.Core library. Installed lower version 
+for compatibility with my project.
+
 # AnimeTracker
 
 # Phase 1
@@ -112,3 +116,6 @@ information --> `MoreInfo.cshtml`
 Also made that, for the user friendly interface, it will display the list of shows based on 
 alphabetical orders.
 For the admin page, the list of shows is displayed based on their **ID**, from 1 and above.
+
+# Phase 4
+Implemented pagination for `Views/Anime/Index.cshtml`, but the functionality is **NOT** active as of now.
