@@ -17,6 +17,8 @@ namespace AnimeTracker.Controllers
         [Route("~/")]
         public IActionResult Index()
         {
+            //var anime = db.Animes.OrderBy(x => x.animename).ToList();
+            //db.Employees.OrderBy(p => p.Id);
             ViewBag.Anime = db.Animes.ToList();
             return View();
         }
@@ -74,6 +76,8 @@ namespace AnimeTracker.Controllers
         [Route("moreinfo/{id}")]
         public IActionResult MoreInfo(int id)
         {
+            //https://www.c-sharpcorner.com/UploadFile/3d39b4/displaying-data-on-view-from-controller/
+            //https://www.c-sharpcorner.com/article/3-ways-to-return-the-data-from-controller-action-method-in-asp-net-core/
             if (id == 0)
             {
                 return NotFound();

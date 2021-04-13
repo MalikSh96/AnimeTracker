@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>Anime</title>
 </head>
+
 <body>
     <div class="container">
         <h3>List of all Animes</h3>
@@ -18,13 +19,12 @@
             <input type="text" id="Search" placeholder="Search" class="form-control" />
         </div>
         <a asp-controller="anime" asp-action="add">Add new Anime entry</a>
-        <table class="table table-striped">
+        <table id="pagination" class="table table-striped">
             <thead>
                 <tr>
                     <th>Anime ID</th>
                     <th>Anime Name</th>
                     <th>Total of Episodes</th>
-                    <!--<th>Anime description</th>-->
                     <th>Anime Release Date</th>
                 </tr>
             </thead>
@@ -35,7 +35,6 @@
                         <td>@anime.anime_id</td>
                         <td>@anime.animename</td>
                         <td>@anime.episodes</td>
-                        <!--<td>@anime.description</td>-->
                         <td>@anime.release_date</td>
                         <td>
                             <a asp-controller="anime"
@@ -68,6 +67,7 @@
                         return true;
                 }
                 $("#Search").keyup(function () {
+                    //functionality that searches the data
                     var search_text = $("#Search").val().toLowerCase();
                     $(".Search").each(function () {
                         if (!Contains($(this).text().toLowerCase(), search_text)) {

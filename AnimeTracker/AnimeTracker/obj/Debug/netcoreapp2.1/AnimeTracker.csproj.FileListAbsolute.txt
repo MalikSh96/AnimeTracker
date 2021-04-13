@@ -20,6 +20,8 @@ C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracke
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\AnimeTracker.dll
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\AnimeTracker.pdb
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\AnimeTracker.csproj.CopyComplete
+C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\bin\Debug\netcoreapp2.1\appsettings.json
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\Anime\Add.cshtml.g.cs
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\Anime\AllAnime.cshtml.g.cs
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\Anime\Edit.cshtml.g.cs
@@ -35,6 +37,4 @@ C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracke
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.cshtml.g.cs
-C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\bin\Debug\netcoreapp2.1\appsettings.Development.json
-C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\bin\Debug\netcoreapp2.1\appsettings.json
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\AnimeTracker.genruntimeconfig.cache
