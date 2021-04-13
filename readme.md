@@ -104,3 +104,11 @@ Here we design our frontend view on our client.
 # Phase 2
 Implemented CRUD methods and also j-query search function.
 
+# Phase 3
+Implemented functionalities such as when a user wants to see more information about a 
+particular anime, the user will be redirected to a **view** that displays more 
+information --> `MoreInfo.cshtml` 
+
+Also made that, for the user friendly interface, it will display the list of shows based on 
+alphabetical orders.
+For the admin page, the list of shows is displayed based on their **ID**, from 1 and above.
