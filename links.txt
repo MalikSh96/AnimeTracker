@@ -1,1 +1,7 @@
 https://stackoverflow.com/questions/217945/can-i-have-multiple-primary-keys-in-a-single-table/223491
+
+https://stackoverflow.com/questions/51160192/is-there-an-orderby-option-for-viewbag
+
+https://www.c-sharpcorner.com/UploadFile/3d39b4/displaying-data-on-view-from-controller/
+
+https://www.c-sharpcorner.com/article/3-ways-to-return-the-data-from-controller-action-method-in-asp-net-core/
