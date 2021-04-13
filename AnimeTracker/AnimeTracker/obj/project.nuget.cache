@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "BXkeDu70HVpufNUvlqYP94Qrim7xuvAZ6u2i0OtLgmj/D4pFoBr8Po9KftX5VezAMc/tKhTkBPr68wXWGSPmGg==",
+  "dgSpecHash": "3WsWnTo0/p5LOGABG+pJIlrbVsqSnpNCB6i7zqEMvtplxYFWg47tsEiGnRax7PVLYUcwsDfVOjFusDvSSZ/ETA==",
   "success": true,
   "projectFilePath": "C:\\Users\\malik\\OneDrive\\Documents\\Projects\\AnimeProject\\AnimeTracker\\AnimeTracker\\AnimeTracker.csproj",
   "expectedPackageFiles": [
@@ -190,6 +190,8 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\newtonsoft.json.bson\\1.0.1\\newtonsoft.json.bson.1.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\nuget.frameworks\\4.7.0\\nuget.frameworks.4.7.0.nupkg.sha512",
+    "C:\\Users\\malik\\.nuget\\packages\\pagedlist.core\\1.17.4\\pagedlist.core.1.17.4.nupkg.sha512",
+    "C:\\Users\\malik\\.nuget\\packages\\pagedlist.core.mvc\\1.2.0\\pagedlist.core.mvc.1.2.0.nupkg.sha512",
     "C:\\Users\\malik\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\2.1.4\\pomelo.entityframeworkcore.mysql.2.1.4.nupkg.sha512",
     "C:\\Users\\malik\\.nuget\\packages\\pomelo.jsonobject\\2.0.0\\pomelo.jsonobject.2.0.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\remotion.linq\\2.2.0\\remotion.linq.2.2.0.nupkg.sha512",

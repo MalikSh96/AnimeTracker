@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AnimeTracker.Models;
+using PagedList.Core;
 
 namespace AnimeTracker.Controllers
 {
@@ -15,11 +16,14 @@ namespace AnimeTracker.Controllers
         [Route("")]
         [Route("anime")]
         [Route("~/")]
-        public IActionResult Index()
+        public IActionResult Index(/*int page = 1, int pagesize = 5*/)
         {
             //ViewBag.Anime = db.Animes.OrderBy(_ => _.animename).ToList();
             ViewBag.Anime = db.Animes.ToList();
-            return View();
+
+            //Logic to display pagination -- the commented parts in this function
+            //PagedList<Anime> model = new PagedList<Anime>(db.Animes, page, pagesize);
+            return View(/*model*/);
         }
 
         [HttpGet]

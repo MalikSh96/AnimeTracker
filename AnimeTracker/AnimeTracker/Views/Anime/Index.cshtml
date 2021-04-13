@@ -1,5 +1,6 @@
 ﻿@model AnimeTracker.Models.Anime
 
+@*@model  PagedList.Core.IPagedList<AnimeTracker.Models.Anime>*@
 <br />
 <br />
 
@@ -19,7 +20,7 @@
             <input type="text" id="Search" placeholder="Search" class="form-control" />
         </div>
         <a asp-controller="anime" asp-action="add">Add new Anime entry</a>
-        <table id="pagination" class="table table-striped">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Anime ID</th>
@@ -53,7 +54,16 @@
                     </tr>
                 }
             </tbody>
+
+            @*<tr>
+                <td colspan="5" align="center">
+                    <pager list="@Model" asp-controller="anime" />
+
+                </td>
+            </tr>*@
+
         </table>
+
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery"
