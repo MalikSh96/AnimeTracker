@@ -21,5 +21,6 @@ namespace AnimeTracker.Models
         public string anime_source { get; set; }
         public string rating_pg { get; set; }
         public string release_date { get; set; }
+        public string img_path { get; set; }
     }
 }

@@ -73,6 +73,19 @@ support my project
 A tag helper for generating pager control for use with PagedList.Core library. Installed lower version 
 for compatibility with my project.
 
+[Microsoft.AspNetCore.Hosting](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.hosting?view=aspnetcore-5.0)
+ASP.NET Core hosting infrastructure and startup logic for web applications.
+
+[Microsoft.AspNetCore.Hosting.Abstractions](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.hosting.server.abstractions?view=aspnetcore-5.0)
+Provides types that can be implemented by a server to pool HttpContext instances.
+
+# About some of the `Nuget`
+Some of the `NuGet` packages installed may not have been used in the project so far. Whether they will
+be used or not, depends on the further development of this project.
+
+Cleaning will be the **absolute** last I will do, once I finish the entire **backend** part.
+
+
 # AnimeTracker
 
 # Phase 1
@@ -123,3 +136,9 @@ Implemented pagination for `Views/Anime/Index.cshtml`, but the functionality is 
 # Phase 5
 Installed `DataTables` library directly into `wwwroot/lib`. Made use of this to implement *datatables jquery* 
 searching functionality for both `Views/Anime/Search.cshtml` and `Views/Anime/AllAnime.cshtml`.
+
+# Phase 6
+Made such, that when adding a show, you are able to, for now, add one image related to the show.
+The image will be stored, for now, in the `wwwroot/animeimages` folder.
+
+Further changes will be applied to this phase.

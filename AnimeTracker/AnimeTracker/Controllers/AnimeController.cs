@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AnimeTracker.Models;
 using PagedList.Core;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace AnimeTracker.Controllers
 {
@@ -12,6 +15,8 @@ namespace AnimeTracker.Controllers
     public class AnimeController : Controller
     {
         private DataContext db = new DataContext();
+        //private IWebHostEnvironment Environment;
+
 
         [Route("")]
         [Route("anime")]
@@ -53,10 +58,25 @@ namespace AnimeTracker.Controllers
 
         [HttpPost]
         [Route("Add")]
-        public IActionResult AddAnime(Anime anime)
+        public async Task<IActionResult> AddAnime(IFormFile file, Anime anime)
         {
-            db.Animes.Add(anime);
-            db.SaveChanges();
+            string extension = Path.GetExtension(file.FileName);
+            if(extension == ".jpg" || extension == ".gif" || extension == ".png")
+            {
+                var save = Path.Combine("wwwroot/animeimages/", file.FileName);
+                var stream = new FileStream(save, FileMode.Create);
+                await file.CopyToAsync(stream);
+                //file.CopyTo(stream);
+                anime.img_path = save;
+                db.Animes.Add(anime);
+                db.SaveChanges();
+            }
+            else
+            {
+                ViewData["Message"] = "An error occured";
+            }
+            //db.Animes.Add(anime);
+            //db.SaveChanges();
             return RedirectToAction("Index");
         }
 

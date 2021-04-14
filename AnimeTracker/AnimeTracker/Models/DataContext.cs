@@ -20,6 +20,7 @@ namespace AnimeTracker.Models
             optionsBuilder.UseMySql(configuration["ConnectionStrings:DefaultConnection"]);
         }
 
+        //This is a reference to your table content
         public DbSet<Anime> Animes { get; set; }
     }
 }
