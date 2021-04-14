@@ -23,3 +23,7 @@ https://www.youtube.com/watch?v=lChDn1Ti0jI&t=2s&ab_channel=abctutorial
 https://www.youtube.com/watch?v=BpbG6Ww3iEI&t=1s&ab_channel=abctutorial
 
 https://www.youtube.com/watch?v=9EaZW-mow0o&ab_channel=LearningProgramming
+
+https://www.ezzylearning.net/tutorial/how-to-use-jquery-datatables-with-asp-net-core-web-api
+
+https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper?view=aspnetcore-5.0

@@ -27,6 +27,15 @@ namespace AnimeTracker.Controllers
         }
 
         [HttpGet]
+        [Route("search")]
+        public IActionResult Search()
+        {
+            //ViewBag.Anime = db.Animes.ToList();
+            ViewBag.Anime = db.Animes.OrderBy(_ => _.animename).ToList();
+            return View();
+        }
+
+        [HttpGet]
         [Route("getall")]
         public IActionResult AllAnime()
         {

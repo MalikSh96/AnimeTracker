@@ -1,0 +1,38 @@
+﻿@model AnimeTracker.Models.Anime
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <h3><b>List of all Animes</b></h3>
+        <table class="table table-striped" id="datatable">
+            <thead>
+                <tr>
+                    <th>Anime ID</th>
+                    <th>Anime Name</th>
+                    <th>Total of Episodes</th>
+                    <th>Anime Release Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var anime in ViewBag.Anime)
+                {
+                    <tr>
+                        <td>@anime.anime_id</td>
+                        <td>@anime.animename</td>
+                        <td>@anime.episodes</td>
+                        <td>@anime.release_date</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
