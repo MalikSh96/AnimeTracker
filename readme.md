@@ -27,7 +27,7 @@ Go to whichever directory you want to create your project
 `dotnet new webapp -o NameOfYourProject`
 
 # To run the webapplication
-In your command line, `dotnet.run`
+In your command line, `dotnet run`
 
 Creates a folder within your project folder, the `bin` folder.
 
@@ -119,3 +119,7 @@ For the admin page, the list of shows is displayed based on their **ID**, from 1
 
 # Phase 4
 Implemented pagination for `Views/Anime/Index.cshtml`, but the functionality is **NOT** active as of now.
+
+# Phase 5
+Installed `DataTables` library directly into `wwwroot/lib`. Made use of this to implement *datatables jquery* 
+searching functionality for both `Views/Anime/Search.cshtml` and `Views/Anime/AllAnime.cshtml`.
