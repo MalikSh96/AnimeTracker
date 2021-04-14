@@ -142,3 +142,6 @@ Made such, that when adding a show, you are able to, for now, add one image rela
 The image will be stored, for now, in the `wwwroot/animeimages` folder.
 
 Further changes will be applied to this phase.
+
+# Phase 7
+In `MoreInfo.cshtml` we now display **one** image, for now, for its corresponding show

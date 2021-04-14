@@ -34,6 +34,18 @@
         <br />
         <h4><b>Anime Release Date</b></h4>
         <p>@data.release_date</p>
+        <br />
+        @{
+            /*
+             What I am doing here is basically cutting down some of first elements
+             of the path.
+             The part that gets removed is wwwrooot, because is wwwroot is included in the path
+             for the src, the url link will mess up, and no images will be shown as the web can't
+             find the correct link for it
+             */ 
+            var img = data.img_path.Substring(7);
+            <img src="@img" width="400" height="400" />
+         }
     </div>
 </body>
 </html>

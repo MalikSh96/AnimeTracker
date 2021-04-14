@@ -15,8 +15,12 @@ namespace AnimeTracker.Controllers
     public class AnimeController : Controller
     {
         private DataContext db = new DataContext();
-        //private IWebHostEnvironment Environment;
+        private IHostingEnvironment Environment;
 
+        public AnimeController(IHostingEnvironment _environment)
+        {
+            Environment = _environment;
+        }
 
         [Route("")]
         [Route("anime")]
@@ -60,8 +64,14 @@ namespace AnimeTracker.Controllers
         [Route("Add")]
         public async Task<IActionResult> AddAnime(IFormFile file, Anime anime)
         {
+
+            /*
+             *Below code functions well, the code below posts the
+              images relative path into the database, which makes it easier to use
+              than the absolute path
+             */
             string extension = Path.GetExtension(file.FileName);
-            if(extension == ".jpg" || extension == ".gif" || extension == ".png")
+            if (extension == ".jpg" || extension == ".gif" || extension == ".png")
             {
                 var save = Path.Combine("wwwroot/animeimages/", file.FileName);
                 var stream = new FileStream(save, FileMode.Create);
@@ -78,6 +88,30 @@ namespace AnimeTracker.Controllers
             //db.Animes.Add(anime);
             //db.SaveChanges();
             return RedirectToAction("Index");
+
+            /*
+             * The code below works for posting the path into the database
+             * Issue is that it post the absolute path, which makes it harder to retrieve 
+               an image on the website, as the domain link and the db path collides wrongly
+             * 
+            string extension = Path.GetExtension(file.FileName);
+            string wwwPath = this.Environment.WebRootPath;
+            if (extension == ".jpg" || extension == ".gif" || extension == ".png")
+            {
+                var save = Path.Combine(wwwPath, "animeimages", file.FileName);
+                var stream = new FileStream(save, FileMode.Create);
+                await file.CopyToAsync(stream);
+                anime.img_path = save;
+                db.Animes.Add(anime);
+                db.SaveChanges();
+            }
+            else
+            {
+                ViewData["Message"] = "An error occured";
+            }
+
+            return RedirectToAction("Index"); 
+             */
         }
 
         [HttpGet]
