@@ -54,7 +54,7 @@ using AnimeTracker.Models;
             WriteLiteral("\r\n<!DOCTYPE html>\r\n\r\n<html>\r\n");
             EndContext();
             BeginContext(63, 103, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8b15b9ea239346cf9a05d9da19870516", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "57722eb2e5324b24ae0284d9a1a58f5a", async() => {
                 BeginContext(69, 90, true);
                 WriteLiteral("\r\n    <meta name=\"viewport\" content=\"width=device-width\" />\r\n    <title>Search</title>\r\n\r\n");
                 EndContext();
@@ -74,7 +74,7 @@ using AnimeTracker.Models;
             WriteLiteral("\r\n\r\n");
             EndContext();
             BeginContext(170, 837, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4a0f254aacdf42dd97f08d73beb18743", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cd5f4c43448a46239146ff78279d5987", async() => {
                 BeginContext(176, 421, true);
                 WriteLiteral(@"
     <div class=""container"">
