@@ -30,5 +30,7 @@ https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/built-in/anch
 
 https://www.youtube.com/watch?v=CyPA_l819Ks&ab_channel=HarithaComputers%26Technology
 
+https://khalidabuhakmeh.com/upload-a-file-using-aspdotnet-core
+
 
 

@@ -145,3 +145,11 @@ Further changes will be applied to this phase.
 
 # Phase 7
 In `MoreInfo.cshtml` we now display **one** image, for now, for its corresponding show
+
+# Phase 8
+Worked further on previous phases for image displaying and such. 
+Main coding happened in `AnimeController.cs` --> `public async Task<IActionResult> AddAnime(IFormFile file, Anime anime)` 
+
+I made that once you enter a new entry, based on the `entry.name` a corresponding subfolder gets created.
+We use that subfolder to store the images of the given entries, therefore we manage to keep our management cleaner
+and more organized when creating entries.

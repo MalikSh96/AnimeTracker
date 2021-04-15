@@ -69,7 +69,7 @@ using AnimeTracker.Models;
             WriteLiteral("<br />\r\n<br />\r\n\r\n<!DOCTYPE html>\r\n\r\n<html>\r\n");
             EndContext();
             BeginContext(147, 100, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "977e188f04434f56992de8067bdf6fcd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6cf8aeb590f47148f2ffb36597506a8", async() => {
                 BeginContext(153, 87, true);
                 WriteLiteral("\r\n    <meta name=\"viewport\" content=\"width=device-width\" />\r\n    <title>Anime</title>\r\n");
                 EndContext();
@@ -89,7 +89,7 @@ using AnimeTracker.Models;
             WriteLiteral("\r\n\r\n");
             EndContext();
             BeginContext(251, 3180, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7ba196a35adf4b14b8568ed175b6460d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e0926c679f9e45d5ad938b59aa2f450c", async() => {
                 BeginContext(257, 318, true);
                 WriteLiteral(@"
     <div class=""container"">
@@ -101,7 +101,7 @@ using AnimeTracker.Models;
         ");
                 EndContext();
                 BeginContext(575, 66, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cd43a4e2278d49fb80145aafeb1d732a", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "483371b7509c434394afd16249fcc2a4", async() => {
                     BeginContext(618, 19, true);
                     WriteLiteral("Add new Anime entry");
                     EndContext();
@@ -185,7 +185,7 @@ using AnimeTracker.Models;
                 WriteLiteral("</td>\r\n                        <td>\r\n                            ");
                 EndContext();
                 BeginContext(1352, 211, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5005d9cddf274228805a9fb3217e4f7d", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9c5116f71ee44999b7e64e7d033ece20", async() => {
                     BeginContext(1491, 68, true);
                     WriteLiteral("\r\n                                Edit\r\n                            ");
                     EndContext();
@@ -222,7 +222,7 @@ using AnimeTracker.Models;
                 WriteLiteral("\r\n                            ||\r\n                            ");
                 EndContext();
                 BeginContext(1625, 289, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "44c463b41ca747b1a4d97a2139647be9", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d9fd1dc21fdc4bd4b278b32ba9a5dc41", async() => {
                     BeginContext(1840, 70, true);
                     WriteLiteral("\r\n                                Delete\r\n                            ");
                     EndContext();
@@ -271,7 +271,7 @@ using AnimeTracker.Models;
                 WriteLiteral("\r\n        </table>\r\n\r\n        ");
                 EndContext();
                 BeginContext(2230, 353, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "36cbce3d3eac4ecb8e05e5abfa971cf6", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ef9ae9e1d3de4a5088aa385996c06451", async() => {
                     BeginContext(2564, 10, true);
                     WriteLiteral("\r\n        ");
                     EndContext();

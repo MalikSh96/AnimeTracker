@@ -64,13 +64,49 @@ namespace AnimeTracker.Controllers
         [Route("Add")]
         public async Task<IActionResult> AddAnime(IFormFile file, Anime anime)
         {
+            string extension = Path.GetExtension(file.FileName);
+            //we get the absolute path and store it in env
+            string env = Environment.WebRootPath;
+            //we make use of the above variable to combine our absolute path with its subfolder
+            DirectoryInfo di = new DirectoryInfo(env + "/animeimages");
+            //now that we have combined our pathes, we make a subfolder dynamicallt based on the input
+            DirectoryInfo dir = di.CreateSubdirectory(anime.animename);
+
+            /*since dir returns the absolute path, we need to use the relative path
+            therefore after we have managed to create that subfolder based on our input
+            we can manipulate our path
+            */
+            //we use relpath to refer to our newly created folder based on the input
+            string relpath = anime.animename;
+
+            if (extension == ".jpg" || extension == ".gif" || extension == ".png")
+            {
+                //by using $ before our string, we create an inpolated string
+                //An interpolated string expression looks like a template string that contains expressions
+                var save = Path.Combine($"wwwroot/animeimages/{relpath}/", file.FileName);
+                //var save = Path.Combine($"{dir}/", file.FileName);
+                var stream = new FileStream(save, FileMode.Create);
+                await file.CopyToAsync(stream);
+                //file.CopyTo(stream);
+                anime.img_path = save;
+                db.Animes.Add(anime);
+                db.SaveChanges();
+            }
+            else
+            {
+                ViewData["Message"] = "An error occured";
+            }
+            //db.Animes.Add(anime);
+            //db.SaveChanges();
+            return RedirectToAction("Index");
+
 
             /*
              *Below code functions well, the code below posts the
               images relative path into the database, which makes it easier to use
               than the absolute path
              */
-            string extension = Path.GetExtension(file.FileName);
+            /*string extension = Path.GetExtension(file.FileName);
             if (extension == ".jpg" || extension == ".gif" || extension == ".png")
             {
                 var save = Path.Combine("wwwroot/animeimages/", file.FileName);
@@ -87,7 +123,7 @@ namespace AnimeTracker.Controllers
             }
             //db.Animes.Add(anime);
             //db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index");*/
 
             /*
              * The code below works for posting the path into the database
