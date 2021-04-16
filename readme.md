@@ -176,3 +176,6 @@ Completed the work on displaying images and such. Yet again the main coding happ
 
 In this phase I made a functionality that dynamically accesses the content of a given folder and displays that content 
 on the webpage. In this case the `animeimages` **folder**.
+
+# Phase 10
+Worked on some general styling for the different `Views`
