@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width" />
     <title>Search</title>
 
+    <link href="~/css/viewscss/getall.css" rel="stylesheet" />
 </head>
-
 <body>
     <div class="container">
         <h3><b>List of all Animes</b></h3>
@@ -24,7 +24,7 @@
             <tbody>
                 @foreach (var anime in ViewBag.Anime)
                 {
-                    <tr>
+                    <tr class="Search">
                         <td>@anime.anime_id</td>
                         <td>@anime.animename</td>
                         <td>@anime.episodes</td>

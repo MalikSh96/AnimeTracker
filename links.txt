@@ -1,3 +1,4 @@
+//General links
 https://stackoverflow.com/questions/217945/can-i-have-multiple-primary-keys-in-a-single-table/223491
 
 https://stackoverflow.com/questions/51160192/is-there-an-orderby-option-for-viewbag
@@ -5,6 +6,31 @@ https://stackoverflow.com/questions/51160192/is-there-an-orderby-option-for-view
 https://www.c-sharpcorner.com/UploadFile/3d39b4/displaying-data-on-view-from-controller/
 
 https://www.c-sharpcorner.com/article/3-ways-to-return-the-data-from-controller-action-method-in-asp-net-core/
+
+https://www.ezzylearning.net/tutorial/how-to-use-jquery-datatables-with-asp-net-core-web-api
+
+https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper?view=aspnetcore-5.0
+
+https://stackoverflow.com/questions/31014869/what-does-mean-before-a-string
+
+https://docs.microsoft.com/en-us/dotnet/api/system.io.directoryinfo.createsubdirectory?view=net-5.0
+
+https://stackoverflow.com/questions/49398965/what-is-the-equivalent-of-server-mappath-in-asp-net-core
+
+https://docs.microsoft.com/en-us/dotnet/api/system.io.directory.createdirectory?view=net-5.0
+
+https://codepedia.info/get-image-file-from-wwwroot-folder-aspnet-core
+
+https://stackoverflow.com/questions/18488667/accessing-controller-variable-in-view-mvc
+
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/file-providers?view=aspnetcore-5.0#physicalfileprovider
+
+//YouTube links
+https://stackoverflow.com/questions/52040258/dynamic-saving-of-files-net-core
+
+https://www.youtube.com/watch?v=CyPA_l819Ks&ab_channel=HarithaComputers%26Technology
+
+https://www.youtube.com/watch?v=l69kUe1fNSc&ab_channel=RawCoding
 
 https://www.youtube.com/watch?v=yBsl84hDtUg&t=1s&ab_channel=AmitAndipara
 
@@ -24,27 +50,7 @@ https://www.youtube.com/watch?v=BpbG6Ww3iEI&t=1s&ab_channel=abctutorial
 
 https://www.youtube.com/watch?v=9EaZW-mow0o&ab_channel=LearningProgramming
 
-https://www.ezzylearning.net/tutorial/how-to-use-jquery-datatables-with-asp-net-core-web-api
+//Styling links
+https://freshdesignweb.com/free-css-tables/
 
-https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper?view=aspnetcore-5.0
-
-https://www.youtube.com/watch?v=CyPA_l819Ks&ab_channel=HarithaComputers%26Technology
-
-https://stackoverflow.com/questions/31014869/what-does-mean-before-a-string
-
-https://docs.microsoft.com/en-us/dotnet/api/system.io.directoryinfo.createsubdirectory?view=net-5.0
-
-https://stackoverflow.com/questions/49398965/what-is-the-equivalent-of-server-mappath-in-asp-net-core
-
-https://docs.microsoft.com/en-us/dotnet/api/system.io.directory.createdirectory?view=net-5.0
-
-https://stackoverflow.com/questions/52040258/dynamic-saving-of-files-net-core
-
-https://www.youtube.com/watch?v=l69kUe1fNSc&ab_channel=RawCoding
-
-https://codepedia.info/get-image-file-from-wwwroot-folder-aspnet-core
-
-https://stackoverflow.com/questions/18488667/accessing-controller-variable-in-view-mvc
-
-https://docs.microsoft.com/en-us/aspnet/core/fundamentals/file-providers?view=aspnetcore-5.0#physicalfileprovider
-
+https://codepen.io/heypablete/pen/qdIsm

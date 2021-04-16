@@ -9,6 +9,8 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Anime</title>
+
+    <link href="~/css/viewscss/getall.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
@@ -24,20 +26,17 @@
                     <th>Total of Episodes</th>
                     <th>Anime Release Date</th>
                     <th></th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var anime in ViewBag.Anime)
                 {
                 <tr class="Search">
-                    <td>@anime.animename</td>
+                    <td><b>@anime.animename</b></td>
                     <td>@anime.episodes</td>
                     <td>@anime.release_date</td>
-                    <td></td>
-                    
                     <td>
-                        <a href="moreinfo/@anime.anime_id">See More Info</a>
+                        <a href="moreinfo/@anime.anime_id" class="seemore"><b>>>More Details</b></a>
                     </td>
                 </tr>
                 }
