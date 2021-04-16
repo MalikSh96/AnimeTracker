@@ -1,5 +1,18 @@
 # Anime
 
+# First and most import
+The branch **`master`** will no longer be used (for now). Due to some previous issues with merging
+sub branches into **`master`** - This resulted in important coding and important parts being lost in
+the process, and therefore both the **`master`** branch and the sub branches ended up losing data, which resulted
+in lost work.
+
+Therefore to try and keep you **up-to-date** with the project, see below header.
+
+# Up-To-Date branches
+The most recent branch is:
+
+- **`new_master1`**
+
 # Why ASP.NET
 [LINK](https://www.wakefly.com/blog/what-is-asp-net-and-why-should-i-use-it/)
 
@@ -41,7 +54,7 @@ Use this [link](https://docs.microsoft.com/en-us/ef/core/).
 
 Entity Framework (EF) is an open source ORM framework for ADO.NET which is a part of .NET Framework.
 
-Entity Framework is an ORM and ORMs are aimed to increase the developer’s productivity by 
+Entity Framework is an ORM and ORMs are aimed to increase the developerâ€™s productivity by 
 reducing the redundant task of persisting the data used in the applications. [Read More](https://www.tutorialspoint.com/entity_framework/entity_framework_overview.htm)
 
 # Using J-Query as search functionality
