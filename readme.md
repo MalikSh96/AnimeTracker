@@ -153,3 +153,9 @@ Main coding happened in `AnimeController.cs` --> `public async Task<IActionResul
 I made that once you enter a new entry, based on the `entry.name` a corresponding subfolder gets created.
 We use that subfolder to store the images of the given entries, therefore we manage to keep our management cleaner
 and more organized when creating entries.
+
+# Phase 9
+Completed the work on displaying images and such. Yet again the main coding happened in `AnimeController.cs`
+
+In this phase I made a functionality that dynamically accesses the content of a given folder and displays that content 
+on the webpage. In this case the `animeimages` **folder**.
