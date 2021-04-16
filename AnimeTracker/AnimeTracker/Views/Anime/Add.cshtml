@@ -1,15 +1,19 @@
 ﻿@model AnimeTracker.Models.Anime
 
+
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Add</title>
+
+    <link href="~/css/viewscss/add.css" rel="stylesheet" />
 </head>
+<h1>Add Anime data</h1>
 <body>
     <form method="post" asp-controller="anime" asp-action="AddAnime" enctype="multipart/form-data">
-        <table>
+        <table class="container">
             <tr>
                 <td>Anime name</td>
                 <td>

@@ -115,6 +115,10 @@ Under `Models` folder.
 
 This acts as our database entry setup for the particular table 
 
+# DataTables
+In each neccessary view that needed a datatable, I have assigned an `id="datatable"` and this `id` is used by the 
+`DataTable` script written inside `site.js`
+
 # Views 
 Here we design our frontend view on our client.
 
