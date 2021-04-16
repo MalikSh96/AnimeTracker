@@ -30,8 +30,6 @@ https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/built-in/anch
 
 https://www.youtube.com/watch?v=CyPA_l819Ks&ab_channel=HarithaComputers%26Technology
 
-https://khalidabuhakmeh.com/upload-a-file-using-aspdotnet-core
-
 https://stackoverflow.com/questions/31014869/what-does-mean-before-a-string
 
 https://docs.microsoft.com/en-us/dotnet/api/system.io.directoryinfo.createsubdirectory?view=net-5.0
@@ -42,9 +40,11 @@ https://docs.microsoft.com/en-us/dotnet/api/system.io.directory.createdirectory?
 
 https://stackoverflow.com/questions/52040258/dynamic-saving-of-files-net-core
 
+https://www.youtube.com/watch?v=l69kUe1fNSc&ab_channel=RawCoding
 
+https://codepedia.info/get-image-file-from-wwwroot-folder-aspnet-core
 
+https://stackoverflow.com/questions/18488667/accessing-controller-variable-in-view-mvc
 
-
-
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/file-providers?view=aspnetcore-5.0#physicalfileprovider
 

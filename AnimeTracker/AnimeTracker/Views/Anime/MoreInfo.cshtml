@@ -42,10 +42,22 @@
              The part that gets removed is wwwrooot, because is wwwroot is included in the path
              for the src, the url link will mess up, and no images will be shown as the web can't
              find the correct link for it
-             */ 
-            var img = data.img_path.Substring(7);
-            <img src="@img" width="400" height="400" />
-         }
+             */
+            @*var img = data.img_path.Substring(7);
+                <img src="@img" width="400" height="400" />*@
+
+            /*
+            The below code loops through our ImageList variable
+            which has the images within their given folders
+            data.animename is used to point to the desired imagefolder 
+            and image is used to select the images in their corresponding folders
+             */
+            foreach (var image in ViewBag.ImageList)
+            {
+                var imageUrl = $"/animeimages/{data.animename}/" + image;
+                <img src="@imageUrl" width="400" height="400" />
+            }
+        }
     </div>
 </body>
 </html>

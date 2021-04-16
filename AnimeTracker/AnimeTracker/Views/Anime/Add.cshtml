@@ -8,7 +8,7 @@
     <title>Add</title>
 </head>
 <body>
-    <form method="post" asp-controller="anime" asp-action="add" enctype="multipart/form-data">
+    <form method="post" asp-controller="anime" asp-action="AddAnime" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>Anime name</td>
@@ -19,7 +19,7 @@
             <tr>
                 <td>Description</td>
                 <td>
-                    <textarea asp-for="description" required="required" style="width:350px; height:150px" > </textarea> 
+                    <textarea asp-for="description" required="required" style="width:350px; height:150px"> </textarea>
                 </td>
             </tr>
             <tr>
@@ -61,7 +61,8 @@
             <tr>
                 <td>Upload image</td>
                 <td>
-                    <input type="file" name="file" />
+                    <input type="file" multiple name="files" />
+                    @*<input type="file" name="file" />*@
                 </td>
             </tr>
             <tr>
