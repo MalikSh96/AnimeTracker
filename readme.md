@@ -179,3 +179,9 @@ on the webpage. In this case the `animeimages` **folder**.
 
 # Phase 10
 Worked on some general styling for the different `Views`
+
+# Phase 11
+Worked on the `edit` functionality in `AnimeController.cs` - Now when you edit the content of a 
+given show you are editing, the `img_path` no longer becomes `null` after editing.
+
+Instead we now *save* the path again into the database.
