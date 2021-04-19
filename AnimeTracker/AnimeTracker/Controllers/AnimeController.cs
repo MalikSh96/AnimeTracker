@@ -211,6 +211,12 @@ namespace AnimeTracker.Controllers
         [Route("edit/{anime_id}")]
         public IActionResult Edit(int anime_id, Anime anime)
         {
+            string path = anime.animename; //we get the path that's stored in the database
+            //we combine our database path (path) and combine it with our set string
+            var save = Path.Combine($"wwwroot/animeimages/{path}/"); 
+            //we store our new path to be our "save" 
+            anime.img_path = save;
+            //we start our modification here
             db.Entry(anime).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
