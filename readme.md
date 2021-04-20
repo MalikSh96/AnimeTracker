@@ -201,6 +201,7 @@ For **`Delete`**
 gets deleted from the project.
 
 **EXTRA**
+
 [DirectoryInfo.Delete](https://docs.microsoft.com/en-us/dotnet/api/system.io.directoryinfo.delete?view=net-5.0) 
 method.
 
