@@ -195,8 +195,42 @@ namespace AnimeTracker.Controllers
         [Route("delete/{anime_id}")]
         public IActionResult DeleteAnime(int anime_id)
         {
+            //we need to reference the related anime name to the id
+            var anime = db.Animes.Find(anime_id);
+            //we store the connected anime name to the id in our string
+            string a = anime.animename;
+            //this is just an extra step, but we store our "a" string in our folderpath string
+            string folderpath = a;
+            //we combine it all into our path dynamically
+            string path = Path.Combine($"wwwroot/animeimages/{folderpath}/");
+            //we create a new instance of our path and store it into info
+            DirectoryInfo info = new DirectoryInfo(path);
+
+
+            //we loop through for each file we have in our given folder
+            /*
+             we use EnumerateFiles() since it is more efficient than GetFiles(), 
+             in case our directory have many files
+             because when you use EnumerateFiles() you can start enumerating 
+             it before the whole collection is returned, as opposed to GetFiles() where you 
+             need to load the entire collection in memory before begin to enumerate it
+            */
+            foreach (FileInfo file in info.EnumerateFiles())
+            {
+                file.Delete();
+            }
+            //The same applies to EnumerateDirectories() and GetDirectories()
+            //foreach (DirectoryInfo dir in info.EnumerateDirectories())
+            //{
+            //    dir.Delete(false);
+            //}
+
+
+
             db.Animes.Remove(db.Animes.Find(anime_id));
             db.SaveChanges();
+            //we delete the subfolder related to the removed anime
+            Directory.Delete(path, true);
             return RedirectToAction("Index");
         }
 
@@ -209,15 +243,22 @@ namespace AnimeTracker.Controllers
 
         [HttpPost]
         [Route("edit/{anime_id}")]
-        public IActionResult Edit(int anime_id, Anime anime)
+        public IActionResult Edit(int anime_id, Anime anime, IEnumerable<IFormFile> files)
         {
             string path = anime.animename; //we get the path that's stored in the database
-            //we combine our database path (path) and combine it with our set string
-            var save = Path.Combine($"wwwroot/animeimages/{path}/"); 
-            //we store our new path to be our "save" 
-            anime.img_path = save;
-            //we start our modification here
-            db.Entry(anime).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            foreach (var file in files)
+            {
+                //we combine our database path (path) and combine it with our set string
+                var save = Path.Combine($"wwwroot/animeimages/{path}/", file.FileName);
+
+                var stream = new FileStream(save, FileMode.Create);
+                file.CopyTo(stream);
+
+                //we store our new path to be our "save" 
+                anime.img_path = save;
+                //we start our modification here
+                db.Entry(anime).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -226,14 +267,15 @@ namespace AnimeTracker.Controllers
         [Route("moreinfo/{id}")]
         public IActionResult MoreInfo(int id)
         {
+            //we find the id of the anime in the database and store the returned data into our anime variable
+            var anime = db.Animes.Find(id);
+
             //https://www.c-sharpcorner.com/UploadFile/3d39b4/displaying-data-on-view-from-controller/
             //https://www.c-sharpcorner.com/article/3-ways-to-return-the-data-from-controller-action-method-in-asp-net-core/
             if (id == 0)
             {
                 return NotFound();
             }
-            //we find the id of the anime and store it into our anime variable
-            var anime = db.Animes.Find(id);
 
             //we access the name of the anime and store it into our "a" variable
             string a = anime.animename;

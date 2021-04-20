@@ -185,3 +185,17 @@ Worked on the `edit` functionality in `AnimeController.cs` - Now when you edit t
 given show you are editing, the `img_path` no longer becomes `null` after editing.
 
 Instead we now *save* the path again into the database.
+
+# Phase 12
+Worked on more functionalities, implemented on the two functions `Edit`, `Delete`.
+
+For **`Edit`**
+- You are now able to insert more images for the desired show entry, without breaking the folder path
+on top of just the editing in general.
+
+- It updates the `img_path` field in the database with the recent image posted, but the images still gets
+stored in their respective folders
+
+For **`Delete`**
+- When you delete/remove a show from the database, its connected folder, which contains the images, now also
+gets deleted from the project.
