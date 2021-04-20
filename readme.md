@@ -199,3 +199,15 @@ stored in their respective folders
 For **`Delete`**
 - When you delete/remove a show from the database, its connected folder, which contains the images, now also
 gets deleted from the project.
+
+**EXTRA**
+[DirectoryInfo.Delete](https://docs.microsoft.com/en-us/dotnet/api/system.io.directoryinfo.delete?view=net-5.0) 
+method.
+
+[Directory.Delete](https://docs.microsoft.com/en-us/dotnet/api/system.io.directory.delete?view=net-5.0) method.
+
+How to deal with the [issue](https://stackoverflow.com/questions/12415105/directory-is-not-empty-error-when-trying-to-programmatically-delete-a-folder) 
+of a directory not being empty when trying to *delete*. Check also this [link](https://stackoverflow.com/questions/1288718/how-to-delete-all-files-and-folders-in-a-directory).
+
+
+
