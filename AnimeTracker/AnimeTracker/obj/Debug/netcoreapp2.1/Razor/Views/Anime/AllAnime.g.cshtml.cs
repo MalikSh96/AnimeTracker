@@ -57,12 +57,12 @@ using AnimeTracker.Models;
             WriteLiteral("\n<br />\n<br />\n\n<!DOCTYPE html>\n\n<html>\n");
             EndContext();
             BeginContext(73, 161, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0f1c1e9714e046a6958bcd92cfa9ca36", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "72bd53ca0f65497681ae455d579782f6", async() => {
                 BeginContext(79, 89, true);
                 WriteLiteral("\n    <meta name=\"viewport\" content=\"width=device-width\" />\n    <title>Anime</title>\n\n    ");
                 EndContext();
                 BeginContext(168, 58, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "b9acc86319704ae7953feef7215eab9a", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "85b3349f061a4747b114e61e7149fc58", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -96,7 +96,7 @@ using AnimeTracker.Models;
             WriteLiteral("\n");
             EndContext();
             BeginContext(235, 2254, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3586e4c00e99479aabb61f57a2ed9455", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5b3d2100a61c4887a768c000156c187d", async() => {
                 BeginContext(241, 72, true);
                 WriteLiteral("\n    <div class=\"container\">\n        <h3><b>List of all Animes</b></h3>\n");
                 EndContext();

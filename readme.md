@@ -210,5 +210,21 @@ method.
 How to deal with the [issue](https://stackoverflow.com/questions/1288718/how-to-delete-all-files-and-folders-in-a-directory) 
 of a directory not being empty when trying to *delete*. Check also this [link](https://stackoverflow.com/questions/12415105/directory-is-not-empty-error-when-trying-to-programmatically-delete-a-folder).
 
+# Phase 13
+Worked further on the `AddAnime` function. Previously you were able to persist shows which already 
+had the same name existing in the database.
 
+Therefore, now you get a message telling you, that the given show you are trying to *add* already exist. And
+therefore it does not add a duplicate of the show, based on the name (no matter if it's capital/lower case), into
+the database.
+
+`datacontext.MyEntity.Any(a => o.WhatEverYouWantToCompareWith == theInputDataGiven)` --> 
+`db.Animes.Any(a => a.animename == anime.animename)`
+
+We use `Any()` because this returns as soon as it finds a match. I am not using SQL because in this entire project, so far,
+I haven't used a single SQL yet. This *may* change later on.
+
+[Queryable.Any](https://docs.microsoft.com/en-us/dotnet/api/system.linq.queryable.any?redirectedfrom=MSDN&view=net-5.0#overloads) method.
+
+See also [this](https://stackoverflow.com/questions/1802286/best-way-to-check-if-object-exists-in-entity-framework).
 

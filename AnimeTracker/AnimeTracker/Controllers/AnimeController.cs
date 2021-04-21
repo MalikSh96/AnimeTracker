@@ -69,6 +69,11 @@ namespace AnimeTracker.Controllers
         [Route("Add")]
         public IActionResult AddAnime(IEnumerable<IFormFile> files, Anime anime)
         {
+            //We check if the entered name of the show already exists
+            if (db.Animes.Any(a => a.animename == anime.animename))
+            {
+                throw new ArgumentException("The entered name of the show already exist");
+            }
             //we get the absolute path and store it in env
             string env = Environment.WebRootPath;
             //we make use of the above variable to combine our absolute path with its subfolder
