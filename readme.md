@@ -243,6 +243,4 @@ See also [this](https://stackoverflow.com/questions/1802286/best-way-to-check-if
 # Phase 15
 The *show* related part are 99% complete, as of **25-04-2021** -- v1.0
 
-Trying to merge this content into `master` branch.
-=======
->>>>>>> fcbd37df0aaabd4bc595732d0d5674306f5ed000
+# Merging `fallbackV1` with `master` complete -- v1.0
