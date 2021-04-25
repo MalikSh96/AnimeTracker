@@ -1,6 +1,6 @@
 # Anime
 
-# First and most import
+# Firstly and most importantly
 The branch **`master`** will no longer be used (for now). Due to some previous issues with merging
 sub branches into **`master`** - This resulted in important coding and important parts being lost in
 the process, and therefore both the **`master`** branch and the sub branches ended up losing data, which resulted
