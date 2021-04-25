@@ -2,9 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\AnimeTracker",
-    "\\AnimeTracker\\AnimeTracker",
-    "\\AnimeTracker\\AnimeTracker\\wwwroot",
-    "\\AnimeTracker\\AnimeTracker\\wwwroot\\animeimages"
+    "\\AnimeTracker\\AnimeTracker"
   ],
   "SelectedNode": "\\AnimeTracker\\AnimeTracker.sln",
   "PreviewInSolutionExplorer": false

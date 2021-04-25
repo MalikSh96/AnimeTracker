@@ -1,5 +1,18 @@
 # Anime
 
+# First and most import
+The branch **`master`** will no longer be used (for now). Due to some previous issues with merging
+sub branches into **`master`** - This resulted in important coding and important parts being lost in
+the process, and therefore both the **`master`** branch and the sub branches ended up losing data, which resulted
+in lost work.
+
+Therefore to try and keep you **up-to-date** with the project, see below header.
+
+# Up-To-Date branches
+The most recent branch is:
+
+- **`new_master1`**
+
 # Why ASP.NET
 [LINK](https://www.wakefly.com/blog/what-is-asp-net-and-why-should-i-use-it/)
 
@@ -163,3 +176,70 @@ Completed the work on displaying images and such. Yet again the main coding happ
 
 In this phase I made a functionality that dynamically accesses the content of a given folder and displays that content 
 on the webpage. In this case the `animeimages` **folder**.
+
+# Phase 10
+Worked on some general styling for the different `Views`
+
+# Phase 11
+Worked on the `edit` functionality in `AnimeController.cs` - Now when you edit the content of a 
+given show you are editing, the `img_path` no longer becomes `null` after editing.
+
+Instead we now *save* the path again into the database.
+
+# Phase 12
+Worked on more functionalities, implemented on the two functions `Edit`, `Delete`.
+
+For **`Edit`**
+- You are now able to insert more images for the desired show entry, without breaking the folder path
+on top of just the editing in general.
+
+- It updates the `img_path` field in the database with the recent image posted, but the images still gets
+stored in their respective folders
+
+For **`Delete`**
+- When you delete/remove a show from the database, its connected folder, which contains the images, now also
+gets deleted from the project.
+
+**EXTRA**
+
+[DirectoryInfo.Delete](https://docs.microsoft.com/en-us/dotnet/api/system.io.directoryinfo.delete?view=net-5.0) 
+method.
+
+[Directory.Delete](https://docs.microsoft.com/en-us/dotnet/api/system.io.directory.delete?view=net-5.0) method.
+
+How to deal with the [issue](https://stackoverflow.com/questions/1288718/how-to-delete-all-files-and-folders-in-a-directory) 
+of a directory not being empty when trying to *delete*. Check also this [link](https://stackoverflow.com/questions/12415105/directory-is-not-empty-error-when-trying-to-programmatically-delete-a-folder).
+
+# Phase 13
+Worked further on the `AddAnime` function. Previously you were able to persist shows which already 
+had the same name existing in the database.
+
+Therefore, now you get a message telling you, that the given show you are trying to *add* already exist. And
+therefore it does not add a duplicate of the show, based on the name (no matter if it's capital/lower case), into
+the database.
+
+`datacontext.MyEntity.Any(a => o.WhatEverYouWantToCompareWith == theInputDataGiven)` --> 
+`db.Animes.Any(a => a.animename == anime.animename)`
+
+We use `Any()` because this returns as soon as it finds a match. I am not using SQL because in this entire project, so far,
+I haven't used a single SQL yet. This *may* change later on.
+
+[Queryable.Any](https://docs.microsoft.com/en-us/dotnet/api/system.linq.queryable.any?redirectedfrom=MSDN&view=net-5.0#overloads) method.
+
+See also [this](https://stackoverflow.com/questions/1802286/best-way-to-check-if-object-exists-in-entity-framework).
+
+# Phase 14
+- Updated the `database script` 
+
+- Updated both `Models.Anime.cs` and multiple `Views.Anime` to make use of the new values/elements/fields added.
+
+- Single images gets displayed for each show on the **showlist** that is displayed on the page, both admin and user related.
+
+- `AnimeController.cs` have been modified on the `AddAnime` and `Edit` functions.
+
+- A bit of styling have been added to a few *views*.
+
+# Phase 15
+The *show* related part are 99% complete, as of **25-04-2021** -- v1.0
+
+Trying to merge this content into `master` branch.

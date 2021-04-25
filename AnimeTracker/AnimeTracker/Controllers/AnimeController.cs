@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace AnimeTracker.Controllers
 {
@@ -69,6 +70,11 @@ namespace AnimeTracker.Controllers
         [Route("Add")]
         public IActionResult AddAnime(IEnumerable<IFormFile> files, Anime anime)
         {
+            //We check if the entered name of the show already exists
+            if (db.Animes.Any(a => a.animename == anime.animename))
+            {
+                throw new ArgumentException("The entered name of the show already exist");
+            }
             //we get the absolute path and store it in env
             string env = Environment.WebRootPath;
             //we make use of the above variable to combine our absolute path with its subfolder
@@ -82,20 +88,30 @@ namespace AnimeTracker.Controllers
             //we use relpath to refer to our newly created folder based on the input
             string relpath = anime.animename;
 
-            foreach (var file in files)
+            bool isEmpty = files.Any();
+            //we check if we add any files (images), if we don't add files we skip the "if"
+            if (isEmpty)
             {
-                //by using $ before our string, we create an inpolated string
-                //An interpolated string expression looks like a template string that contains expressions
-                var save = Path.Combine($"wwwroot/animeimages/{relpath}/", file.FileName);
-                var stream = new FileStream(save, FileMode.Create);
-                file.CopyTo(stream);
-                //we save the path of the folder so that we can store it into the database
-                anime.img_path = save;
-                //we add our anime data
-                db.Animes.Add(anime);
+                foreach (var file in files)
+                {
+                    //by using $ before our string, we create an inpolated string
+                    //An interpolated string expression looks like a template string that contains expressions
+                    var save = Path.Combine($"wwwroot/animeimages/{relpath}/", file.FileName);
+                    var stream = new FileStream(save, FileMode.Create);
+                    file.CopyTo(stream);
+                    //we save the path of the folder so that we can store it into the database
+                    anime.img_path = save;
+                    //we add our anime data
+                    db.Animes.Add(anime);
+                }
+                //we save our changes
+                db.SaveChanges();
             }
-            //we save our changes
-            db.SaveChanges();
+            else
+            {
+                db.Animes.Add(anime);
+                db.SaveChanges();
+            }
 
             //we redirect back to frontpage
             return RedirectToAction("Index");
@@ -195,8 +211,42 @@ namespace AnimeTracker.Controllers
         [Route("delete/{anime_id}")]
         public IActionResult DeleteAnime(int anime_id)
         {
+            //we need to reference the related anime name to the id
+            var anime = db.Animes.Find(anime_id);
+            //we store the connected anime name to the id in our string
+            string a = anime.animename;
+            //this is just an extra step, but we store our "a" string in our folderpath string
+            string folderpath = a;
+            //we combine it all into our path dynamically
+            string path = Path.Combine($"wwwroot/animeimages/{folderpath}/");
+            //we create a new instance of our path and store it into info
+            DirectoryInfo info = new DirectoryInfo(path);
+
+
+            //we loop through for each file we have in our given folder
+            /*
+             we use EnumerateFiles() since it is more efficient than GetFiles(), 
+             in case our directory have many files
+             because when you use EnumerateFiles() you can start enumerating 
+             it before the whole collection is returned, as opposed to GetFiles() where you 
+             need to load the entire collection in memory before begin to enumerate it
+            */
+            foreach (FileInfo file in info.EnumerateFiles())
+            {
+                file.Delete();
+            }
+            //The same applies to EnumerateDirectories() and GetDirectories()
+            //foreach (DirectoryInfo dir in info.EnumerateDirectories())
+            //{
+            //    dir.Delete(false);
+            //}
+
+
+
             db.Animes.Remove(db.Animes.Find(anime_id));
             db.SaveChanges();
+            //we delete the subfolder related to the removed anime
+            Directory.Delete(path, true);
             return RedirectToAction("Index");
         }
 
@@ -209,10 +259,52 @@ namespace AnimeTracker.Controllers
 
         [HttpPost]
         [Route("edit/{anime_id}")]
-        public IActionResult Edit(int anime_id, Anime anime)
+        public IActionResult Edit(int anime_id, Anime anime, IEnumerable<IFormFile> files)
         {
-            db.Entry(anime).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            db.SaveChanges();
+            string a = anime.animename; //we get the path that's stored in the database
+            string path = a;
+            string combPath = Path.Combine($"wwwroot/animeimages/{path}/");
+
+            //int a_id = anime.anime_id;
+            //string getDbPath = "";
+            //if (string.IsNullOrEmpty(anime.img_path))
+            //{
+            //    getDbPath = db.Animes.Find(a_id).img_path;
+            //}
+            //string oldPath = getDbPath;
+
+            bool isEmpty = files.Any();
+            if (isEmpty)
+            {
+                foreach (var file in files)
+                {
+                    //we combine our database path (path) and combine it with our set string
+                    var save = Path.Combine(combPath, file.FileName);
+
+                    var stream = new FileStream(save, FileMode.Create);
+                    file.CopyTo(stream);
+
+                    //we store our new path to be our "save" 
+                    anime.img_path = save;
+                    //we start our modification here
+                    db.Entry(anime).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                }
+                db.SaveChanges();
+            }
+            else
+            {
+                /*
+                If we don't add a file (image), we directly set our img_path to the combined path 
+                Even without a file (image), we still set our img_path
+
+                We do this to avoid overwriting an existing img_path that's stored in the database
+                */
+                anime.img_path = combPath;
+                //db.Entry(anime).CurrentValues.SetValues(anime);
+                db.Entry(anime).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                db.SaveChanges();
+            }
+
             return RedirectToAction("Index");
         }
 
@@ -220,14 +312,15 @@ namespace AnimeTracker.Controllers
         [Route("moreinfo/{id}")]
         public IActionResult MoreInfo(int id)
         {
+            //we find the id of the anime in the database and store the returned data into our anime variable
+            var anime = db.Animes.Find(id);
+
             //https://www.c-sharpcorner.com/UploadFile/3d39b4/displaying-data-on-view-from-controller/
             //https://www.c-sharpcorner.com/article/3-ways-to-return-the-data-from-controller-action-method-in-asp-net-core/
             if (id == 0)
             {
                 return NotFound();
             }
-            //we find the id of the anime and store it into our anime variable
-            var anime = db.Animes.Find(id);
 
             //we access the name of the anime and store it into our "a" variable
             string a = anime.animename;

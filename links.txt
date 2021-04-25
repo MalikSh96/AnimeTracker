@@ -54,3 +54,7 @@ https://www.youtube.com/watch?v=9EaZW-mow0o&ab_channel=LearningProgramming
 https://freshdesignweb.com/free-css-tables/
 
 https://codepen.io/heypablete/pen/qdIsm
+
+https://www.w3schools.com/cssref/css_colors.asp
+
+https://coolors.co/

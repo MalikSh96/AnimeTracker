@@ -12,6 +12,7 @@
 </head>
 <h1>Add Anime data</h1>
 <body>
+    <a href="##" onClick="history.go(-1); return false;" class="bodylink"> Return to main page</a>
     <form method="post" asp-controller="anime" asp-action="AddAnime" enctype="multipart/form-data">
         <table class="container">
             <tr>
@@ -27,9 +28,22 @@
                 </td>
             </tr>
             <tr>
+                <td>Type of show</td>
+                <td>
+                    <input type="text" asp-for="show_type" required="required" />
+                </td>
+            </tr>
+            <tr>
                 <td>Total of episodes</td>
                 <td>
                     <input type="number" asp-for="episodes" required="required" />
+                </td>
+            </tr>
+            <tr>
+                <td>Airing</td>
+                <td>
+                    <input type="checkbox" asp-for="airing" /> Airing?
+                    <p style="font-style: italic;">If the show IS airing, check the box</p>
                 </td>
             </tr>
             <tr>
@@ -60,6 +74,18 @@
                 <td>Release date</td>
                 <td>
                     <input type="text" asp-for="release_date" required="required" />
+                </td>
+            </tr>
+            <tr>
+                <td>Broadcaster</td>
+                <td>
+                    <input type="text" asp-for="broadcaster" required="required" />
+                </td>
+            </tr>
+            <tr>
+                <td>Official Website</td>
+                <td>
+                    <input type="url" asp-for="off_link" />
                 </td>
             </tr>
             <tr>
