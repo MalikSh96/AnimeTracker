@@ -54,7 +54,7 @@ Use this [link](https://docs.microsoft.com/en-us/ef/core/).
 
 Entity Framework (EF) is an open source ORM framework for ADO.NET which is a part of .NET Framework.
 
-Entity Framework is an ORM and ORMs are aimed to increase the developer’s productivity by 
+Entity Framework is an ORM and ORMs are aimed to increase the developerâ€™s productivity by 
 reducing the redundant task of persisting the data used in the applications. [Read More](https://www.tutorialspoint.com/entity_framework/entity_framework_overview.htm)
 
 # Using J-Query as search functionality
@@ -176,6 +176,7 @@ Completed the work on displaying images and such. Yet again the main coding happ
 
 In this phase I made a functionality that dynamically accesses the content of a given folder and displays that content 
 on the webpage. In this case the `animeimages` **folder**.
+<<<<<<< HEAD
 
 # Phase 10
 Worked on some general styling for the different `Views`
@@ -243,3 +244,5 @@ See also [this](https://stackoverflow.com/questions/1802286/best-way-to-check-if
 The *show* related part are 99% complete, as of **25-04-2021** -- v1.0
 
 Trying to merge this content into `master` branch.
+=======
+>>>>>>> fcbd37df0aaabd4bc595732d0d5674306f5ed000
