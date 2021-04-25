@@ -1,24 +1,37 @@
 ﻿@model AnimeTracker.Models.Anime
-
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Anime</title>
 </head>
 <body>
+    <a href="##" onClick="history.go(-1); return false;" class="bodylink"> <b>Return to previous page</b></a>
     <div class="container">
         @{
             var data = ViewData.Model;
         }
         <h2><b>@data.animename</b></h2>
-
         <h4><b>Description</b></h4>
         <p>@data.description</p>
         <br />
+        <h4><b>Show type</b></h4>
+        <p>@data.show_type</p>
+        <br />
         <h4><b>Total of Episodes</b></h4>
         <p>@data.episodes</p>
+        <br />
+        <h4><b>Airing</b></h4>
+        @{
+            if (!data.airing)
+            {
+                <p>Not airing</p>
+            }
+            else
+            {
+                <p>Airing</p>
+            }
+        }
         <br />
         <h4><b>Genre</b></h4>
         <p>@data.genre</p>
@@ -35,6 +48,14 @@
         <h4><b>Anime Release Date</b></h4>
         <p>@data.release_date</p>
         <br />
+        <h4><b>Broadcaster</b></h4>
+        <p>@data.broadcaster</p>
+        <br />
+        <h4><b>Official Website</b></h4>
+        <a href="@data.off_link">@data.off_link</a>
+        <br />
+        <br />
+
         @{
             /*
              What I am doing here is basically cutting down some of first elements
@@ -49,7 +70,7 @@
             /*
             The below code loops through our ImageList variable
             which has the images within their given folders
-            data.animename is used to point to the desired imagefolder 
+            data.animename is used to point to the desired imagefolder
             and image is used to select the images in their corresponding folders
              */
             foreach (var image in ViewBag.ImageList)
@@ -61,5 +82,4 @@
     </div>
 </body>
 </html>
-
 

@@ -1,19 +1,14 @@
 ﻿@model AnimeTracker.Models.Anime
-
 @*@model  PagedList.Core.IPagedList<AnimeTracker.Models.Anime>*@
 <br />
 <br />
-
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Anime</title>
-
     <link href="~/css/viewscss/animeindex.css" rel="stylesheet" />
 </head>
-
 <body>
     <div class="container">
         <h3><b>List of all Animes</b></h3>
@@ -25,9 +20,11 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Anime ID</th>
                     <th>Anime Name</th>
                     <th>Total of Episodes</th>
+                    <th>Airing</th>
                     <th>Anime Release Date</th>
                 </tr>
             </thead>
@@ -35,9 +32,26 @@
                 @foreach (var anime in ViewBag.Anime)
                 {
                     <tr class="Search">
+                        <td>
+                            @{
+                                if (!String.IsNullOrEmpty(anime.img_path))
+                                {
+                                    var imageUrl = $"{anime.img_path.Substring(7)}";
+                                    <img src="@imageUrl" width="120" height="75" />
+                                }
+                            }
+                        </td>
                         <td>@anime.anime_id</td>
                         <td><b>@anime.animename</b></td>
                         <td>@anime.episodes</td>
+                        @if (!anime.airing)
+                        {
+                            <td>Not airing</td>
+                        }
+                        else
+                        {
+                            <td>Airing</td>
+                        }
                         <td>@anime.release_date</td>
                         <td>
                             <a asp-controller="anime"
@@ -56,16 +70,13 @@
                     </tr>
                 }
             </tbody>
-
             @*<tr>
-                <td colspan="5" align="center">
-                    <pager list="@Model" asp-controller="anime" />
+                    <td colspan="5" align="center">
+                        <pager list="@Model" asp-controller="anime" />
 
-                </td>
-            </tr>*@
-
+                    </td>
+                </tr>*@
         </table>
-
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery"

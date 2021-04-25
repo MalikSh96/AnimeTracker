@@ -18,18 +18,27 @@
                     <th>Anime ID</th>
                     <th>Anime Name</th>
                     <th>Total of Episodes</th>
+                    <th>Airing</th>
                     <th>Anime Release Date</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var anime in ViewBag.Anime)
                 {
-                    <tr class="Search">
-                        <td>@anime.anime_id</td>
-                        <td>@anime.animename</td>
-                        <td>@anime.episodes</td>
-                        <td>@anime.release_date</td>
-                    </tr>
+                <tr class="Search">
+                    <td>@anime.anime_id</td>
+                    <td>@anime.animename</td>
+                    <td>@anime.episodes</td>
+                    @if (!anime.airing)
+                    {
+                        <td>Not airing</td>
+                    }
+                    else
+                    {
+                        <td>Airing</td>
+                    }
+                    <td>@anime.release_date</td>
+                </tr>
                 }
             </tbody>
         </table>

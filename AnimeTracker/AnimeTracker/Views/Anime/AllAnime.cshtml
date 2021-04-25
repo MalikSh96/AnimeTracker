@@ -22,8 +22,10 @@
         <table class="table table-striped" id="datatable">
             <thead>
                 <tr>
+                    <th></th>
                     <th>Anime Name</th>
                     <th>Total of Episodes</th>
+                    <th>Airing</th>
                     <th>Anime Release Date</th>
                     <th></th>
                 </tr>
@@ -32,8 +34,25 @@
                 @foreach (var anime in ViewBag.Anime)
                 {
                 <tr class="Search">
+                    <td>
+                        @{
+                            if (!String.IsNullOrEmpty(anime.img_path))
+                            {
+                                var imageUrl = $"{anime.img_path.Substring(7)}";
+                                <img src="@imageUrl" width="120" height="75" />
+                            }
+                        }
+                    </td>
                     <td><b>@anime.animename</b></td>
                     <td>@anime.episodes</td>
+                    @if (!anime.airing)
+                    {
+                        <td>Not airing</td>
+                    }
+                    else
+                    {
+                        <td>Airing</td>
+                    }
                     <td>@anime.release_date</td>
                     <td>
                         <a href="moreinfo/@anime.anime_id" class="seemore"><b>>>More Details</b></a>

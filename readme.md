@@ -228,3 +228,13 @@ I haven't used a single SQL yet. This *may* change later on.
 
 See also [this](https://stackoverflow.com/questions/1802286/best-way-to-check-if-object-exists-in-entity-framework).
 
+# Phase 14
+- Updated the `database script` 
+
+- Updated both `Models.Anime.cs` and multiple `Views.Anime` to make use of the new values/elements/fields added.
+
+- Single images gets displayed for each show on the **showlist** that is displayed on the page, both admin and user related.
+
+- `AnimeController.cs` have been modified on the `AddAnime` and `Edit` functions.
+
+- A bit of styling have been added to a few *views*.

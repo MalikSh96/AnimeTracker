@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace AnimeTracker.Controllers
 {
@@ -87,20 +88,30 @@ namespace AnimeTracker.Controllers
             //we use relpath to refer to our newly created folder based on the input
             string relpath = anime.animename;
 
-            foreach (var file in files)
+            bool isEmpty = files.Any();
+            //we check if we add any files (images), if we don't add files we skip the "if"
+            if (isEmpty)
             {
-                //by using $ before our string, we create an inpolated string
-                //An interpolated string expression looks like a template string that contains expressions
-                var save = Path.Combine($"wwwroot/animeimages/{relpath}/", file.FileName);
-                var stream = new FileStream(save, FileMode.Create);
-                file.CopyTo(stream);
-                //we save the path of the folder so that we can store it into the database
-                anime.img_path = save;
-                //we add our anime data
-                db.Animes.Add(anime);
+                foreach (var file in files)
+                {
+                    //by using $ before our string, we create an inpolated string
+                    //An interpolated string expression looks like a template string that contains expressions
+                    var save = Path.Combine($"wwwroot/animeimages/{relpath}/", file.FileName);
+                    var stream = new FileStream(save, FileMode.Create);
+                    file.CopyTo(stream);
+                    //we save the path of the folder so that we can store it into the database
+                    anime.img_path = save;
+                    //we add our anime data
+                    db.Animes.Add(anime);
+                }
+                //we save our changes
+                db.SaveChanges();
             }
-            //we save our changes
-            db.SaveChanges();
+            else
+            {
+                db.Animes.Add(anime);
+                db.SaveChanges();
+            }
 
             //we redirect back to frontpage
             return RedirectToAction("Index");
@@ -250,21 +261,50 @@ namespace AnimeTracker.Controllers
         [Route("edit/{anime_id}")]
         public IActionResult Edit(int anime_id, Anime anime, IEnumerable<IFormFile> files)
         {
-            string path = anime.animename; //we get the path that's stored in the database
-            foreach (var file in files)
+            string a = anime.animename; //we get the path that's stored in the database
+            string path = a;
+            string combPath = Path.Combine($"wwwroot/animeimages/{path}/");
+
+            //int a_id = anime.anime_id;
+            //string getDbPath = "";
+            //if (string.IsNullOrEmpty(anime.img_path))
+            //{
+            //    getDbPath = db.Animes.Find(a_id).img_path;
+            //}
+            //string oldPath = getDbPath;
+
+            bool isEmpty = files.Any();
+            if (isEmpty)
             {
-                //we combine our database path (path) and combine it with our set string
-                var save = Path.Combine($"wwwroot/animeimages/{path}/", file.FileName);
+                foreach (var file in files)
+                {
+                    //we combine our database path (path) and combine it with our set string
+                    var save = Path.Combine(combPath, file.FileName);
 
-                var stream = new FileStream(save, FileMode.Create);
-                file.CopyTo(stream);
+                    var stream = new FileStream(save, FileMode.Create);
+                    file.CopyTo(stream);
 
-                //we store our new path to be our "save" 
-                anime.img_path = save;
-                //we start our modification here
-                db.Entry(anime).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    //we store our new path to be our "save" 
+                    anime.img_path = save;
+                    //we start our modification here
+                    db.Entry(anime).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                }
+                db.SaveChanges();
             }
-            db.SaveChanges();
+            else
+            {
+                /*
+                If we don't add a file (image), we directly set our img_path to the combined path 
+                Even without a file (image), we still set our img_path
+
+                We do this to avoid overwriting an existing img_path that's stored in the database
+                */
+                anime.img_path = combPath;
+                //db.Entry(anime).CurrentValues.SetValues(anime);
+                db.Entry(anime).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                db.SaveChanges();
+            }
+
             return RedirectToAction("Index");
         }
 
