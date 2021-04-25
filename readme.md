@@ -8,6 +8,8 @@ in lost work. **[ISSUE RESOLVED]**
 
 Therefore to try and keep you **up-to-date** with the project, see below header.
 
+**[ISSUE RESOLVED]**
+
 # Up-To-Date branches
 The most recent branch is:
 
@@ -19,7 +21,7 @@ The most recent branch is:
 # 25-04-2021
 - **v1.0 `new_master1`**
 
-- **v1.0 `master``**
+- **v1.0 `master`**
 
 # Why ASP.NET
 [LINK](https://www.wakefly.com/blog/what-is-asp-net-and-why-should-i-use-it/)
