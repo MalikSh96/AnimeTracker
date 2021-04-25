@@ -4,7 +4,7 @@
 The branch **`master`** will no longer be used (for now). Due to some previous issues with merging
 sub branches into **`master`** - This resulted in important coding and important parts being lost in
 the process, and therefore both the **`master`** branch and the sub branches ended up losing data, which resulted
-in lost work.
+in lost work. **[ISSUE RESOLVED]**
 
 Therefore to try and keep you **up-to-date** with the project, see below header.
 
@@ -12,6 +12,14 @@ Therefore to try and keep you **up-to-date** with the project, see below header.
 The most recent branch is:
 
 - **`new_master1`**
+- **`fallbackV1`**
+- **`master`**
+
+# Versions
+# 25-04-2021
+- **v1.0 `new_master1`**
+
+- **v1.0 `master``**
 
 # Why ASP.NET
 [LINK](https://www.wakefly.com/blog/what-is-asp-net-and-why-should-i-use-it/)
