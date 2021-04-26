@@ -56,7 +56,20 @@ namespace AnimeTracker
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Anime}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}"
+                );
+
+                routes.MapRoute(
+                    name: "anime",
+                    template: "{controllers=Anime}/{action=Index}/{id?}"
+                );
+
+                routes.MapRoute(
+                    name: "user",
+                    //template: "Users/{id?}",
+                    //defaults: new { controller = "Users", action = "Index" });
+                    template: "{controller=Users}/{action=Index}/{id?}"
+                );
             });
         }
     }

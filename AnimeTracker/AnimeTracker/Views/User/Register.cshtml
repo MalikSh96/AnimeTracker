@@ -1,0 +1,99 @@
+﻿@model AnimeTracker.Models.User
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+
+    <link href="~/css/viewscss/users/Register.css" rel="stylesheet" />
+</head>
+<body>
+<!-- multistep form -->
+<form method="post" asp-controller="user" asp-action="Register" enctype="multipart/form-data" id="msform">
+    <!-- fieldsets -->
+    <fieldset>
+        <h2 class="fs-title"><b>Create your account</b></h2>
+        <input type="text" asp-for="username" required="required" placeholder="username" />
+        <input type="password" asp-for="password" required="required" placeholder="Password" id="pass" />
+        @*<input type="password" name="cpass" placeholder="Confirm Password" />*@
+        <a class='btn' href='#' onclick='toggleShowPassword(); return false;'>
+            Show || Hide
+            <br />
+            Password
+        </a>
+        <h2 class="fs-title"><b>Personal Details</b></h2>
+        <h3 class="fs-subtitle"><em>We will never sell it</em></h3>
+        <input type="text" asp-for="email" required="required" placeholder="email" />
+        <input type="text" asp-for="firstname" required="required" placeholder="First Name" />
+        <input type="text" asp-for="lastname" required="required" placeholder="Last Name" />
+        <input type="file" name="file" />
+        <input type="submit" value="Save" name="submit" class="submit action-button" />
+    </fieldset>
+</form>
+</body>
+
+<script type="text/javascript">
+    function toggleShowPassword() {
+        var passwordTextBox = document.getElementById('pass');
+        if (passwordTextBox.getAttribute('type') == 'text') {
+            passwordTextBox.type = 'password';
+        }
+        else {
+            passwordTextBox.type = 'text';
+        }
+    }
+</script>
+
+@*<body>
+    <a href="##" onClick="history.go(-1); return false;" class="bodylink"> Return to main page</a>
+    <form method="post" asp-controller="user" asp-action="Register" enctype="multipart/form-data">
+        <table class="container">
+            <tr>
+                <td>Username</td>
+                <td>
+                    <input type="text" asp-for="username" required="required" />
+                </td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td>
+                    <input type="password" asp-for="password" required="required" />
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>
+                    <input type="text" asp-for="email" required="required" />
+                </td>
+            </tr>
+            <tr>
+                <td>Firstname</td>
+                <td>
+                    <input type="text" asp-for="firstname" required="required" />
+                </td>
+            </tr>
+            <tr>
+                <td>Lastname</td>
+                <td>
+                    <input type="text" asp-for="lastname" required="required" />
+                </td>
+            </tr>
+            <tr>
+                <td>Upload Profile Picture</td>
+                <td>
+                    <input type="file" name="file" />
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" value="Save" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>*@
+</html>

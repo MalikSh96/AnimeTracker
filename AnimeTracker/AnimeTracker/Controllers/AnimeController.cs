@@ -19,7 +19,7 @@ namespace AnimeTracker.Controllers
         private DataContext db = new DataContext();
         private IHostingEnvironment Environment;
         public List<string> ImageList { get; set; }
-        public Anime a { get; }
+        public Anime a { get; } //this field is not used, delete it later
 
         public AnimeController(IHostingEnvironment _environment)
         {

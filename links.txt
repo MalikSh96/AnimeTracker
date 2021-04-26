@@ -25,6 +25,16 @@ https://stackoverflow.com/questions/18488667/accessing-controller-variable-in-vi
 
 https://docs.microsoft.com/en-us/aspnet/core/fundamentals/file-providers?view=aspnetcore-5.0#physicalfileprovider
 
+https://stackoverflow.com/questions/40228328/how-to-set-routes-in-asp-net-core-application
+
+https://stackoverflow.com/questions/32363002/multiple-controllers-specified-in-one-route
+
+https://www.mysqltutorial.org/mysql-unique-constraint/
+
+https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/consumer-apis/password-hashing?view=aspnetcore-5.0
+
+https://stackoverflow.com/questions/35325854/why-is-iformfile-showing-null-and-how-do-i-fix-it/35325907
+
 //YouTube links
 https://stackoverflow.com/questions/52040258/dynamic-saving-of-files-net-core
 

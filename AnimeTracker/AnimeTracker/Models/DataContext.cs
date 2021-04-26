@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.IO;
+using AnimeTracker.Models;
 
 namespace AnimeTracker.Models
 {
@@ -22,5 +23,8 @@ namespace AnimeTracker.Models
 
         //This is a reference to your table content
         public DbSet<Anime> Animes { get; set; }
+
+        //This is a reference to your table content
+        public DbSet<AnimeTracker.Models.User> User { get; set; }
     }
 }
