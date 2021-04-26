@@ -254,3 +254,13 @@ See also [this](https://stackoverflow.com/questions/1802286/best-way-to-check-if
 The *show* related part are 99% complete, as of **25-04-2021** -- v1.0
 
 # Merging `fallbackV1` with `master` complete -- v1.0
+
+# Phase 16
+Started first work on registering users.
+
+- Created new `Models.User`, `Controllers.UserController`, 
+`Views/User/Register.cshtml` and `Views/User/Users.cshtml` 
+
+- Created functions in `UserController.cs`
+
+Displaying users and registering users both work implemented. 
