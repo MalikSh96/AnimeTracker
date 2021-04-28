@@ -17,6 +17,8 @@ The most recent branch is:
 - **`fallbackV1`**
 - **`master`**
 - **`logindev`** 
+- **`useredit`**
+- **`loginsession`**
 
 # Versions
 # 25-04-2021
