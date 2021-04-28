@@ -19,7 +19,7 @@
         </div>
         <a asp-controller="user" asp-action="create" class="adder">Add new User entry</a>
 
-        <table class="table table-striped">
+        <table class="table table-striped" id="datatable">
             <thead>
                 <tr>
                     <th></th>
@@ -29,6 +29,7 @@
                     <th>Firstname</th>
                     <th>Lastname</th>
                     <th>Status as Admin</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -39,6 +40,7 @@
                             @{
                                 if (!String.IsNullOrEmpty(user.profilepic_path))
                                 {
+                                    //we cut the "wwwroot" from the path to be able to display the images
                                     var imageUrl = $"{user.profilepic_path.Substring(7)}";
                                     <img src="@imageUrl" width="120" height="75" />
                                 }
@@ -57,20 +59,20 @@
                         {
                             <td>Admin</td>
                         }
-                        @*<td>
-                            <a asp-controller="user"
-                               asp-action="edit"
+                        <td>
+                            <a asp-controller="users"
+                               asp-action="Edit"
                                asp-route-id="@user.user_id" class="editer">
                                 <b>Edit</b>
                             </a>
                             ||
-                            <a asp-controller="user"
-                               asp-action="delete"
+                            <a asp-controller="users"
+                               asp-action="Delete"
                                asp-route-id="@user.user_id"
                                onclick="return confirm('Are you sure?')" class="deleter">
                                 <b>Delete</b>
                             </a>
-                        </td>*@
+                        </td>
                     </tr>
                 }
             </tbody>

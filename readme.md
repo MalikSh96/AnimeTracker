@@ -273,3 +273,16 @@ Started first work on being able to log in as a user.
 
 - I am using **BCrypt** to hash the passwords that gets stored in the `database` - and I use **BCrypt** to compare
 when a user tries to log in.
+
+# Phase 18
+- Made modifications to `AnimeController.cs` *action/function* 
+`Edit(int anime_id, Anime anime, IEnumerable<IFormFile> files)`.
+
+- Created functionalities for both editing and deleting a user. `UserController.cs` 
+`Edit(int user_id, User user, IFormFile file)` **and** `DeleteUser(int user_id)`.
+
+- Created a *view* for editing `Views/User/Edit.cshtml`.
+
+- About [AsNoTracking()](https://docs.microsoft.com/en-us/ef/core/querying/tracking).
+
+- About [ASP.NET-Core-Tag-Helpers](https://www.dotnettricks.com/learn/aspnetcore/aspnet-core-tag-helpers).

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore;
 
 namespace AnimeTracker.Controllers
 {
@@ -261,20 +262,32 @@ namespace AnimeTracker.Controllers
         [Route("edit/{anime_id}")]
         public IActionResult Edit(int anime_id, Anime anime, IEnumerable<IFormFile> files)
         {
-            string a = anime.animename; //we get the path that's stored in the database
-            string path = a;
-            string combPath = Path.Combine($"wwwroot/animeimages/{path}/");
+            int aId = anime.anime_id;
+            //we need to make a reference to the data in the database, to be able to retrieve unedited data
+            //We use AsNoTracking, as we only need to read the data and not update it
+            var dbAnime = db.Animes.AsNoTracking().FirstOrDefault(an => an.anime_id == aId);
+            string a = anime.animename; 
 
-            //int a_id = anime.anime_id;
-            //string getDbPath = "";
-            //if (string.IsNullOrEmpty(anime.img_path))
-            //{
-            //    getDbPath = db.Animes.Find(a_id).img_path;
-            //}
-            //string oldPath = getDbPath;
+            //we get the absolute path and store it in env
+            string env = Environment.WebRootPath;
+            string relpath = a;
+            //we make use of the above variable to combine our absolute path with its subfolder
+            DirectoryInfo di = new DirectoryInfo(env + "/animeimages/" + relpath);
 
-            bool isEmpty = files.Any();
-            if (isEmpty)
+            /*
+             If the directory corresponding to the updated anime 
+             show, when editing its name, does not exist, we create a folder for
+             it and store its images, when editing, in there
+            */
+            if (!di.Exists)
+            {
+                //now that we have combined our pathes, we make a subfolder dynamically based on the input
+                DirectoryInfo dir = di.CreateSubdirectory(anime.animename);
+            }
+
+            string combPath = Path.Combine($"wwwroot/animeimages/{relpath}/");
+            bool isNotEmpty = files.Any();
+            if (isNotEmpty)
             {
                 foreach (var file in files)
                 {
@@ -293,14 +306,7 @@ namespace AnimeTracker.Controllers
             }
             else
             {
-                /*
-                If we don't add a file (image), we directly set our img_path to the combined path 
-                Even without a file (image), we still set our img_path
-
-                We do this to avoid overwriting an existing img_path that's stored in the database
-                */
-                anime.img_path = combPath;
-                //db.Entry(anime).CurrentValues.SetValues(anime);
+                anime.img_path = dbAnime.img_path;
                 db.Entry(anime).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 db.SaveChanges();
             }
