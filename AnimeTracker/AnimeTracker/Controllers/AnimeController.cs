@@ -11,6 +11,7 @@ using System.IO;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AnimeTracker.Controllers
 {
@@ -27,6 +28,7 @@ namespace AnimeTracker.Controllers
             Environment = _environment;
         }
 
+        //[Authorize]
         [Route("")]
         [Route("anime")]
         [Route("~/")]
@@ -40,6 +42,7 @@ namespace AnimeTracker.Controllers
             return View(/*model*/);
         }
 
+        //[Authorize]
         [HttpGet]
         [Route("search")]
         public IActionResult Search()
@@ -50,6 +53,7 @@ namespace AnimeTracker.Controllers
             return View();
         }
 
+        //[AllowAnonymous]
         [HttpGet]
         [Route("getall")]
         public IActionResult AllAnime()
@@ -60,6 +64,7 @@ namespace AnimeTracker.Controllers
             return View();
         }
 
+        //[Authorize]
         [HttpGet]
         [Route("Add")]
         public IActionResult AddAnime()
@@ -67,6 +72,7 @@ namespace AnimeTracker.Controllers
             return View("Add");
         }
 
+        //[Authorize]
         [HttpPost]
         [Route("Add")]
         public IActionResult AddAnime(IEnumerable<IFormFile> files, Anime anime)
@@ -208,6 +214,7 @@ namespace AnimeTracker.Controllers
         //     */
         //}
 
+        //[Authorize]
         [HttpGet]
         [Route("delete/{anime_id}")]
         public IActionResult DeleteAnime(int anime_id)
@@ -251,6 +258,7 @@ namespace AnimeTracker.Controllers
             return RedirectToAction("Index");
         }
 
+        //[Authorize]
         [HttpGet]
         [Route("edit/{anime_id}")]
         public IActionResult Edit(int anime_id)
@@ -258,6 +266,7 @@ namespace AnimeTracker.Controllers
             return View("Edit", db.Animes.Find(anime_id));
         }
 
+        //[Authorize]
         [HttpPost]
         [Route("edit/{anime_id}")]
         public IActionResult Edit(int anime_id, Anime anime, IEnumerable<IFormFile> files)
@@ -314,6 +323,7 @@ namespace AnimeTracker.Controllers
             return RedirectToAction("Index");
         }
 
+        //[AllowAnonymous]
         [HttpGet]
         [Route("moreinfo/{id}")]
         public IActionResult MoreInfo(int id)

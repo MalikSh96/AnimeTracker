@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AnimeTracker.Controllers
 {
@@ -25,14 +26,17 @@ namespace AnimeTracker.Controllers
             Environment = _environment;
         }
 
+        //[Authorize]
         //[HttpGet]
         //[Route("allusers")]
-        public IActionResult Users()
+        public IActionResult Users(User loginUser)
         {
+            HttpContext.Session.GetString("username");
             ViewBag.User = db.User.ToList();
             return View();
         }
 
+        //[AllowAnonymous]
         [HttpGet]
         [Route("Register")]
         public IActionResult Create()
@@ -85,6 +89,7 @@ namespace AnimeTracker.Controllers
             //return View(user);
         }
 
+        //[AllowAnonymous]
         [HttpGet]
         [Route("Login")]
         public IActionResult Login()
@@ -110,15 +115,30 @@ namespace AnimeTracker.Controllers
             {
                 //if the user signing in is an admin, we redirect to "admin" page
                 //if the user signing in isn't an admin, we redirect to "anime" page
-                if(user.admin)
+                if (user.admin)
+                {
+                    HttpContext.Session.SetString("username", user.username);
                     return RedirectToAction(nameof(Users));
+                }
                 else
+                {
+                    HttpContext.Session.SetString("username", user.username);
                     return RedirectToAction("getall", "Anime", null);
+                }
             }
             else
             {
                 throw new ArgumentException("The entered password was incorrect!");
             }
+        }
+
+        //[Authorize]
+        [Route("Logout")]
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("username");
+            return RedirectToAction(nameof(Login));
         }
 
         //[HttpPost]

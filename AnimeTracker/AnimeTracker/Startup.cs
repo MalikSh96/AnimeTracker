@@ -34,6 +34,12 @@ namespace AnimeTracker
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDistributedMemoryCache();
+            //we need sessions for when logging in and such
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(2);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +58,8 @@ namespace AnimeTracker
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

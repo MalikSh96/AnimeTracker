@@ -1,4 +1,5 @@
 ﻿@model AnimeTracker.Models.User
+@using Microsoft.AspNetCore.Http;
 
 <br />
 <br />
@@ -7,10 +8,10 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>User</title>
-
-    <link href="~/css/viewscss/animeindex.css" rel="stylesheet" />
+    <link href="~/css/viewscss/users/Users.css" rel="stylesheet" />
 </head>
 <body>
+    @*Welcome @Context.Session.GetString("username")*@
     <div class="container">
         <h3><b>List of all Users</b></h3>
         <div class="input-group">
@@ -77,6 +78,8 @@
                 }
             </tbody>
         </table>
+        <a asp-controller="user" asp-action="Logout" style="color:white">Sign Out</a>
+
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery"
