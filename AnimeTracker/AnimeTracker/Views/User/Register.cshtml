@@ -1,0 +1,52 @@
+﻿@model AnimeTracker.Models.User
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+
+    <link href="~/css/viewscss/users/Register.css" rel="stylesheet" />
+</head>
+<body>
+<!-- multistep form -->
+<form method="post" asp-controller="user" asp-action="Register" enctype="multipart/form-data" id="msform">
+    <!-- fieldsets -->
+    <fieldset>
+        <h2 class="fs-title"><b>Create your account</b></h2>
+        <input type="text" asp-for="username" required="required" placeholder="username" />
+        <input type="password" asp-for="password" required="required" placeholder="Password" id="pass" />
+        @*<input type="password" name="cpass" placeholder="Confirm Password" />*@
+        <a class='btn' href='#' onclick='toggleShowPassword(); return false;'>
+            Show || Hide
+            <br />
+            Password
+        </a>
+        <h2 class="fs-title"><b>Personal Details</b></h2>
+        <h3 class="fs-subtitle"><em>We will never sell it</em></h3>
+        <input type="text" asp-for="email" required="required" placeholder="email" />
+        <input type="text" asp-for="firstname" required="required" placeholder="First Name" />
+        <input type="text" asp-for="lastname" required="required" placeholder="Last Name" />
+        <input type="file" name="file" />
+        <input type="submit" value="Save" name="submit" class="submit action-button" />
+        <br />
+        <a href="https://localhost:5001/users/login" class="reglink">Already a user? Sign in here</a>
+    </fieldset>
+</form>
+</body>
+
+<!--Below is js to display the password-->
+<script type="text/javascript">
+    function toggleShowPassword() {
+        var passwordTextBox = document.getElementById('pass');
+        if (passwordTextBox.getAttribute('type') == 'text') {
+            passwordTextBox.type = 'password';
+        }
+        else {
+            passwordTextBox.type = 'text';
+        }
+    }
+</script>
+</html>

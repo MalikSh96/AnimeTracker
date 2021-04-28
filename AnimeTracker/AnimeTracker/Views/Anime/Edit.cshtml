@@ -6,10 +6,14 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Edit</title>
+
+    <link href="~/css/viewscss/edit.css" rel="stylesheet" />
 </head>
+<h1>Edit Anime data</h1>
 <body>
-    <form method="post" asp-controller="anime" asp-action="edit">
-        <table>
+    <a href="##" onClick="history.go(-1); return false;" class="bodylink"> Return to main page</a>
+    <form method="post" asp-controller="anime" asp-action="Edit" enctype="multipart/form-data">
+        <table class="container">
             <tr>
                 <td>Anime name</td>
                 <td>
@@ -17,15 +21,79 @@
                 </td>
             </tr>
             <tr>
-                <td>Anime description</td>
+                <td>Description</td>
                 <td>
-                    <input type="text" asp-for="description" required="required" />
+                    <textarea asp-for="description" required="required" style="width:350px; height:150px"> </textarea>
                 </td>
             </tr>
             <tr>
-                <td>Anime release date</td>
+                <td>Type of show</td>
+                <td>
+                    <input type="text" asp-for="show_type" required="required" />
+                </td>
+            </tr>
+            <tr>
+                <td>Total of episodes</td>
+                <td>
+                    <input type="number" asp-for="episodes" required="required" />
+                </td>
+            </tr>
+            <tr>
+                <td>Airing</td>
+                <td>
+                    <br /><br />
+                    <input asp-for="airing" type="checkbox" /> Airing?
+                    <p style="font-style: italic;">If the show IS airing, check the box</p>
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td>Genre</td>
+                <td>
+                    <input type="text" asp-for="genre" required="required" />
+                </td>
+            </tr>
+            <tr>
+                <td>Studio</td>
+                <td>
+                    <input type="text" asp-for="studio" required="required" />
+                </td>
+            </tr>
+            <tr>
+                <td>Source material</td>
+                <td>
+                    <input type="text" asp-for="anime_source" required="required" />
+                </td>
+            </tr>
+            <tr>
+                <td>Anime rating</td>
+                <td>
+                    <input type="text" asp-for="rating_pg" required="required" />
+                </td>
+            </tr>
+            <tr>
+                <td>Release date</td>
                 <td>
                     <input type="text" asp-for="release_date" required="required" />
+                </td>
+            </tr>
+            <tr>
+                <td>Broadcaster</td>
+                <td>
+                    <input type="text" asp-for="broadcaster" required="required" />
+                </td>
+            </tr>
+            <tr>
+                <td>Official Website</td>
+                <td>
+                    <input type="url" asp-for="off_link" />
+                </td>
+            </tr>
+            <tr>
+                <td>Upload image</td>
+                <td>
+                    <input type="file" multiple name="files" />
+                    @*<input type="file" name="file" />*@
                 </td>
             </tr>
             <tr>

@@ -1,0 +1,36 @@
+﻿body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.42em;
+    color: black;
+    background-color: #1F2739;
+}
+
+.container h3 {
+    color: white;
+}
+
+.container tr:nth-child(2n) {
+    color: white;
+}
+
+.container tr.Search:hover {
+    background-color: #39A0ED;
+    /*color: #403E10;*/
+    color: white;
+    font-weight: bold;
+    /*box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;*/
+    transform: translate3d(6px, -6px, 0);
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: all;
+    transition-timing-function: line;
+}
+
+.container a.seemore {
+    color: #FB3640;
+}
+
+footer {
+    color: white;
+}

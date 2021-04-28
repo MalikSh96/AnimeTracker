@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\AnimeTracker"
   ],
-  "SelectedNode": "\\AnimeTracker.sln",
+  "SelectedNode": "\\AnimeTracker\\appsettings.json",
   "PreviewInSolutionExplorer": false
 }

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AnimeTracker.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,7 +33,6 @@ namespace AnimeTracker
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -56,7 +57,20 @@ namespace AnimeTracker
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Anime}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}"
+                );
+
+                routes.MapRoute(
+                    name: "anime",
+                    template: "{controllers=Anime}/{action=Index}/{id?}"
+                );
+
+                routes.MapRoute(
+                    name: "user",
+                    //template: "Users/{id?}",
+                    //defaults: new { controller = "Users", action = "Index" });
+                    template: "{controller=Users}/{action=Index}/{id?}"
+                );
             });
         }
     }

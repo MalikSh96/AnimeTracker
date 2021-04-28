@@ -5,9 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.IO;
+using AnimeTracker.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace AnimeTracker.Models
 {
+    //public class DataContext : IdentityDbContext
     public class DataContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -20,6 +23,10 @@ namespace AnimeTracker.Models
             optionsBuilder.UseMySql(configuration["ConnectionStrings:DefaultConnection"]);
         }
 
+        //This is a reference to your table content
         public DbSet<Anime> Animes { get; set; }
+
+        //This is a reference to your table content
+        public DbSet<User> User { get; set; }
     }
 }
