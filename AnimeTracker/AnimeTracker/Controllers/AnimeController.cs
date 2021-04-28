@@ -19,7 +19,7 @@ namespace AnimeTracker.Controllers
         private DataContext db = new DataContext();
         private IHostingEnvironment Environment;
         public List<string> ImageList { get; set; }
-        public Anime a { get; }
+        public Anime a { get; } //this field is not used, delete it later
 
         public AnimeController(IHostingEnvironment _environment)
         {
@@ -280,8 +280,8 @@ namespace AnimeTracker.Controllers
                 {
                     //we combine our database path (path) and combine it with our set string
                     var save = Path.Combine(combPath, file.FileName);
-
-                    var stream = new FileStream(save, FileMode.Create);
+                    //if the file already exist, we open it, otherwise we create one
+                    var stream = new FileStream(save, FileMode.OpenOrCreate);
                     file.CopyTo(stream);
 
                     //we store our new path to be our "save" 

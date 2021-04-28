@@ -16,6 +16,7 @@ The most recent branch is:
 - **`new_master1`**
 - **`fallbackV1`**
 - **`master`**
+- **`logindev`** 
 
 # Versions
 # 25-04-2021
@@ -254,3 +255,21 @@ See also [this](https://stackoverflow.com/questions/1802286/best-way-to-check-if
 The *show* related part are 99% complete, as of **25-04-2021** -- v1.0
 
 # Merging `fallbackV1` with `master` complete -- v1.0
+
+# Phase 16
+Started first work on registering users.
+
+- Created new `Models.User`, `Controllers.UserController`, 
+`Views/User/Register.cshtml` and `Views/User/Users.cshtml` 
+
+- Created functions in `UserController.cs`
+
+Displaying users and registering users both work implemented.
+
+# Phase 17
+Started first work on being able to log in as a user.
+
+- Implemented new functions in the `Controller` --> `UserController.cs`.
+
+- I am using **BCrypt** to hash the passwords that gets stored in the `database` - and I use **BCrypt** to compare
+when a user tries to log in.

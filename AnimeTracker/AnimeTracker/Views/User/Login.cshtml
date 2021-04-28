@@ -1,0 +1,77 @@
+﻿@model AnimeTracker.Models.User
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sign in</title>
+
+    <link href="~/css/viewscss/users/Login.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- multistep form -->
+    <form method="post" asp-controller="user" asp-action="Login" enctype="multipart/form-data" id="msform">
+        <!-- fieldsets -->
+        <fieldset>
+            <h2 class="fs-title"><b>Sign in into your account</b></h2>
+            <input type="text" asp-for="username" required="required" placeholder="username" />
+            <input type="password" asp-for="password" required="required" placeholder="Password" id="pass" />
+            @*<input type="password" name="cpass" placeholder="Confirm Password" />*@
+            <a class='btn' href='#' onclick='toggleShowPassword(); return false;'>
+                Show / Hide
+                @*<br />*@
+                Password
+            </a>
+            <br />
+            <input type="submit" value="Sign In" name="submit" class="submit action-button" />
+            <br />
+            <a href="https://localhost:5001/users/register" class="reglink">Not a user? Register here</a>
+        </fieldset>
+    </form>
+</body>
+
+<!--Below is js to display the password-->
+<script type="text/javascript">
+    function toggleShowPassword() {
+        var passwordTextBox = document.getElementById('pass');
+        if (passwordTextBox.getAttribute('type') == 'text') {
+            passwordTextBox.type = 'password';
+        }
+        else {
+            passwordTextBox.type = 'text';
+        }
+    }
+</script>
+</html>
+
+
+@*<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="username"></label>
+                <input asp-for="username" class="form-control" />
+                <span asp-validation-for="username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password"></label>
+                <input type="password" asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                    <div class="checkbox">
+                        <label asp-for="RememberMe">
+                            <input asp-for="RememberMe">
+                            @{
+                                var data = ViewData.Model;
+                                <p>@data.Username</p>
+                            }
+                        </label>
+                    </div>
+                </div>*@
+            @*<button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+</div>*@
