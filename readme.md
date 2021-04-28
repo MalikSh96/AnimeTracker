@@ -16,6 +16,7 @@ The most recent branch is:
 - **`new_master1`**
 - **`fallbackV1`**
 - **`master`**
+- **`logindev`** 
 
 # Versions
 # 25-04-2021
