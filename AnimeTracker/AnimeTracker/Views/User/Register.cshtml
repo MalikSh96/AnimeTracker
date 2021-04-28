@@ -31,10 +31,13 @@
         <input type="text" asp-for="lastname" required="required" placeholder="Last Name" />
         <input type="file" name="file" />
         <input type="submit" value="Save" name="submit" class="submit action-button" />
+        <br />
+        <a href="https://localhost:5001/users/login" class="reglink">Already a user? Sign in here</a>
     </fieldset>
 </form>
 </body>
 
+<!--Below is js to display the password-->
 <script type="text/javascript">
     function toggleShowPassword() {
         var passwordTextBox = document.getElementById('pass');
@@ -46,54 +49,4 @@
         }
     }
 </script>
-
-@*<body>
-    <a href="##" onClick="history.go(-1); return false;" class="bodylink"> Return to main page</a>
-    <form method="post" asp-controller="user" asp-action="Register" enctype="multipart/form-data">
-        <table class="container">
-            <tr>
-                <td>Username</td>
-                <td>
-                    <input type="text" asp-for="username" required="required" />
-                </td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td>
-                    <input type="password" asp-for="password" required="required" />
-                </td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>
-                    <input type="text" asp-for="email" required="required" />
-                </td>
-            </tr>
-            <tr>
-                <td>Firstname</td>
-                <td>
-                    <input type="text" asp-for="firstname" required="required" />
-                </td>
-            </tr>
-            <tr>
-                <td>Lastname</td>
-                <td>
-                    <input type="text" asp-for="lastname" required="required" />
-                </td>
-            </tr>
-            <tr>
-                <td>Upload Profile Picture</td>
-                <td>
-                    <input type="file" name="file" />
-                </td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>
-                    <input type="submit" value="Save" />
-                </td>
-            </tr>
-        </table>
-    </form>
-</body>*@
 </html>

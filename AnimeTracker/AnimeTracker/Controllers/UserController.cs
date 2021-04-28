@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using Microsoft.AspNetCore.Identity;
 
 namespace AnimeTracker.Controllers
 {
@@ -50,25 +51,7 @@ namespace AnimeTracker.Controllers
 
                 string relpath = user.username;
 
-                /*
-                Hashing password part
-                */
-
-                byte[] salt = new byte[128 / 8];
-                using (var rng = RandomNumberGenerator.Create())
-                {
-                    rng.GetBytes(salt);
-                }
-                Convert.ToBase64String(salt);
-                string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                    password: user.password,
-                    salt: salt,
-                    prf: KeyDerivationPrf.HMACSHA1,
-                    iterationCount: 10000,
-                    numBytesRequested: 256 / 8)
-                );
-
-                user.password = hashed;
+                user.password = BCrypt.Net.BCrypt.HashPassword(user.password);
 
                 if (file != null && file.Length > 0)
                 {
@@ -93,6 +76,44 @@ namespace AnimeTracker.Controllers
             //return View(user);
         }
 
+        [HttpGet]
+        [Route("Login")]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Route("Login")]
+        public IActionResult Login(User loginUser)
+        {
+            //we look for the username in the database
+            var user = db.User.FirstOrDefault(u => u.username == loginUser.username);
+            //if the user is null, we throw an error
+            if (user == null)
+            {
+                throw new ArgumentException("The entered username does not exist!");
+            }
+
+            bool isValidPassword = BCrypt.Net.BCrypt.Verify(loginUser.password, user.password);
+
+            if (isValidPassword)
+            {
+                return RedirectToAction(nameof(Users));
+            }
+            else
+            {
+                throw new ArgumentException("The entered password was incorrect!");
+            }
+        }
+
+        //[HttpPost]
+        //public async Task<IActionResult> Logout()
+        //{
+        //    await signInManager.SignOutAsync();
+        //    return RedirectToAction("Index", "Home");
+        //}
+
         //[HttpGet]
         //[Route("allusers")]
         public IActionResult Users()
@@ -101,7 +122,7 @@ namespace AnimeTracker.Controllers
             return View();
         }
 
-        //// GET: Users/CheckUser/id
+        // GET: Users/CheckUser/id
         //[HttpGet]
         //public IActionResult CheckUser(int? id)
         //{

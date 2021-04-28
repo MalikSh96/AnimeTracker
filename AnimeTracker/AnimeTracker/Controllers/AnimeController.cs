@@ -280,8 +280,8 @@ namespace AnimeTracker.Controllers
                 {
                     //we combine our database path (path) and combine it with our set string
                     var save = Path.Combine(combPath, file.FileName);
-
-                    var stream = new FileStream(save, FileMode.Create);
+                    //if the file already exist, we open it, otherwise we create one
+                    var stream = new FileStream(save, FileMode.OpenOrCreate);
                     file.CopyTo(stream);
 
                     //we store our new path to be our "save" 

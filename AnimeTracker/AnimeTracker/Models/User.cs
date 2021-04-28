@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace AnimeTracker.Models
@@ -20,6 +22,5 @@ namespace AnimeTracker.Models
         public bool admin { get; set; }
         public string password { get; set; }
         public string profilepic_path { get; set; }
-
     }
 }

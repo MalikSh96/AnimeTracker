@@ -6,9 +6,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 using AnimeTracker.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace AnimeTracker.Models
 {
+    //public class DataContext : IdentityDbContext
     public class DataContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -25,6 +27,6 @@ namespace AnimeTracker.Models
         public DbSet<Anime> Animes { get; set; }
 
         //This is a reference to your table content
-        public DbSet<AnimeTracker.Models.User> User { get; set; }
+        public DbSet<User> User { get; set; }
     }
 }

@@ -263,4 +263,12 @@ Started first work on registering users.
 
 - Created functions in `UserController.cs`
 
-Displaying users and registering users both work implemented. 
+Displaying users and registering users both work implemented.
+
+# Phase 17
+Started first work on being able to log in as a user.
+
+- Implemented new functions in the `Controller` --> `UserController.cs`.
+
+- I am using **BCrypt** to hash the passwords that gets stored in the `database` - and I use **BCrypt** to compare
+when a user tries to log in.

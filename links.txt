@@ -35,6 +35,12 @@ https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/consumer-a
 
 https://stackoverflow.com/questions/35325854/why-is-iformfile-showing-null-and-how-do-i-fix-it/35325907
 
+https://csharp-video-tutorials.blogspot.com/2019/01/aspnet-core-tutorial-for-beginners.html
+
+https://docs.microsoft.com/en-us/dotnet/api/system.io.filestream?view=net-5.0
+
+https://stackoverflow.com/questions/64407091/check-encrypted-password-on-login-asp-net-core
+
 //YouTube links
 https://stackoverflow.com/questions/52040258/dynamic-saving-of-files-net-core
 
@@ -59,6 +65,8 @@ https://www.youtube.com/watch?v=lChDn1Ti0jI&t=2s&ab_channel=abctutorial
 https://www.youtube.com/watch?v=BpbG6Ww3iEI&t=1s&ab_channel=abctutorial
 
 https://www.youtube.com/watch?v=9EaZW-mow0o&ab_channel=LearningProgramming
+
+https://www.youtube.com/watch?v=8eAD_UGLYaY&ab_channel=ThumbIKR-ProgrammingExamples
 
 //Styling links
 https://freshdesignweb.com/free-css-tables/
