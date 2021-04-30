@@ -326,8 +326,8 @@ app.UseCookiePolicy(new CookiePolicyOptions()
             app.UseAuthentication();
             app.UseSession();
 ```
-<a name="NuGet"></a> 
-- Added extra `NuGet` packages, redirect to [NuGet Packages](#NuGet).
+<a name="Dependencies--->-NuGet"></a> 
+- Added extra `NuGet` packages, redirect to [NuGet Packages](#Dependencies--->-NuGet).
 
 - Created a simple *redirecting* when attempting to access restricted pages.
 
