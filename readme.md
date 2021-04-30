@@ -21,7 +21,7 @@ The most recent branch is:
 - **`loginsession`**
 
 # Versions
-# 25-04-2021
+### 25-04-2021
 - **v1.0 `new_master1`**
 
 - **v1.0 `master`**
@@ -112,7 +112,7 @@ Provides types that can be implemented by a server to pool HttpContext instances
 ASP.NET Core middleware that enables an application to use cookie based authentication.
 
 
-# About some of the `Nuget`
+# About some of the `NuGet` packages
 Some of the `NuGet` packages installed may not have been used in the project so far. Whether they will
 be used or not, depends on the further development of this project.
 
@@ -121,13 +121,13 @@ Cleaning will be the **absolute** last I will do, once I finish the entire **bac
 
 # AnimeTracker
 
-# Phase 1
-## Established connection to database
+## Phase 1
+### Established connection to database
 Used `appsettings.json` to make a connection string as a default connection to my database.
 
 `server=YourServer;port=YourPort;database=YourDbName;uid=YourUser;password=YourPassword`
 
-## `DataContext.cs`
+### `DataContext.cs`
 This file contains the establishment of our connection to our database by making a reference to our `appsettings.json`.
 
 `OnConfiguring(DbContextOptionsBuilder optionsBuilder)`, this method to configure the database (and other options) to be 
@@ -138,27 +138,27 @@ used for this context. This method is called for each instance of the context th
 [About](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontextoptionsbuilder?view=efcore-5.0) 
 `DbContextOptionsBuiler`
 
-## `AnimeController.cs`
+### `AnimeController.cs`
 Under `Controllers` folder.
 
 This file acts as our bridge between our frontend and backend, in this file we do our CRUD operations.
 
-## `Anime.cs`
+### `Anime.cs`
 Under `Models` folder.
 
 This acts as our database entry setup for the particular table 
 
-## DataTables
+### DataTables
 In each neccessary view that needed a datatable, I have assigned an `id="datatable"` and this `id` is used by the 
 `DataTable` script written inside `site.js`
 
-## Views 
+### Views 
 Here we design our frontend view on our client.
 
-# Phase 2
+## Phase 2
 Implemented CRUD methods and also j-query search function.
 
-# Phase 3
+## Phase 3
 Implemented functionalities such as when a user wants to see more information about a 
 particular anime, the user will be redirected to a **view** that displays more 
 information --> `MoreInfo.cshtml` 
@@ -167,23 +167,23 @@ Also made that, for the user friendly interface, it will display the list of sho
 alphabetical orders.
 For the admin page, the list of shows is displayed based on their **ID**, from 1 and above.
 
-# Phase 4
+## Phase 4
 Implemented pagination for `Views/Anime/Index.cshtml`, but the functionality is **NOT** active as of now.
 
-# Phase 5
+## Phase 5
 Installed `DataTables` library directly into `wwwroot/lib`. Made use of this to implement *datatables jquery* 
 searching functionality for both `Views/Anime/Search.cshtml` and `Views/Anime/AllAnime.cshtml`.
 
-# Phase 6
+## Phase 6
 Made such, that when adding a show, you are able to, for now, add one image related to the show.
 The image will be stored, for now, in the `wwwroot/animeimages` folder.
 
 Further changes will be applied to this phase.
 
-# Phase 7
+## Phase 7
 In `MoreInfo.cshtml` we now display **one** image, for now, for its corresponding show
 
-# Phase 8
+## Phase 8
 Worked further on previous phases for image displaying and such. 
 Main coding happened in `AnimeController.cs` --> `public async Task<IActionResult> AddAnime(IFormFile file, Anime anime)` 
 
@@ -191,37 +191,36 @@ I made that once you enter a new entry, based on the `entry.name` a correspondin
 We use that subfolder to store the images of the given entries, therefore we manage to keep our management cleaner
 and more organized when creating entries.
 
-# Phase 9
+## Phase 9
 Completed the work on displaying images and such. Yet again the main coding happened in `AnimeController.cs`
 
 In this phase I made a functionality that dynamically accesses the content of a given folder and displays that content 
 on the webpage. In this case the `animeimages` **folder**.
-<<<<<<< HEAD
 
-# Phase 10
+## Phase 10
 Worked on some general styling for the different `Views`
 
-# Phase 11
+## Phase 11
 Worked on the `edit` functionality in `AnimeController.cs` - Now when you edit the content of a 
 given show you are editing, the `img_path` no longer becomes `null` after editing.
 
 Instead we now *save* the path again into the database.
 
-# Phase 12
+## Phase 12
 Worked on more functionalities, implemented on the two functions `Edit`, `Delete`.
 
-For **`Edit`**
+### For `Edit`
 - You are now able to insert more images for the desired show entry, without breaking the folder path
 on top of just the editing in general.
 
 - It updates the `img_path` field in the database with the recent image posted, but the images still gets
 stored in their respective folders
 
-For **`Delete`**
+### For `Delete`
 - When you delete/remove a show from the database, its connected folder, which contains the images, now also
 gets deleted from the project.
 
-**EXTRA**
+#### EXTRA
 
 [DirectoryInfo.Delete](https://docs.microsoft.com/en-us/dotnet/api/system.io.directoryinfo.delete?view=net-5.0) 
 method.
@@ -231,7 +230,7 @@ method.
 How to deal with the [issue](https://stackoverflow.com/questions/1288718/how-to-delete-all-files-and-folders-in-a-directory) 
 of a directory not being empty when trying to *delete*. Check also this [link](https://stackoverflow.com/questions/12415105/directory-is-not-empty-error-when-trying-to-programmatically-delete-a-folder).
 
-# Phase 13
+## Phase 13
 Worked further on the `AddAnime` function. Previously you were able to persist shows which already 
 had the same name existing in the database.
 
@@ -249,7 +248,7 @@ I haven't used a single SQL yet. This *may* change later on.
 
 See also [this](https://stackoverflow.com/questions/1802286/best-way-to-check-if-object-exists-in-entity-framework).
 
-# Phase 14
+## Phase 14
 - Updated the `database script` 
 
 - Updated both `Models.Anime.cs` and multiple `Views.Anime` to make use of the new values/elements/fields added.
@@ -260,12 +259,14 @@ See also [this](https://stackoverflow.com/questions/1802286/best-way-to-check-if
 
 - A bit of styling have been added to a few *views*.
 
-# Phase 15
+## Phase 15
 The *show* related part are 99% complete, as of **25-04-2021** -- v1.0
 
-# Merging `fallbackV1` with `master` complete -- v1.0
+## Merging `fallbackV1` with `master` complete -- v1.0
 
-# Phase 16
+### VERSION 1.0 COMPLETED AT THIS PHASE
+
+## Phase 16
 Started first work on registering users.
 
 - Created new `Models.AppUser`, `Controllers.UserController`, 
@@ -275,7 +276,7 @@ Started first work on registering users.
 
 Displaying users and registering users both work implemented.
 
-# Phase 17
+## Phase 17
 Started first work on being able to log in as a user.
 
 - Implemented new functions in the `Controller` --> `UserController.cs`.
@@ -283,7 +284,7 @@ Started first work on being able to log in as a user.
 - I am using **BCrypt** to hash the passwords that gets stored in the `database` - and I use **BCrypt** to compare
 when a user tries to log in.
 
-# Phase 18
+## Phase 18
 - Made modifications to `AnimeController.cs` *action/function* 
 `Edit(int anime_id, Anime anime, IEnumerable<IFormFile> files)`.
 
@@ -296,7 +297,7 @@ when a user tries to log in.
 
 - About [ASP.NET-Core-Tag-Helpers](https://www.dotnettricks.com/learn/aspnetcore/aspnet-core-tag-helpers).
 
-# Phase 19
+## Phase 19
 **BIG**, **BIG**, amount of coding and implementing functionalities for logging in.
 
 - Refactored model class `User` --> `AppUser`.
@@ -337,4 +338,4 @@ app.UseCookiePolicy(new CookiePolicyOptions()
 - Added `LoginViewModel` as form for *middle* way for the model `AppUser` to only access neccessary fields. 
 
 ## License and Copyright
-(c) Malik Sharfo
+© Malik Sharfo
