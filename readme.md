@@ -76,7 +76,8 @@ Link to [script codesnippet](https://docs.microsoft.com/en-us/aspnet/core/mvc/vi
 J-Query is a lightweight JavaScript library. The purpose of j-query is to make it much easier to use JavaScript
 on our website. [Read More](https://www.w3schools.com/jquery/jquery_intro.asp)
 
-# `Dependencies` --> `NuGet`
+# NuGet
+## `Dependencies` --> `NuGet`
 [Pomelo.EntityFrameworkCore.MySql](https://github.com/PomeloFoundation/Pomelo.EntityFrameworkCore.MySql)
 
 [MySql.Data](https://www.nuget.org/packages/MySql.Data/)
@@ -121,12 +122,12 @@ Cleaning will be the **absolute** last I will do, once I finish the entire **bac
 # AnimeTracker
 
 # Phase 1
-# Established connection to database
+## Established connection to database
 Used `appsettings.json` to make a connection string as a default connection to my database.
 
 `server=YourServer;port=YourPort;database=YourDbName;uid=YourUser;password=YourPassword`
 
-# `DataContext.cs`
+## `DataContext.cs`
 This file contains the establishment of our connection to our database by making a reference to our `appsettings.json`.
 
 `OnConfiguring(DbContextOptionsBuilder optionsBuilder)`, this method to configure the database (and other options) to be 
@@ -137,21 +138,21 @@ used for this context. This method is called for each instance of the context th
 [About](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontextoptionsbuilder?view=efcore-5.0) 
 `DbContextOptionsBuiler`
 
-# `AnimeController.cs`
+## `AnimeController.cs`
 Under `Controllers` folder.
 
 This file acts as our bridge between our frontend and backend, in this file we do our CRUD operations.
 
-# `Anime.cs`
+## `Anime.cs`
 Under `Models` folder.
 
 This acts as our database entry setup for the particular table 
 
-# DataTables
+## DataTables
 In each neccessary view that needed a datatable, I have assigned an `id="datatable"` and this `id` is used by the 
 `DataTable` script written inside `site.js`
 
-# Views 
+## Views 
 Here we design our frontend view on our client.
 
 # Phase 2
@@ -326,11 +327,14 @@ app.UseCookiePolicy(new CookiePolicyOptions()
             app.UseAuthentication();
             app.UseSession();
 ```
-<a name="dependencies--->-nuget"></a> 
-- Added extra `NuGet` packages, redirect to [NuGet Packages](#dependencies--->-nuget).
+<a name="nuget"></a> 
+- Added extra `NuGet` packages, redirect to [NuGet Packages](#nuget).
 
 - Created a simple *redirecting* when attempting to access restricted pages.
 
 - Main coding happened in the respective `*Controllers*`.
 
 - Added `LoginViewModel` as form for *middle* way for the model `AppUser` to only access neccessary fields. 
+
+## License and Copyright
+(c) Malik Sharfo
