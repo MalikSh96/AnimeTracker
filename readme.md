@@ -308,10 +308,10 @@ when a user tries to log in.
 
 ``` 
 services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-                .*AddRazorPagesOptions(options =>
+                .AddRazorPagesOptions(options =>
                 {
                     options.Conventions.AuthorizeFolder("/Users");
-                })*;
+                });
 
 ```
 
@@ -326,7 +326,7 @@ app.UseCookiePolicy(new CookiePolicyOptions()
             app.UseAuthentication();
             app.UseSession();
 ```
-#<a name="NuGet"></a> NuGet Packages
+<a name="NuGet"></a> NuGet Packages
 - Added extra `NuGet` packages, redirect to [NuGet Packages](#NuGet).
 
 - Created a simple *redirecting* when attempting to access restricted pages.

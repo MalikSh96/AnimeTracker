@@ -41,6 +41,12 @@ https://docs.microsoft.com/en-us/dotnet/api/system.io.filestream?view=net-5.0
 
 https://stackoverflow.com/questions/64407091/check-encrypted-password-on-login-asp-net-core
 
+https://kenhaggerty.com/articles/article/aspnet-core-31-users-without-identity
+
+https://stackoverflow.com/questions/46879041/asp-net-core-2-0-razor-authorize
+
+http://www.binaryintellect.net/articles/2cde4c7c-b43d-4c67-acc2-614ae9b0fcf5.aspx
+
 //YouTube links
 https://stackoverflow.com/questions/52040258/dynamic-saving-of-files-net-core
 
@@ -67,6 +73,8 @@ https://www.youtube.com/watch?v=BpbG6Ww3iEI&t=1s&ab_channel=abctutorial
 https://www.youtube.com/watch?v=9EaZW-mow0o&ab_channel=LearningProgramming
 
 https://www.youtube.com/watch?v=8eAD_UGLYaY&ab_channel=ThumbIKR-ProgrammingExamples
+
+https://www.youtube.com/watch?v=Z1VB6B-cGYo&ab_channel=kudvenkat
 
 //Styling links
 https://freshdesignweb.com/free-css-tables/
