@@ -1,4 +1,4 @@
-﻿@model AnimeTracker.Models.User
+﻿@model AnimeTracker.Models.AppUser
 
 <!DOCTYPE html>
 
@@ -10,52 +10,55 @@
     <link href="~/css/viewscss/edit.css" rel="stylesheet" />
 </head>
 <h1>Edit User data</h1>
-<body>
-    <a href="##" onClick="history.go(-1); return false;" class="bodylink"> Return to main page</a>
-    <form method="post" asp-controller="user" asp-action="Edit" enctype="multipart/form-data">
-        <table class="container">
-            <tr>
-                <td>Username</td>
-                <td>
-                    <input type="text" asp-for="username" required="required" />
-                    <p style="font-style: italic;">
-                    If you update your username, upload a profile picture too.
-                    This is needed to update OUR way of displaying your picture again.
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>
-                    <input type="text" asp-for="email" required="required" />
-                </td>
-            </tr>
-            <tr>
-                <td>First Name</td>
-                <td>
-                    <input type="text" asp-for="firstname" required="required" />
-                </td>
-            </tr>
-            <tr>
-                <td>Last Name</td>
-                <td>
-                    <input type="text" asp-for="lastname" required="required" />
-                </td>
-            </tr>
-            <tr>
-                <td>Update Profile Picture</td>
-                <td>
-                    <input type="file" name="file" />
-                </td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>
-                    <input type="submit" value="Save" />
-                    <input type="hidden" asp-for="user_id" />
-                </td>
-            </tr>
-        </table>
-    </form>
-</body>
+@if (User.Identity.IsAuthenticated)
+{
+    <body>
+        <a href="##" onClick="history.go(-1); return false;" class="bodylink"> Return to main page</a>
+        <form method="post" asp-controller="user" asp-action="Edit" enctype="multipart/form-data">
+            <table class="container">
+                <tr>
+                    <td>Username</td>
+                    <td>
+                        <input type="text" asp-for="username" required="required" />
+                        <p style="font-style: italic;">
+                            If you update your username, upload a profile picture too.
+                            This is needed to update OUR way of displaying your picture again.
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>
+                        <input type="text" asp-for="email" required="required" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td>
+                        <input type="text" asp-for="firstname" required="required" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td>
+                        <input type="text" asp-for="lastname" required="required" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Update Profile Picture</td>
+                    <td>
+                        <input type="file" name="file" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <input type="submit" value="Save" />
+                        <input type="hidden" asp-for="user_id" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+}
 </html>

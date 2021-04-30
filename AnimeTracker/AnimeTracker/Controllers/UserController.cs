@@ -12,6 +12,9 @@ using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
 
 namespace AnimeTracker.Controllers
 {
@@ -21,6 +24,9 @@ namespace AnimeTracker.Controllers
         private DataContext db = new DataContext();
         private IHostingEnvironment Environment;
 
+        //private readonly UserManager<AppUser> userManager;
+        //private readonly SignInManager<AppUser> signInManager;
+
         public UserController(IHostingEnvironment _environment)
         {
             Environment = _environment;
@@ -29,11 +35,26 @@ namespace AnimeTracker.Controllers
         //[Authorize]
         //[HttpGet]
         //[Route("allusers")]
-        public IActionResult Users(User loginUser)
+        public IActionResult Users()
         {
-            HttpContext.Session.GetString("username");
-            ViewBag.User = db.User.ToList();
-            return View();
+            //Authenticated user
+            var getUser = User.Identity.Name;
+            if(getUser == null)
+            {
+                return RedirectToAction(nameof(Login));
+            }
+            //We search for the authenticated user in the db, to get their admin role
+            var searchedUser = db.User.FirstOrDefault(u => u.username == getUser);
+            bool validAdmin = searchedUser.admin;
+            if (validAdmin)
+            {
+                ViewBag.User = db.User.ToList();
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("getall", "Anime", null);
+            }
         }
 
         //[AllowAnonymous]
@@ -50,7 +71,7 @@ namespace AnimeTracker.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Register")]
-        public IActionResult Register(User user, IFormFile file)
+        public IActionResult Register(AppUser user, IFormFile file)
         {
             if (ModelState.IsValid)
             {
@@ -94,70 +115,94 @@ namespace AnimeTracker.Controllers
         [Route("Login")]
         public IActionResult Login()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction(nameof(Users));
+            }
             return View();
         }
 
         [HttpPost]
         [Route("Login")]
-        public IActionResult Login(User loginUser)
+        public async Task<IActionResult> Login(LoginViewModel loginUser)
         {
-            //we look for the username in the database
-            var user = db.User.FirstOrDefault(u => u.username == loginUser.username);
-            //if the user is null, we throw an error
-            if (user == null)
+            //https://kenhaggerty.com/articles/article/aspnet-core-31-users-without-identity
+            //above link used to support the functionality
+            if (ModelState.IsValid)
             {
-                throw new ArgumentException("The entered username does not exist!");
-            }
+                var user = await db.User.FirstOrDefaultAsync(u => u.username == loginUser.username);
+                bool isValidPassword = BCrypt.Net.BCrypt.Verify(loginUser.password, user.password);
+                await AuthenticateUser(user.username, isValidPassword);
 
-            bool isValidPassword = BCrypt.Net.BCrypt.Verify(loginUser.password, user.password);
-
-            if (isValidPassword)
-            {
-                //if the user signing in is an admin, we redirect to "admin" page
-                //if the user signing in isn't an admin, we redirect to "anime" page
-                if (user.admin)
+                if (!isValidPassword || user == null)
                 {
-                    HttpContext.Session.SetString("username", user.username);
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    throw new ArgumentException("The entered username does not exist!");
+                }
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, user.username)
+                };
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(claimsIdentity),
+                new AuthenticationProperties
+                {
+                    IsPersistent = loginUser.rememeberMe
+                });
+                if(loginUser.isAdmin)
                     return RedirectToAction(nameof(Users));
-                }
                 else
-                {
-                    HttpContext.Session.SetString("username", user.username);
                     return RedirectToAction("getall", "Anime", null);
-                }
             }
             else
             {
-                throw new ArgumentException("The entered password was incorrect!");
+                throw new ArgumentException("Invalid Attempt of Signing in!");
             }
+        }
+
+        private async Task<AppUser> AuthenticateUser(string loginUsername, bool password)
+        {
+            if (string.IsNullOrEmpty(loginUsername) || !password)
+            {
+                return null;
+            }
+            await Task.Delay(500);
+            return new AppUser() { username = loginUsername };
         }
 
         //[Authorize]
         [Route("Logout")]
         [HttpGet]
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
-            HttpContext.Session.Remove("username");
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction(nameof(Login));
         }
-
-        //[HttpPost]
-        //public async Task<IActionResult> Logout()
-        //{
-        //    await signInManager.SignOutAsync();
-        //    return RedirectToAction("Index", "Home");
-        //}
 
         [HttpGet]
         [Route("Edit/{user_id}")]
         public IActionResult Edit(int user_id)
         {
-            return View(nameof(Edit), db.User.Find(user_id));
+            //Authenticated user
+            var getUser = User.Identity.Name;
+            if (getUser == null)
+            {
+                return RedirectToAction(nameof(Login));
+            }
+            //We search for the authenticated user in the db, to get their admin role
+            var searchedUser = db.User.FirstOrDefault(u => u.username == getUser);
+            bool validAdmin = searchedUser.admin;
+            if (validAdmin)
+                return View(nameof(Edit), db.User.Find(user_id));
+            else
+                return RedirectToAction("AccessDenied", "ErrorHandler", null);
         }
 
         [HttpPost]
         [Route("Edit/{user_id}")]
-        public IActionResult Edit(int user_id, User user, IFormFile file)
+        public IActionResult Edit(int user_id, AppUser user, IFormFile file)
         {
             int dbId = user.user_id;
             //We use AsNoTracking, as we only need to read the data and not update it
@@ -217,40 +262,56 @@ namespace AnimeTracker.Controllers
         [Route("delete/{user_id}")]
         public IActionResult DeleteUser(int user_id)
         {
-            //we need to reference the related username to the id
-            var user = db.User.Find(user_id);
-            //we store the connected anime name to the id in our string
-            string u = user.username;
-            //this is just an extra step, but we store our "a" string in our folderpath string
-            string folderpath = u;
-            //we combine it all into our path dynamically
-            string path = Path.Combine($"wwwroot/userimages/{folderpath}/");
-            //we create a new instance of our path and store it into info
-            DirectoryInfo info = new DirectoryInfo(path);
-
-            //we loop through for each file we have in our given folder
-            /*
-             we use EnumerateFiles() since it is more efficient than GetFiles(), 
-             in case our directory have many files
-             because when you use EnumerateFiles() you can start enumerating 
-             it before the whole collection is returned, as opposed to GetFiles() where you 
-             need to load the entire collection in memory before begin to enumerate it
-            */
-            foreach (FileInfo file in info.EnumerateFiles())
+            //Authenticated user
+            var getUser = User.Identity.Name;
+            if (getUser == null)
             {
-                file.Delete();
+                return RedirectToAction(nameof(Login));
             }
-            //The same applies to EnumerateDirectories() and GetDirectories()
-            //foreach (DirectoryInfo dir in info.EnumerateDirectories())
-            //{
-            //    dir.Delete(false);
-            //}
+            //We search for the authenticated user in the db, to get their admin role
+            var searchedUser = db.User.FirstOrDefault(u => u.username == getUser);
+            bool validAdmin = searchedUser.admin;
+            if (validAdmin)
+            {
+                //we need to reference the related username to the id
+                var user = db.User.Find(user_id);
+                //we store the connected anime name to the id in our string
+                string u = user.username;
+                //this is just an extra step, but we store our "a" string in our folderpath string
+                string folderpath = u;
+                //we combine it all into our path dynamically
+                string path = Path.Combine($"wwwroot/userimages/{folderpath}/");
+                //we create a new instance of our path and store it into info
+                DirectoryInfo info = new DirectoryInfo(path);
 
-            db.User.Remove(db.User.Find(user_id));
-            db.SaveChanges();
-            //we delete the subfolder related to the removed anime
-            Directory.Delete(path, true);
-            return RedirectToAction(nameof(Users));
+                //we loop through for each file we have in our given folder
+                /*
+                 we use EnumerateFiles() since it is more efficient than GetFiles(), 
+                 in case our directory have many files
+                 because when you use EnumerateFiles() you can start enumerating 
+                 it before the whole collection is returned, as opposed to GetFiles() where you 
+                 need to load the entire collection in memory before begin to enumerate it
+                */
+                foreach (FileInfo file in info.EnumerateFiles())
+                {
+                    file.Delete();
+                }
+                //The same applies to EnumerateDirectories() and GetDirectories()
+                //foreach (DirectoryInfo dir in info.EnumerateDirectories())
+                //{
+                //    dir.Delete(false);
+                //}
+
+                db.User.Remove(db.User.Find(user_id));
+                db.SaveChanges();
+                //we delete the subfolder related to the removed anime
+                Directory.Delete(path, true);
+                return RedirectToAction(nameof(Users));
+            }
+            else
+            {
+                return RedirectToAction("AccessDenied", "ErrorHandler", null);
+            }
         }
 
         // GET: Users/CheckUser/id
@@ -262,7 +323,7 @@ namespace AnimeTracker.Controllers
         //        return NotFound();
         //    }
 
-        //    var user = db.User
+        //    var user = db.AppUser
         //        .FirstOrDefault(m => m.user_id == id);
         //    if (user == null)
         //    {

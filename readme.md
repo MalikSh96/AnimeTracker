@@ -105,6 +105,12 @@ ASP.NET Core hosting infrastructure and startup logic for web applications.
 [Microsoft.AspNetCore.Hosting.Abstractions](https://docs.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.hosting.server.abstractions?view=aspnetcore-5.0)
 Provides types that can be implemented by a server to pool HttpContext instances.
 
+[BCrypt.Net-Next](https://www.nuget.org/packages/BCrypt.Net-Next/) provides password hashing.
+
+[Microsoft.AspNetCore.Authentication.Cookies](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/), 
+ASP.NET Core middleware that enables an application to use cookie based authentication.
+
+
 # About some of the `Nuget`
 Some of the `NuGet` packages installed may not have been used in the project so far. Whether they will
 be used or not, depends on the further development of this project.
@@ -261,7 +267,7 @@ The *show* related part are 99% complete, as of **25-04-2021** -- v1.0
 # Phase 16
 Started first work on registering users.
 
-- Created new `Models.User`, `Controllers.UserController`, 
+- Created new `Models.AppUser`, `Controllers.UserController`, 
 `Views/User/Register.cshtml` and `Views/User/Users.cshtml` 
 
 - Created functions in `UserController.cs`
@@ -288,3 +294,43 @@ when a user tries to log in.
 - About [AsNoTracking()](https://docs.microsoft.com/en-us/ef/core/querying/tracking).
 
 - About [ASP.NET-Core-Tag-Helpers](https://www.dotnettricks.com/learn/aspnetcore/aspnet-core-tag-helpers).
+
+# Phase 19
+**BIG**, **BIG**, amount of coding and implementing functionalities for logging in.
+
+- Refactored model class `User` --> `AppUser`.
+
+- Added functionalities that uses `ClaimsIdentity`, `CookieAuthenticationDefaults`, `HttpContext.SignInAsync`,
+`ClaimsPrincipal`, `AuthenticationProperties` to handle users signing in.
+
+- Add extra code in `Startup.cs` to support the use of above point. 
+
+
+``` 
+services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .*AddRazorPagesOptions(options =>
+                {
+                    options.Conventions.AuthorizeFolder("/Users");
+                })*;
+
+```
+
+**And**
+
+```
+app.UseCookiePolicy(new CookiePolicyOptions()
+            {
+                MinimumSameSitePolicy = SameSiteMode.Strict
+            });
+
+            app.UseAuthentication();
+            app.UseSession();
+```
+#<a name="NuGet"></a> NuGet Packages
+- Added extra `NuGet` packages, redirect to [NuGet Packages](#NuGet).
+
+- Created a simple *redirecting* when attempting to access restricted pages.
+
+- Main coding happened in the respective `*Controllers*`.
+
+- Added `LoginViewModel` as form for *middle* way for the model `AppUser` to only access neccessary fields. 

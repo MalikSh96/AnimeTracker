@@ -1,4 +1,5 @@
-﻿@model AnimeTracker.Models.User
+﻿@*@model AnimeTracker.Models.AppUser*@
+@model AnimeTracker.Models.LoginViewModel
 
 <!DOCTYPE html>
 
@@ -15,7 +16,7 @@
         <!-- fieldsets -->
         <fieldset>
             <h2 class="fs-title"><b>Sign in into your account</b></h2>
-            <input type="text" asp-for="username" required="required" placeholder="username" />
+            <input type="text" asp-for="username" required="required" placeholder="Username" />
             <input type="password" asp-for="password" required="required" placeholder="Password" id="pass" />
             @*<input type="password" name="cpass" placeholder="Confirm Password" />*@
             <a class='btn' href='#' onclick='toggleShowPassword(); return false;'>
@@ -23,6 +24,12 @@
                 @*<br />*@
                 Password
             </a>
+            <br />
+            <input asp-for="rememeberMe" />
+            <label asp-for="rememeberMe">
+                Remember Me
+            </label>
+            <span asp-validation-for="rememeberMe" class="text-danger"></span>
             <br />
             <input type="submit" value="Sign In" name="submit" class="submit action-button" />
             <br />

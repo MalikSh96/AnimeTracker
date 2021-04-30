@@ -13,8 +13,7 @@
     <link href="~/css/viewscss/getall.css" rel="stylesheet" />
 </head>
 <body>
-    Welcome @Context.Session.GetString("username")
-
+    <p style="color: white"><b>@User.Identity.Name</b></p>
     <div class="container">
         <h3><b>List of all Animes</b></h3>
         @*<div class="input-group">
@@ -63,7 +62,10 @@
                 }
             </tbody>
         </table>
-        <a asp-controller="user" asp-action="Logout" style="color:white">Sign Out</a>
+        @*@if (User.Identity.IsAuthenticated == false)
+        {*@
+            <a asp-controller="user" asp-action="Logout" style="color:white">Sign Out</a>
+        @*}*@
 
         @*<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
                     asp-fallback-src="~/lib/jquery/dist/jquery.min.js"

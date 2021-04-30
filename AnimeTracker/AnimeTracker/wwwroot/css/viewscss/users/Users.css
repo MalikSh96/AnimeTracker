@@ -76,7 +76,7 @@ body {
     font-style: italic;
 }
 
-.container a.editer, a.deleter {
+.container a.editer, a.deleter, p.uu {
     color: #FB3640;
 }
 

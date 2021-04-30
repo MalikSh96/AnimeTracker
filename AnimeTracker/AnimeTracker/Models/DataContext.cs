@@ -27,6 +27,6 @@ namespace AnimeTracker.Models
         public DbSet<Anime> Animes { get; set; }
 
         //This is a reference to your table content
-        public DbSet<User> User { get; set; }
+        public DbSet<AppUser> User { get; set; }
     }
 }

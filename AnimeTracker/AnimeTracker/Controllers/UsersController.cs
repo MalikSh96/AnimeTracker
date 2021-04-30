@@ -20,7 +20,7 @@
 //        ////[Route("~/")]
 //        //public IActionResult AllUsers()
 //        //{
-//        //    ViewBag.User = db.User.ToList();
+//        //    ViewBag.AppUser = db.AppUser.ToList();
 //        //    return View();
 //        //}
 
@@ -28,7 +28,7 @@
 //        //[Route("users")]
 //        //public async Task<IActionResult> Index()
 //        //{
-//        //    ViewBag.User = await _context.User.ToListAsync();
+//        //    ViewBag.AppUser = await _context.AppUser.ToListAsync();
 //        //    return View();
 //        //}
 
@@ -40,7 +40,7 @@
 //    //            return NotFound();
 //    //        }
 
-//    //        var user = await _context.User
+//    //        var user = await _context.AppUser
 //    //            .FirstOrDefaultAsync(m => m.user_id == id);
 //    //        if (user == null)
 //    //        {
@@ -61,7 +61,7 @@
 //    //    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 //    //    [HttpPost]
 //    //    [ValidateAntiForgeryToken]
-//    //    public async Task<IActionResult> Create([Bind("user_id,username,email,firstname,lastname,admin,password,profilepic_path")] User user)
+//    //    public async Task<IActionResult> Create([Bind("user_id,username,email,firstname,lastname,admin,password,profilepic_path")] AppUser user)
 //    //    {
 //    //        if (ModelState.IsValid)
 //    //        {
@@ -80,7 +80,7 @@
 //    //            return NotFound();
 //    //        }
 
-//    //        var user = await _context.User.FindAsync(id);
+//    //        var user = await _context.AppUser.FindAsync(id);
 //    //        if (user == null)
 //    //        {
 //    //            return NotFound();
@@ -93,7 +93,7 @@
 //    //    // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 //    //    [HttpPost]
 //    //    [ValidateAntiForgeryToken]
-//    //    public async Task<IActionResult> Edit(int id, [Bind("user_id,username,email,firstname,lastname,admin,password,profilepic_path")] User user)
+//    //    public async Task<IActionResult> Edit(int id, [Bind("user_id,username,email,firstname,lastname,admin,password,profilepic_path")] AppUser user)
 //    //    {
 //    //        if (id != user.user_id)
 //    //        {
@@ -131,7 +131,7 @@
 //    //            return NotFound();
 //    //        }
 
-//    //        var user = await _context.User
+//    //        var user = await _context.AppUser
 //    //            .FirstOrDefaultAsync(m => m.user_id == id);
 //    //        if (user == null)
 //    //        {
@@ -146,15 +146,15 @@
 //    //    [ValidateAntiForgeryToken]
 //    //    public async Task<IActionResult> DeleteConfirmed(int id)
 //    //    {
-//    //        var user = await _context.User.FindAsync(id);
-//    //        _context.User.Remove(user);
+//    //        var user = await _context.AppUser.FindAsync(id);
+//    //        _context.AppUser.Remove(user);
 //    //        await _context.SaveChangesAsync();
 //    //        return RedirectToAction(nameof(Index));
 //    //    }
 
 //    //    private bool UserExists(int id)
 //    //    {
-//    //        return _context.User.Any(e => e.user_id == id);
+//    //        return _context.AppUser.Any(e => e.user_id == id);
 //    //    }
 //    }
 //}

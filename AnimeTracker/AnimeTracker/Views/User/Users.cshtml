@@ -1,5 +1,7 @@
-﻿@model AnimeTracker.Models.User
+﻿@model AnimeTracker.Models.LoginViewModel
 @using Microsoft.AspNetCore.Http;
+@using System.Security.Claims;
+
 
 <br />
 <br />
@@ -10,102 +12,113 @@
     <title>User</title>
     <link href="~/css/viewscss/users/Users.css" rel="stylesheet" />
 </head>
-<body>
-    @*Welcome @Context.Session.GetString("username")*@
-    <div class="container">
-        <h3><b>List of all Users</b></h3>
-        <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-            <input type="text" id="Search" placeholder="Search" class="form-control" />
-        </div>
-        <a asp-controller="user" asp-action="create" class="adder">Add new User entry</a>
 
-        <table class="table table-striped" id="datatable">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>User ID</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Status as Admin</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var user in ViewBag.User)
-                {
-                    <tr class="Search">
-                        <td>
-                            @{
-                                if (!String.IsNullOrEmpty(user.profilepic_path))
-                                {
-                                    //we cut the "wwwroot" from the path to be able to display the images
-                                    var imageUrl = $"{user.profilepic_path.Substring(7)}";
-                                    <img src="@imageUrl" width="120" height="75" />
-                                }
-                            }
-                        </td>
-                        <td>@user.user_id</td>
-                        <td>@user.username</td>
-                        <td>@user.email</td>
-                        <td>@user.firstname</td>
-                        <td>@user.lastname</td>
-                        @if (!user.admin)
-                        {
-                            <td>Not an Admin</td>
-                        }
-                        else
-                        {
-                            <td>Admin</td>
-                        }
-                        <td>
-                            <a asp-controller="users"
-                               asp-action="Edit"
-                               asp-route-id="@user.user_id" class="editer">
-                                <b>Edit</b>
-                            </a>
-                            ||
-                            <a asp-controller="users"
-                               asp-action="Delete"
-                               asp-route-id="@user.user_id"
-                               onclick="return confirm('Are you sure?')" class="deleter">
-                                <b>Delete</b>
-                            </a>
-                        </td>
+@if (User.Identity.IsAuthenticated)
+{
+    <h3>Currently Signed In User</h3>
+    <p class="uu"><b>@User.Identity.Name.ToString()</b></p>
+
+    <body>
+        <div class="container">
+            <h3><b>List of all Users</b></h3>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                <input type="text" id="Search" placeholder="Search" class="form-control" />
+            </div>
+            <a asp-controller="user" asp-action="create" class="adder">Add new User entry</a>
+
+            <table class="table table-striped" id="datatable">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>User ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Status as Admin</th>
+                        <th></th>
                     </tr>
-                }
-            </tbody>
-        </table>
-        <a asp-controller="user" asp-action="Logout" style="color:white">Sign Out</a>
+                </thead>
+                <tbody>
+                    @foreach (var user in ViewBag.User)
+                    {
+                        <tr class="Search">
+                            <td>
+                                @{
+                                    if (!String.IsNullOrEmpty(user.profilepic_path))
+                                    {
+                                        //we cut the "wwwroot" from the path to be able to display the images
+                                        var imageUrl = $"{user.profilepic_path.Substring(7)}";
+                                        <img src="@imageUrl" width="120" height="75" />
+                                    }
+                                }
+                            </td>
+                            <td>@user.user_id</td>
+                            <td>@user.username</td>
+                            <td>@user.email</td>
+                            <td>@user.firstname</td>
+                            <td>@user.lastname</td>
+                            @if (!user.admin)
+                            {
+                                <td>Not an Admin</td>
+                            }
+                            else
+                            {
+                                <td>Admin</td>
+                            }
+                            <td>
+                                <a asp-controller="users"
+                                   asp-action="Edit"
+                                   asp-route-id="@user.user_id" class="editer">
+                                    <b>Edit</b>
+                                </a>
+                                ||
+                                <a asp-controller="users"
+                                   asp-action="Delete"
+                                   asp-route-id="@user.user_id"
+                                   onclick="return confirm('Are you sure?')" class="deleter">
+                                    <b>Delete</b>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <a asp-controller="user" asp-action="Logout" style="color:white">Sign Out</a>
 
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-        </script>
-        <script>
-            $(document).ready(function () {
-                function Contains(compare_one, compare_two) {
-                    if (compare_one.indexOf(compare_two) != -1)
-                        return true;
-                }
-                $("#Search").keyup(function () {
-                    //functionality that searches the data
-                    var search_text = $("#Search").val().toLowerCase();
-                    $(".Search").each(function () {
-                        if (!Contains($(this).text().toLowerCase(), search_text)) {
-                            $(this).hide();
-                        }
-                        else {
-                            $(this).show();
-                        }
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery"
+                    crossorigin="anonymous"
+                    integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+            </script>
+            <script>
+                $(document).ready(function () {
+                    function Contains(compare_one, compare_two) {
+                        if (compare_one.indexOf(compare_two) != -1)
+                            return true;
+                    }
+                    $("#Search").keyup(function () {
+                        //functionality that searches the data
+                        var search_text = $("#Search").val().toLowerCase();
+                        $(".Search").each(function () {
+                            if (!Contains($(this).text().toLowerCase(), search_text)) {
+                                $(this).hide();
+                            }
+                            else {
+                                $(this).show();
+                            }
+                        });
                     });
                 });
-            });
-        </script>
-    </div>
-</body>
+            </script>
+        </div>
+    </body>
+}
+else
+{
+    <h4 style="color: white">You are not Authorized to View this Page</h4>
+    <a href="https://localhost:5001/Redirections/AccessDenied">Access Denied</a>
+}
 </html>
