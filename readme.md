@@ -19,6 +19,7 @@ The most recent branch is:
 - **`logindev`** 
 - **`useredit`**
 - **`loginsession`**
+- **`navbar`**
 
 # Versions
 ### 25-04-2021
@@ -336,6 +337,9 @@ app.UseCookiePolicy(new CookiePolicyOptions()
 - Main coding happened in the respective `*Controllers*`.
 
 - Added `LoginViewModel` as form for *middle* way for the model `AppUser` to only access neccessary fields. 
+
+# Phase 20
+- Started some work on the navbar, added extra fields.
 
 ## License and Copyright
 © Malik Sharfo

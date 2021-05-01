@@ -137,7 +137,7 @@ namespace AnimeTracker.Controllers
                 if (!isValidPassword || user == null)
                 {
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    throw new ArgumentException("The entered username does not exist!");
+                    throw new ArgumentException("Invalid Attempt of Signing in!!");
                 }
                 var claims = new List<Claim>
                 {

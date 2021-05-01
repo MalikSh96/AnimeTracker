@@ -9,6 +9,7 @@ namespace AnimeTracker.Models
 {
     public class LoginViewModel
     {
+        [Key]
         [Required]
         [Display(Name = "Login Name")]
         public string username { get; set; }
