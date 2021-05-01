@@ -66,12 +66,12 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("<br />\r\n<br />\r\n\r\n<!DOCTYPE html>\r\n\r\n<html>\r\n");
             EndContext();
             BeginContext(114, 166, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d4cafa4e1fa4531b1c3d2ebcf1c8652", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c6ffb881a85d41fdb254da25fe38b8b9", async() => {
                 BeginContext(120, 93, true);
                 WriteLiteral("\r\n    <meta name=\"viewport\" content=\"width=device-width\" />\r\n    <title>Anime</title>\r\n\r\n    ");
                 EndContext();
                 BeginContext(213, 58, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "bb0943a1f798459e83d762706659485b", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "028a004985f54484aef983b893c45448", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -105,7 +105,7 @@ using Microsoft.AspNetCore.Http;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(282, 3472, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa1b2ed56f664b38b03b0d84725fa50c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "44698fd981ee4f27986149e5db76edaa", async() => {
                 BeginContext(288, 33, true);
                 WriteLiteral("\r\n    <p style=\"color: white\"><b>");
                 EndContext();
@@ -253,7 +253,7 @@ WriteAttributeValue("", 2151, anime.anime_id, 2151, 15, false);
                 WriteLiteral("            ");
                 EndContext();
                 BeginContext(2409, 77, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0b47f6cdf7af4a1b981cf5d02b658858", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "11781a81f0744832ba329164467b3c08", async() => {
                     BeginContext(2474, 8, true);
                     WriteLiteral("Sign Out");
                     EndContext();

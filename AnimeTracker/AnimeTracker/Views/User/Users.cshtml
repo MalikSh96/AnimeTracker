@@ -1,4 +1,4 @@
-﻿@model AnimeTracker.Models.LoginViewModel
+﻿@model AnimeTracker.Models.AppUser
 @using Microsoft.AspNetCore.Http;
 @using System.Security.Claims;
 
@@ -17,6 +17,7 @@
 {
     <h3>Currently Signed In User</h3>
     <p class="uu"><b>@User.Identity.Name.ToString()</b></p>
+    <a asp-controller="user" asp-action="Logout" style="color:white">Sign Out</a>
 
     <body>
         <div class="container">
@@ -85,7 +86,6 @@
                     }
                 </tbody>
             </table>
-            <a asp-controller="user" asp-action="Logout" style="color:white">Sign Out</a>
 
             <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
                     asp-fallback-src="~/lib/jquery/dist/jquery.min.js"

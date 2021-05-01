@@ -13,6 +13,8 @@
 {
     <h3>Currently Signed In User</h3>
     <p class="uu"><b>@User.Identity.Name.ToString()</b></p>
+    <a asp-controller="user" asp-action="Logout" style="color:white">Sign Out</a>
+
     <body>
         <div class="container">
             <h3><b>List of all Animes</b></h3>
@@ -81,6 +83,7 @@
                         </td>
                     </tr>*@
             </table>
+
             <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
                     asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                     asp-fallback-test="window.jQuery"

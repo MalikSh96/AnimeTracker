@@ -85,12 +85,12 @@ using System.Security.Claims;
             WriteLiteral("\r\n\r\n<br />\r\n<br />\r\n<!DOCTYPE html>\r\n<html>\r\n");
             EndContext();
             BeginContext(155, 168, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "986cea9eebdd41c1839a22a7a1830584", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bb31b303f12c40ad965f928d287401ff", async() => {
                 BeginContext(161, 90, true);
                 WriteLiteral("\r\n    <meta name=\"viewport\" content=\"width=device-width\" />\r\n    <title>User</title>\r\n    ");
                 EndContext();
                 BeginContext(251, 63, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "1af2a07ae54645908a241db407316d7f", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "ab8895189b38441982767c53808fc397", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -146,7 +146,7 @@ using System.Security.Claims;
             WriteLiteral("    ");
             EndContext();
             BeginContext(473, 4522, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "52049bdc78b84342aca50fa143bb85fa", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "030f89ecfa7d4e00b75a3b3793a770fa", async() => {
                 BeginContext(479, 345, true);
                 WriteLiteral(@"
         <div class=""container"">
@@ -158,7 +158,7 @@ using System.Security.Claims;
             ");
                 EndContext();
                 BeginContext(824, 81, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7a4f3f4bda3040429561b395f9dfb73c", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "22a9726eaf4c4735ad7b12102621fe25", async() => {
                     BeginContext(883, 18, true);
                     WriteLiteral("Add new User entry");
                     EndContext();
@@ -316,7 +316,7 @@ WriteAttributeValue("", 2011, imageUrl, 2011, 9, false);
                 WriteLiteral("                            <td>\r\n                                ");
                 EndContext();
                 BeginContext(2795, 247, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6f1459980d284d6fbc14b80c46660b30", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "40f6513258f34e9d8a68edfbe1b95e51", async() => {
                     BeginContext(2955, 83, true);
                     WriteLiteral("\r\n                                    <b>Edit</b>\r\n                                ");
                     EndContext();
@@ -354,7 +354,7 @@ WriteAttributeValue("", 2011, imageUrl, 2011, 9, false);
                 WriteLiteral("\r\n                                ||\r\n                                ");
                 EndContext();
                 BeginContext(3112, 330, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "288e861037f44e84a215afd84b007c26", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6e9e80c552454cd8ab52fa722e5d98f6", async() => {
                     BeginContext(3353, 85, true);
                     WriteLiteral("\r\n                                    <b>Delete</b>\r\n                                ");
                     EndContext();
@@ -401,7 +401,7 @@ WriteAttributeValue("", 2011, imageUrl, 2011, 9, false);
                 WriteLiteral("                </tbody>\r\n            </table>\r\n            ");
                 EndContext();
                 BeginContext(3593, 77, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c04330cc9af5486ea4d7273715d7a8ff", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7baceca967914a0f8e9865388bb1180f", async() => {
                     BeginContext(3658, 8, true);
                     WriteLiteral("Sign Out");
                     EndContext();
@@ -426,7 +426,7 @@ WriteAttributeValue("", 2011, imageUrl, 2011, 9, false);
                 WriteLiteral("\r\n\r\n            ");
                 EndContext();
                 BeginContext(3686, 373, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "44a0d135fae144b691d7691201455423", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "77ac2921bb3c4001bbd2bd92428862b0", async() => {
                     BeginContext(4036, 14, true);
                     WriteLiteral("\r\n            ");
                     EndContext();

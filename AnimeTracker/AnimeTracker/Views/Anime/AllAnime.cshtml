@@ -12,8 +12,12 @@
 
     <link href="~/css/viewscss/getall.css" rel="stylesheet" />
 </head>
+<p style="color: white"><b>@User.Identity.Name</b></p>
+@if (User.Identity.IsAuthenticated)
+{
+    <a asp-controller="user" asp-action="Logout" style="color:white">Sign Out</a>
+}
 <body>
-    <p style="color: white"><b>@User.Identity.Name</b></p>
     <div class="container">
         <h3><b>List of all Animes</b></h3>
         @*<div class="input-group">
@@ -63,8 +67,8 @@
             </tbody>
         </table>
         @*@if (User.Identity.IsAuthenticated == false)
-        {*@
-            <a asp-controller="user" asp-action="Logout" style="color:white">Sign Out</a>
+            {*@
+        @*<a asp-controller="user" asp-action="Logout" style="color:white">Sign Out</a>*@
         @*}*@
 
         @*<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
