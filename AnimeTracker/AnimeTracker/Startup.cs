@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AnimeTracker.Models;
-using AnimeTracker.Security;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -54,8 +53,6 @@ namespace AnimeTracker
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(2);
             });
-
-            //services.AddSingleton<DataProtection>(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -11,7 +11,7 @@ Therefore to try and keep you **up-to-date** with the project, see below header.
 **[ISSUE RESOLVED]**
 
 # Up-To-Date branches
-The most recent branch is:
+The most recent branches are:
 
 - **`new_master1`**
 - **`fallbackV1`**
@@ -20,6 +20,9 @@ The most recent branch is:
 - **`useredit`**
 - **`loginsession`**
 - **`navbar`**
+- **`userabilities`**
+
+#### ^ The last displayed branch is the most recent.
 
 # Versions
 ### 25-04-2021
@@ -340,6 +343,22 @@ app.UseCookiePolicy(new CookiePolicyOptions()
 
 # Phase 20
 - Started some work on the navbar, added extra fields.
+
+- Worked on adding functionalities for *non-admin* users to change their information. So far it is 
+possible to edit their account information.
+
+### Issue with Account Editing
+- For now there's a problem, where users are able to edit their information, to be the same as other existing
+users information, such as `username` and `email`. Same issue is present with `animename`.
+
+### Issue with Users remaining signed in
+- Users who closes their tab or closes their browser, still remain signed in, even though not having *ticked*
+the checkbox for remaining signed in.
+
+#### Minor
+- Need to work on avoiding **URL** *tampering* or forgery.
+
+- Go more in the direction of `**DTO**`.
 
 ## License and Copyright
 © Malik Sharfo

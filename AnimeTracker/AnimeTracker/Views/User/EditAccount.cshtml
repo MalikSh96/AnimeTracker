@@ -14,7 +14,7 @@
 {
     <body>
         <a href="##" onClick="history.go(-1); return false;" class="bodylink"> Return to main page</a>
-        <form method="post" asp-controller="user" asp-action="EditAccount" asp-route-id="encryptedUsername" enctype="multipart/form-data">
+        <form method="post" asp-controller="user" asp-action="EditAccount" enctype="multipart/form-data">
             <table class="container">
                 <tr>
                     <td>Username</td>
@@ -54,7 +54,7 @@
                     <td>&nbsp;</td>
                     <td>
                         <input type="submit" value="Save" />
-                        <input type="hidden" asp-for="username" />
+                        <input type="hidden" asp-for="user_id" />
                     </td>
                 </tr>
             </table>

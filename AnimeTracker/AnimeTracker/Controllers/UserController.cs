@@ -25,10 +25,6 @@ namespace AnimeTracker.Controllers
         private DataContext db = new DataContext();
         private IHostingEnvironment Environment;
 
-
-        //private readonly UserManager<AppUser> userManager;
-        //private readonly SignInManager<AppUser> signInManager;
-
         public UserController(IHostingEnvironment _environment)
         {
             Environment = _environment;
@@ -263,7 +259,7 @@ namespace AnimeTracker.Controllers
 
         [HttpGet]
         [Route("MyAccount/{username}")]
-        public IActionResult MyAccount()
+        public IActionResult MyAccount(int id)
         {
             var user = User.Identity.Name;
             if (user == null)
@@ -295,10 +291,12 @@ namespace AnimeTracker.Controllers
 
         [HttpPost]
         [Route("EditAccount/{username}")]
-        public IActionResult EditAccount(AppUser user, IFormFile file)
+        public async Task<IActionResult> EditAccount(AppUser user, IFormFile file)
         {
-            string dbName = user.username;
-            var dbuser = db.User.AsNoTracking().FirstOrDefault(u => u.username == dbName);
+            var name = User.Identity.Name;
+            var locateInDb = await db.User.AsNoTracking().FirstOrDefaultAsync(us => us.username == name);
+            //int dbId = locateInDb.user_id;
+            //var dbuser = db.User.AsNoTracking().FirstOrDefault(u => u.user_id == dbId);
             string username = user.username;
             string env = Environment.WebRootPath;
             string relpath = username;
@@ -308,21 +306,21 @@ namespace AnimeTracker.Controllers
                 DirectoryInfo dir = di.CreateSubdirectory(user.username);
             }
             string combPath = Path.Combine($"wwwroot/userimages/{relpath}/");
-            string pw = dbuser.password;
+            string pw = locateInDb.password;
             if (file != null && file.Length > 0)
             {
                 var save = Path.Combine(combPath, file.FileName);
-                var stream = new FileStream(save, FileMode.OpenOrCreate);
-                file.CopyTo(stream);
                 user.password = pw;
                 user.profilepic_path = save;
                 db.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 db.SaveChanges();
+                var stream = new FileStream(save, FileMode.OpenOrCreate);
+                file.CopyTo(stream);
             }
             else
             {
                 user.password = pw;
-                user.profilepic_path = dbuser.profilepic_path;
+                user.profilepic_path = locateInDb.profilepic_path;
                 db.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 db.SaveChanges();
             }
