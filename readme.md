@@ -358,7 +358,7 @@ the checkbox for remaining signed in.
 #### Minor
 - Need to work on avoiding **URL** *tampering* or forgery.
 
-- Go more in the direction of `**DTO**`.
+- Go more in the direction of **`DTO`**.
 
 ## License and Copyright
 © Malik Sharfo
