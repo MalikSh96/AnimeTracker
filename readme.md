@@ -352,7 +352,7 @@ possible to edit their account information.
 users information, such as `username` and `email`. Same issue is present with `animename`.
 
 ### Issue with Users remaining signed in
-- Users who closes their tab or closes their browser, still remain signed in, even though not having *ticked*
+- Users who closes their tab or closes their browser still remain signed in, even though **not** having *ticked*
 the checkbox for remaining signed in.
 
 #### Minor
