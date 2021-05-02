@@ -64,7 +64,7 @@ using AnimeTracker.Models;
             WriteLiteral("<div class=\"text-center\">\r\n    <h2>Access Denied!</h2>\r\n    <h5>You do not have access to this resource.</h5>\r\n    ");
             EndContext();
             BeginContext(167, 73, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "c01f32e475a248b98d372a5f104d88b0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "742ccdd3f9c64cb284c576e7bba66032", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

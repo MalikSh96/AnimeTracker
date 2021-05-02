@@ -17,6 +17,9 @@ namespace AnimeTracker.Models
         public int user_id { get; set; }
 
         public string username { get; set; }
+        [NotMapped] //we don't want this to be mapped to any column in our db
+        public string encryptedUsername { get; set; }
+
         public string email { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }

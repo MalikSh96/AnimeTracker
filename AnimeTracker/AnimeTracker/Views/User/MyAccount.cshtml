@@ -1,0 +1,47 @@
+﻿@model AnimeTracker.Models.AppUser
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>My Account</title>
+
+    <link href="~/css/viewscss/users/account.css" rel="stylesheet" />
+</head>
+<h1>Your Account Info</h1>
+@if (User.Identity.IsAuthenticated)
+{
+    <body>
+        <div class="btncontainer">
+            <a asp-controller="users" asp-action="EditAccount"
+               asp-route-id="@User.Identity.Name" class="btn-blue">
+                Edit Account
+            </a>
+            <!--All account deletion requests are permanent. You cannot reactivate a 
+                deleted account or recover any account information after requesting a deletion.
+                You must save any information you would like to keep before requesting the deletion.
+            -->
+            <a class="btn-red">Delete Account</a>
+        </div>
+        <div class="c">
+            @{
+                var data = ViewData.Model;
+            }
+            <h4><b>Username</b></h4>
+            <p>@data.username</p>
+            <h4><b>First Name</b></h4>
+            <p>@data.firstname</p>
+            <h4><b>Last Name</b></h4>
+            <p>@data.lastname</p>
+            <h4><b>Email</b></h4>
+            <p>@data.email</p>
+            <br />
+            <br />
+            @{
+                var img = data.profilepic_path.Substring(7);
+                <img src="@img" width="400" height="400" />
+            }
+        </div>
+    </body>
+}
+</html>

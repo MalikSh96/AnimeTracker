@@ -265,10 +265,11 @@ namespace AnimeTracker.Controllers
                     //we start our modification here
                     db.Entry(anime).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 }
+                
                 db.SaveChanges();
             }
             else
-            {
+            {            
                 anime.img_path = dbAnime.img_path;
                 db.Entry(anime).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 db.SaveChanges();

@@ -19,10 +19,10 @@ C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracke
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\AnimeTracker.dll
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\AnimeTracker.pdb
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\AnimeTracker.csproj.CopyComplete
-C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\AnimeTracker.csprojAssemblyReference.cache
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\bin\Debug\netcoreapp2.1\appsettings.Development.json
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\bin\Debug\netcoreapp2.1\appsettings.json
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\bin\Debug\netcoreapp2.1\libman.json
+C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\AnimeTracker.csprojAssemblyReference.cache
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\Anime\Add.cshtml.g.cs
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\Anime\AllAnime.cshtml.g.cs
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\Anime\Edit.cshtml.g.cs
@@ -39,7 +39,9 @@ C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracke
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\User\Edit.cshtml.g.cs
+C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\User\EditAccount.cshtml.g.cs
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\User\Login.cshtml.g.cs
+C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\User\MyAccount.cshtml.g.cs
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\User\Register.cshtml.g.cs
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\User\Users.cshtml.g.cs
 C:\Users\malik\OneDrive\Documents\Projects\AnimeProject\AnimeTracker\AnimeTracker\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.cshtml.g.cs

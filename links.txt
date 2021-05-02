@@ -76,6 +76,8 @@ https://www.youtube.com/watch?v=8eAD_UGLYaY&ab_channel=ThumbIKR-ProgrammingExamp
 
 https://www.youtube.com/watch?v=Z1VB6B-cGYo&ab_channel=kudvenkat
 
+https://www.youtube.com/watch?v=gHxgL39d9FM&ab_channel=CodeItUpwithIvo
+
 //Styling links
 https://freshdesignweb.com/free-css-tables/
 
@@ -84,3 +86,5 @@ https://codepen.io/heypablete/pen/qdIsm
 https://www.w3schools.com/cssref/css_colors.asp
 
 https://coolors.co/
+
+https://codepen.io/lawnch/details/uhyLG

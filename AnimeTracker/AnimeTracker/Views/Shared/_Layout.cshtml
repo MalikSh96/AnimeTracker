@@ -42,6 +42,13 @@
                         {
                             <li><a asp-area="" asp-controller="Anime" asp-action="Index">Anime Handler</a></li>
                             <li><a asp-area="" asp-controller="Anime" asp-action="AddAnime">Add Anime</a></li>
+                            <li>
+                                <a asp-controller="users"
+                                   asp-action="MyAccount"
+                                   asp-route-id="@User.Identity.Name">
+                                   My Account
+                                </a>
+                            </li>
                             <li><a asp-area="" asp-controller="Users" asp-action="">Users</a></li>
                         }
                     }

@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
+using Microsoft.Extensions.FileProviders;
 
 namespace AnimeTracker.Controllers
 {
@@ -23,6 +24,7 @@ namespace AnimeTracker.Controllers
     {
         private DataContext db = new DataContext();
         private IHostingEnvironment Environment;
+
 
         //private readonly UserManager<AppUser> userManager;
         //private readonly SignInManager<AppUser> signInManager;
@@ -106,6 +108,7 @@ namespace AnimeTracker.Controllers
                 //return RedirectToAction(nameof(Users));
             }
             //we redirect back to frontpage
+            //change this to a "welcome" view later on
             return RedirectToAction(nameof(Users));
             //return View(user);
         }
@@ -256,6 +259,74 @@ namespace AnimeTracker.Controllers
             }
 
             return RedirectToAction(nameof(Users));
+        }
+
+        [HttpGet]
+        [Route("MyAccount/{username}")]
+        public IActionResult MyAccount()
+        {
+            var user = User.Identity.Name;
+            if (user == null)
+            {
+                return RedirectToAction(nameof(Login));
+            }
+            //We search for the authenticated user in the db, to get their admin role
+            //var searchedUser = db.User.FirstOrDefault(u => u.username == user);
+            //string username = searchedUser.username;
+            return View(nameof(MyAccount), db.User.FirstOrDefault(u => u.username == user));
+        }
+
+        [HttpGet]
+        [Route("EditAccount/{username}")]
+        public IActionResult EditAccount(AppUser user)
+        {
+            var getUser = User.Identity.Name;
+            if (getUser == null)
+            {
+                return RedirectToAction("Login", "Users", null);
+            }
+            var searchedUser = db.User.FirstOrDefault(u => u.username == getUser);
+            string validUser = searchedUser.username;
+            if (validUser.Equals(User.Identity.Name))
+                return View("EditAccount", searchedUser);
+            else
+                return RedirectToAction("AccessDenied", "ErrorHandler", null);
+        }
+
+        [HttpPost]
+        [Route("EditAccount/{username}")]
+        public IActionResult EditAccount(AppUser user, IFormFile file)
+        {
+            string dbName = user.username;
+            var dbuser = db.User.AsNoTracking().FirstOrDefault(u => u.username == dbName);
+            string username = user.username;
+            string env = Environment.WebRootPath;
+            string relpath = username;
+            DirectoryInfo di = new DirectoryInfo(env + "/userimages/" + relpath);
+            if (!di.Exists)
+            {
+                DirectoryInfo dir = di.CreateSubdirectory(user.username);
+            }
+            string combPath = Path.Combine($"wwwroot/userimages/{relpath}/");
+            string pw = dbuser.password;
+            if (file != null && file.Length > 0)
+            {
+                var save = Path.Combine(combPath, file.FileName);
+                var stream = new FileStream(save, FileMode.OpenOrCreate);
+                file.CopyTo(stream);
+                user.password = pw;
+                user.profilepic_path = save;
+                db.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                db.SaveChanges();
+            }
+            else
+            {
+                user.password = pw;
+                user.profilepic_path = dbuser.profilepic_path;
+                db.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction(nameof(MyAccount));
         }
 
         [HttpGet]

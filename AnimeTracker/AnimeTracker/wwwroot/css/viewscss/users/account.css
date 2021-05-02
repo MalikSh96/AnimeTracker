@@ -1,0 +1,79 @@
+﻿/*styling used: https://codepen.io/lawnch/details/uhyLG */
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.42em;
+    color: #A7A1AE;
+    background-color: #1F2739;
+}
+
+.c {
+    padding-bottom: 2%;
+    padding-top: 2%;
+    padding-left: 2%;
+    font-weight: bold;
+    font-style: italic;
+}
+
+h1 {
+    color: #4DC3FA; 
+}
+
+h4 {
+    color: #FB667A;
+}
+
+p {
+    color: white;
+}
+
+[class*='btn-'] {
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+    color: #fff;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding: 8px 16px;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: background-color 0.1s linear;
+    -moz-transition: background-color 0.1s linear;
+    -o-transition: background-color 0.1s linear;
+    transition: background-color 0.1s linear;
+}
+
+    [class*='btn-']:hover {
+        cursor: pointer;
+    }
+
+.btn-blue {
+    background-color: rgb( 51, 102, 204 );
+    border: 1px solid rgb( 44, 91, 104 );
+}
+
+    .btn-blue:hover {
+        background-color: rgb( 58, 131, 213 );
+        color: #fff;
+    }
+
+    .btn-blue:active {
+        background-color: rgb( 42, 91, 191 );
+    }
+
+.btn-red {
+    background-color: rgb( 207, 56, 91 );
+    border: 1px solid rgb( 187, 40, 74 );
+}
+
+    .btn-red:hover {
+        background-color: rgb( 227, 77, 130 );
+        color: #fff;
+    }
+
+    .btn-red:active {
+        background-color: rgb( 187, 40, 74 );
+    }
