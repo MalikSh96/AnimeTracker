@@ -40,7 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\userimages\" />
+    <Folder Include="wwwroot\animeimages\" />
   </ItemGroup>
 
 </Project>

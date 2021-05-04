@@ -201,59 +201,110 @@ namespace AnimeTracker.Controllers
 
         [HttpPost]
         [Route("Edit/{user_id}")]
-        public IActionResult Edit(int user_id, AppUser user, IFormFile file)
+        public async Task<IActionResult> Edit(int user_id, AppUser user, IFormFile file)
         {
             int dbId = user.user_id;
             //We use AsNoTracking, as we only need to read the data and not update it
             var dbuser = db.User.AsNoTracking().FirstOrDefault(u => u.user_id == dbId);
             string username = user.username;
-
-            //we get the absolute path and store it in env
-            string env = Environment.WebRootPath;
-            string relpath = username;
-            //we make use of the above variable to combine our absolute path with its subfolder
-            DirectoryInfo di = new DirectoryInfo(env + "/userimages/" + relpath);
-
-            /*
-             If the directory corresponding to the updated username, when editing their name, 
-             does not exist, we create a folder for
-             them and store their picture, when editing, in there.
-            */
-            if (!di.Exists)
-            {
-                //now that we have combined our pathes, we make a subfolder dynamically based on the input
-                DirectoryInfo dir = di.CreateSubdirectory(user.username);
-            }
-
-            string combPath = Path.Combine($"wwwroot/userimages/{relpath}/");
-            //we keep track of the users hashed db password
+            string email = user.email;
+            var checkForExisting = await db.User.AsNoTracking().Where(u => u.username == username
+                || u.email == email).FirstOrDefaultAsync();
             string pw = dbuser.password;
 
-            if (file != null && file.Length > 0)
+            if (checkForExisting != null)
             {
-                //we combine our database path (path) and combine it with our set string
-                var save = Path.Combine(combPath, file.FileName);
-                //if the file already exist, we open it, otherwise we create one
-                var stream = new FileStream(save, FileMode.OpenOrCreate);
-                file.CopyTo(stream);
+                var existingUser = checkForExisting.user_id; 
+                if (existingUser != dbuser.user_id)
+                    throw new ArgumentException("Either the username or email already exist");
 
-                //We need to maintain the users password
-                user.password = pw;
-                //we store our new path to be our "save" 
-                user.profilepic_path = save;
-                //we start our modification here
-                db.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                db.SaveChanges();
+                //we get the absolute path and store it in env
+                string env = Environment.WebRootPath;
+                string relpath = username;
+
+                ////we make use of the above variable to combine our absolute path with its subfolder
+                //DirectoryInfo di = new DirectoryInfo(env + "/userimages/" + relpath);
+
+                ///*
+                // If the directory corresponding to the updated username, when editing their name, 
+                // does not exist, we create a folder for
+                // them and store their picture, when editing, in there.
+                //*/
+                //if (!di.Exists)
+                //{
+                //    //now that we have combined our pathes, we make a subfolder dynamically based on the input
+                //    DirectoryInfo dir = di.CreateSubdirectory(user.username);
+                //}
+
+                string combPath = Path.Combine($"wwwroot/userimages/{relpath}/");
+                //we keep track of the users hashed db password
+
+                if (file != null && file.Length > 0)
+                {
+                    //we make use of the above variable to combine our absolute path with its subfolder
+                    DirectoryInfo di = new DirectoryInfo(env + "/userimages/" + relpath);
+
+                    /*
+                     If the directory corresponding to the updated username, when editing their name, 
+                     does not exist, we create a folder for
+                     them and store their picture, when editing, in there.
+                    */
+                    if (!di.Exists)
+                    {
+                        //now that we have combined our pathes, we make a subfolder dynamically based on the input
+                        DirectoryInfo dir = di.CreateSubdirectory(user.username);
+                    }
+                    //we combine our database path (path) and combine it with our set string
+                    var save = Path.Combine(combPath, file.FileName);
+                    //if the file already exist, we open it, otherwise we create one
+                    var stream = new FileStream(save, FileMode.OpenOrCreate);
+                    file.CopyTo(stream);
+
+                    //We need to maintain the users password
+                    user.password = pw;
+                    //we store our new path to be our "save" 
+                    user.profilepic_path = save;
+                    //we start our modification here
+                    db.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    //We need to maintain the users password
+                    user.password = pw;
+                    user.profilepic_path = dbuser.profilepic_path;
+                    db.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    db.SaveChanges();
+                }
             }
             else
             {
-                //We need to maintain the users password
-                user.password = pw;
-                user.profilepic_path = dbuser.profilepic_path;
-                db.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                db.SaveChanges();
+                string env = Environment.WebRootPath;
+                string relpath = username;
+                string combPath = Path.Combine($"wwwroot/userimages/{relpath}/");
+                if (file != null && file.Length > 0)
+                {
+                    DirectoryInfo di = new DirectoryInfo(env + "/userimages/" + relpath);
+                    if (!di.Exists)
+                    {
+                        DirectoryInfo dir = di.CreateSubdirectory(user.username);
+                    }
+                    var save = Path.Combine(combPath, file.FileName);
+                    var stream = new FileStream(save, FileMode.OpenOrCreate);
+                    file.CopyTo(stream);
+                    user.password = pw;
+                    user.profilepic_path = save;
+                    db.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    user.password = pw;
+                    user.profilepic_path = dbuser.profilepic_path;
+                    db.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    db.SaveChanges();
+                }
             }
-
             return RedirectToAction(nameof(Users));
         }
 
@@ -298,33 +349,91 @@ namespace AnimeTracker.Controllers
             //int dbId = locateInDb.user_id;
             //var dbuser = db.User.AsNoTracking().FirstOrDefault(u => u.user_id == dbId);
             string username = user.username;
-            string env = Environment.WebRootPath;
-            string relpath = username;
-            DirectoryInfo di = new DirectoryInfo(env + "/userimages/" + relpath);
-            if (!di.Exists)
+            string email = user.email;
+            bool role = locateInDb.admin;
+            /*
+            We need to compare if the changes that may be made to either username/email, already exists
+            with another user in the database.
+            So we firstly grab the user if either username/email matches with a database user.
+            Then we grab the ID of that existing user from the database, and compare it with the
+            ID of our signed in user.
+            If the IDs of both are different, and changes are made to either username/email, we will not
+            update the database, due to another user already having the username/email.
+            IF the existing user check returns the same user ID, and both IDs matches. We proceed.
+             */ 
+            var checkForExisting = await db.User.AsNoTracking().Where(u => u.username == username
+                || u.email == email).FirstOrDefaultAsync();
+            if (checkForExisting != null)
             {
-                DirectoryInfo dir = di.CreateSubdirectory(user.username);
-            }
-            string combPath = Path.Combine($"wwwroot/userimages/{relpath}/");
-            string pw = locateInDb.password;
-            if (file != null && file.Length > 0)
-            {
-                var save = Path.Combine(combPath, file.FileName);
-                user.password = pw;
-                user.profilepic_path = save;
-                db.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                db.SaveChanges();
-                var stream = new FileStream(save, FileMode.OpenOrCreate);
-                file.CopyTo(stream);
+                var existingUser = checkForExisting.user_id;
+                if (existingUser != locateInDb.user_id)
+                    throw new ArgumentException("Either the username or email already exist");
+                string env = Environment.WebRootPath;
+                string relpath = username;
+                //DirectoryInfo di = new DirectoryInfo(env + "/userimages/" + relpath);
+                //if (!di.Exists)
+                //{
+                //    DirectoryInfo dir = di.CreateSubdirectory(user.username);
+                //}
+                string combPath = Path.Combine($"wwwroot/userimages/{relpath}/");
+                string pw = locateInDb.password;
+                if (file != null && file.Length > 0)
+                {
+                    DirectoryInfo di = new DirectoryInfo(env + "/userimages/" + relpath);
+                    if (!di.Exists)
+                    {
+                        DirectoryInfo dir = di.CreateSubdirectory(user.username);
+                    }
+                    var save = Path.Combine(combPath, file.FileName);
+                    user.password = pw;
+                    user.admin = role;
+                    user.profilepic_path = save;
+                    db.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    db.SaveChanges();
+                    var stream = new FileStream(save, FileMode.OpenOrCreate);
+                    file.CopyTo(stream);
+                }
+                else
+                {
+                    user.password = pw;
+                    user.admin = role;
+                    user.profilepic_path = locateInDb.profilepic_path;
+                    db.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    db.SaveChanges();
+                }
             }
             else
             {
-                user.password = pw;
-                user.profilepic_path = locateInDb.profilepic_path;
-                db.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                db.SaveChanges();
+                string env = Environment.WebRootPath;
+                string relpath = username;
+                string combPath = Path.Combine($"wwwroot/userimages/{relpath}/");
+                string pw = locateInDb.password;
+                if (file != null && file.Length > 0)
+                {
+                    DirectoryInfo di = new DirectoryInfo(env + "/userimages/" + relpath);
+                    if (!di.Exists)
+                    {
+                        DirectoryInfo dir = di.CreateSubdirectory(user.username);
+                    }
+                    var save = Path.Combine(combPath, file.FileName);
+                    user.password = pw;
+                    user.admin = role;
+                    user.profilepic_path = save;
+                    db.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    db.SaveChanges();
+                    var stream = new FileStream(save, FileMode.OpenOrCreate);
+                    file.CopyTo(stream);
+                }
+                else
+                {
+                    user.password = pw;
+                    user.admin = role;
+                    user.profilepic_path = locateInDb.profilepic_path;
+                    db.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    db.SaveChanges();
+                }
             }
-            return RedirectToAction(nameof(MyAccount));
+            return RedirectToAction("getall", "Anime", null);
         }
 
         [HttpGet]

@@ -223,58 +223,105 @@ namespace AnimeTracker.Controllers
         //[Authorize]
         [HttpPost]
         [Route("edit/{anime_id}")]
-        public IActionResult Edit(int anime_id, Anime anime, IEnumerable<IFormFile> files)
+        public async Task<IActionResult> Edit(int anime_id, Anime anime, IEnumerable<IFormFile> files)
         {
             int aId = anime.anime_id;
             //we need to make a reference to the data in the database, to be able to retrieve unedited data
             //We use AsNoTracking, as we only need to read the data and not update it
             var dbAnime = db.Animes.AsNoTracking().FirstOrDefault(an => an.anime_id == aId);
-            string a = anime.animename; 
-
-            //we get the absolute path and store it in env
-            string env = Environment.WebRootPath;
-            string relpath = a;
-            //we make use of the above variable to combine our absolute path with its subfolder
-            DirectoryInfo di = new DirectoryInfo(env + "/animeimages/" + relpath);
-
-            /*
-             If the directory corresponding to the updated anime 
-             show, when editing its name, does not exist, we create a folder for
-             it and store its images, when editing, in there
-            */
-            if (!di.Exists)
+            string a = anime.animename;
+            var checkForExisting = await db.Animes.AsNoTracking()
+                .Where(an => an.animename == a).FirstOrDefaultAsync();
+            if (checkForExisting != null)
             {
-                //now that we have combined our pathes, we make a subfolder dynamically based on the input
-                DirectoryInfo dir = di.CreateSubdirectory(anime.animename);
-            }
+                var existingAnime = checkForExisting.anime_id;
+                if (existingAnime != dbAnime.anime_id)
+                    throw new ArgumentException("The name of the Show already Exist");
 
-            string combPath = Path.Combine($"wwwroot/animeimages/{relpath}/");
-            bool isNotEmpty = files.Any();
-            if (isNotEmpty)
-            {
-                foreach (var file in files)
+                //we get the absolute path and store it in env
+                string env = Environment.WebRootPath;
+                string relpath = a;
+                //we make use of the above variable to combine our absolute path with its subfolder
+                DirectoryInfo di = new DirectoryInfo(env + "/animeimages/" + relpath);
+
+                ///*
+                // If the directory corresponding to the updated anime 
+                // show, when editing its name, does not exist, we create a folder for
+                // it and store its images, when editing, in there
+                //*/
+                //if (!di.Exists)
+                //{
+                //    //now that we have combined our pathes, we make a subfolder dynamically based on the input
+                //    DirectoryInfo dir = di.CreateSubdirectory(anime.animename);
+                //}
+
+                string combPath = Path.Combine($"wwwroot/animeimages/{relpath}/");
+                bool isNotEmpty = files.Any();
+                if (isNotEmpty)
                 {
-                    //we combine our database path (path) and combine it with our set string
-                    var save = Path.Combine(combPath, file.FileName);
-                    //if the file already exist, we open it, otherwise we create one
-                    var stream = new FileStream(save, FileMode.OpenOrCreate);
-                    file.CopyTo(stream);
+                    /*
+                 If the directory corresponding to the updated anime 
+                 show, when editing its name, does not exist, we create a folder for
+                 it and store its images, when editing, in there
+                */
+                    if (!di.Exists)
+                    {
+                        //now that we have combined our pathes, we make a subfolder dynamically based on the input
+                        DirectoryInfo dir = di.CreateSubdirectory(anime.animename);
+                    }
+                    foreach (var file in files)
+                    {
+                        //we combine our database path (path) and combine it with our set string
+                        var save = Path.Combine(combPath, file.FileName);
+                        //if the file already exist, we open it, otherwise we create one
+                        var stream = new FileStream(save, FileMode.OpenOrCreate);
+                        file.CopyTo(stream);
 
-                    //we store our new path to be our "save" 
-                    anime.img_path = save;
-                    //we start our modification here
-                    db.Entry(anime).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                        //we store our new path to be our "save" 
+                        anime.img_path = save;
+                        //we start our modification here
+                        db.Entry(anime).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    }
+
+                    db.SaveChanges();
                 }
-                
-                db.SaveChanges();
+                else
+                {
+                    anime.img_path = dbAnime.img_path;
+                    db.Entry(anime).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    db.SaveChanges();
+                }
             }
             else
-            {            
-                anime.img_path = dbAnime.img_path;
-                db.Entry(anime).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                db.SaveChanges();
+            {
+                string env = Environment.WebRootPath;
+                string relpath = a;
+                DirectoryInfo di = new DirectoryInfo(env + "/animeimages/" + relpath);
+                string combPath = Path.Combine($"wwwroot/animeimages/{relpath}/");
+                bool isNotEmpty = files.Any();
+                if (isNotEmpty)
+                {
+                    if (!di.Exists)
+                    {
+                        DirectoryInfo dir = di.CreateSubdirectory(anime.animename);
+                    }
+                    foreach (var file in files)
+                    {
+                        var save = Path.Combine(combPath, file.FileName);
+                        var stream = new FileStream(save, FileMode.OpenOrCreate);
+                        file.CopyTo(stream);
+                        anime.img_path = save;
+                        db.Entry(anime).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    }
+                    db.SaveChanges();
+                }
+                else
+                {
+                    anime.img_path = dbAnime.img_path;
+                    db.Entry(anime).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    db.SaveChanges();
+                }
             }
-
             return RedirectToAction(nameof(Index));
         }
 
