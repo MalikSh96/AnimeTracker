@@ -357,7 +357,7 @@ existing data in the `database`.
 
 ### Issue with Users remaining signed in
 - Users who closes their tab or closes their browser still remain signed in, even though **not** having *ticked*
-the checkbox for remaining signed in. Make so that users only remain signed in, if they `check` the 
+the checkbox for remaining signed in. Make so that users only remain signed in, if they `check` the checkbox. 
 
 - Issue when changing a `username`, make so that you either *automatically* sign out, to update the webpage
 to register the name change. Or find a way to make that the website recognizes the name change directly.
