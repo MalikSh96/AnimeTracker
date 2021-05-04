@@ -347,13 +347,21 @@ app.UseCookiePolicy(new CookiePolicyOptions()
 - Worked on adding functionalities for *non-admin* users to change their information. So far it is 
 possible to edit their account information.
 
-### Issue with Account Editing
-- For now there's a problem, where users are able to edit their information, to be the same as other existing
-users information, such as `username` and `email`. Same issue is present with `animename`.
+# Phase 21
+- Worked on fixing the possibilites for users to change their `username` and `email` without conflicting with 
+existing data in the `database`.
+
+- Fixed the name conflicting issue with shows too. Now able to change name of shows.
+
+- A lot of recurring code present in the `edit` functionalities in `AnimeController.cs` and `UserController.cs` 
 
 ### Issue with Users remaining signed in
 - Users who closes their tab or closes their browser still remain signed in, even though **not** having *ticked*
-the checkbox for remaining signed in.
+the checkbox for remaining signed in. Make so that users oly remain signed in, if they `check` the 
+
+- Issue when changing a `username`, make so that you either *automatically* sign out, to update the webpage
+to register the name change. Or find a way to make that the website recognizes the name change directly.
+Find a way for the `User.Identity.Authentication` to recognize a change.
 
 #### Minor
 - Need to work on avoiding **URL** *tampering* or forgery.
