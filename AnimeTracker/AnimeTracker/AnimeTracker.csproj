@@ -25,9 +25,6 @@
     <Content Update="Views\Anime\AllAnime.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="Views\User\EditAccount.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
     <Content Update="Views\User\Edit.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -41,6 +38,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\animeimages\" />
+    <Folder Include="wwwroot\userimages\" />
   </ItemGroup>
 
 </Project>

@@ -305,7 +305,9 @@ namespace AnimeTracker.Controllers
                     db.SaveChanges();
                 }
             }
-            return RedirectToAction(nameof(Users));
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction(nameof(Login));
+            //return RedirectToAction(nameof(Users));
         }
 
         [HttpGet]
@@ -433,12 +435,14 @@ namespace AnimeTracker.Controllers
                     db.SaveChanges();
                 }
             }
-            return RedirectToAction("getall", "Anime", null);
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction(nameof(Login));
+            //return RedirectToAction("getall", "Anime", null);
         }
 
         [HttpGet]
         [Route("delete/{user_id}")]
-        public IActionResult DeleteUser(int user_id)
+        public async Task<IActionResult> DeleteUser(int user_id)
         {
             //Authenticated user
             var getUser = User.Identity.Name;
@@ -447,12 +451,12 @@ namespace AnimeTracker.Controllers
                 return RedirectToAction(nameof(Login));
             }
             //We search for the authenticated user in the db, to get their admin role
-            var searchedUser = db.User.FirstOrDefault(u => u.username == getUser);
+            var searchedUser = await db.User.FirstOrDefaultAsync(u => u.username == getUser);
             bool validAdmin = searchedUser.admin;
             if (validAdmin)
             {
                 //we need to reference the related username to the id
-                var user = db.User.Find(user_id);
+                var user = await db.User.FindAsync(user_id);
                 //we store the connected anime name to the id in our string
                 string u = user.username;
                 //this is just an extra step, but we store our "a" string in our folderpath string
@@ -480,17 +484,68 @@ namespace AnimeTracker.Controllers
                 //    dir.Delete(false);
                 //}
 
-                db.User.Remove(db.User.Find(user_id));
+                db.User.Remove(await db.User.FindAsync(user_id));
                 db.SaveChanges();
                 //we delete the subfolder related to the removed anime
                 Directory.Delete(path, true);
                 return RedirectToAction(nameof(Users));
+            }
+            else if(searchedUser.username.Equals(getUser))
+            {
+                var user = await db.User.FindAsync(user_id);
+                string u = user.username;
+                string folderpath = u;
+                string path = Path.Combine($"wwwroot/userimages/{folderpath}/");
+                DirectoryInfo info = new DirectoryInfo(path);
+                foreach (FileInfo file in info.EnumerateFiles())
+                {
+                    file.Delete();
+                }
+                db.User.Remove(await db.User.FindAsync(user_id));
+                db.SaveChanges();
+                Directory.Delete(path, true);
+                await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+                return RedirectToAction("getall", "Anime", null);
             }
             else
             {
                 return RedirectToAction("AccessDenied", "ErrorHandler", null);
             }
         }
+
+        //[HttpGet]
+        //[Route("delete/{user_id}")]
+        //public async Task<IActionResult> Delete(int user_id)
+        //{
+        //    var getUser = User.Identity.Name;
+        //    if (getUser == null)
+        //    {
+        //        return RedirectToAction(nameof(Login));
+        //    }
+        //    var searchedUser = await db.User.FirstOrDefaultAsync(u => u.username == getUser);
+        //    if (searchedUser.Equals(getUser))
+        //    {
+        //        var user = await db.User.FindAsync(user_id);
+        //        string u = user.username;
+        //        string folderpath = u;
+        //        string path = Path.Combine($"wwwroot/userimages/{folderpath}/");
+        //        DirectoryInfo info = new DirectoryInfo(path);
+        //        foreach (FileInfo file in info.EnumerateFiles())
+        //        {
+        //            file.Delete();
+        //        }
+        //        db.User.Remove(await db.User.FindAsync(user_id));
+        //        db.SaveChanges();
+        //        Directory.Delete(path, true);
+        //        //return RedirectToAction(nameof(Users));
+        //        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        //        return RedirectToAction("getall", "Anime", null);
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction("AccessDenied", "ErrorHandler", null);
+        //    }
+        //}
 
         // GET: Users/CheckUser/id
         //[HttpGet]

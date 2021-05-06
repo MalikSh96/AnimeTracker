@@ -53,7 +53,8 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-                        <input type="submit" value="Save" />
+                        <input type="submit" value="Save"
+                               onclick="return confirm('You will be signed out once you want to confirm your changes?')" />
                         <input type="hidden" asp-for="user_id" />
                     </td>
                 </tr>

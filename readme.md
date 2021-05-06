@@ -353,7 +353,10 @@ existing data in the `database`.
 
 - Fixed the name conflicting issue with shows too. Now able to change name of shows.
 
-- A lot of recurring code present in the `edit` functionalities in `AnimeController.cs` and `UserController.cs` 
+- A lot of recurring code present in the `edit` functionalities in `AnimeController.cs` and `UserController.cs`.
+
+# Phase 22
+- Worked on `delete` functionality for both an admin and a single user.
 
 ### Issue with Users remaining signed in
 - Users who closes their tab or closes their browser still remain signed in, even though **not** having *ticked*
@@ -362,6 +365,8 @@ the checkbox for remaining signed in. Make so that users only remain signed in, 
 - Issue when changing a `username`, make so that you either *automatically* sign out, to update the webpage
 to register the name change. Or find a way to make that the website recognizes the name change directly.
 Find a way for the `User.Identity.Authentication` to recognize a change.
+
+- Some issue with not being able to do specific web calls, due to files be used by other system??
 
 #### Minor
 - Need to work on avoiding **URL** *tampering* or forgery.
